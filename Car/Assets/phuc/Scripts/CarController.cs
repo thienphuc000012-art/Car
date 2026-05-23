@@ -1,8 +1,9 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
 {
-    public WheelCollider[] wheelColliders = new WheelCollider[4]; 
+    public WheelCollider[] wheelColliders = new WheelCollider[4];
     public Transform[] wheelMeshes = new Transform[4];
     public float maxMotorTorque = 1500f;
     public float maxSteerAngle = 30f;
@@ -12,29 +13,42 @@ public class CarController : MonoBehaviour
     public ParticleSystem exhaustPrefab;
     public ParticleSystem[] tireSmokePrefabs;
 
-    public Transform nitroPoint;
-    public Transform exhaustPoint;
+    public Transform[] vfxPoints;
     public Transform[] tireSmokePoints;
-
-    private ParticleSystem nitroVFX;
-    private ParticleSystem exhaustVFX;
+    private ParticleSystem[] nitroVFX;
+    private ParticleSystem[] exhaustVFX;
     private ParticleSystem[] tireSmokeVFX;
+
+    [Header("Nitro Settings")]
+    public float nitroBoostMultiplier = 2f;   
+    public float maxNitroEnergy = 10f;        
+    public Slider nitroBar;                   
+
+    private float nitroEnergy;
+    private bool isUsingNitro;
 
     void Start()
     {
-        if (nitroPrefab != null && nitroPoint != null)
+        nitroVFX = new ParticleSystem[vfxPoints.Length];
+        for (int i = 0; i < vfxPoints.Length; i++)
         {
-            nitroVFX = Instantiate(nitroPrefab, nitroPoint.position, nitroPoint.rotation, nitroPoint);
+            if (nitroPrefab != null && vfxPoints[i] != null)
+            {
+                nitroVFX[i] = Instantiate(nitroPrefab, vfxPoints[i].position, vfxPoints[i].rotation, vfxPoints[i]);
+            }
         }
 
-        if (exhaustPrefab != null && exhaustPoint != null)
+        exhaustVFX = new ParticleSystem[vfxPoints.Length];
+        for (int i = 0; i < vfxPoints.Length; i++)
         {
-            exhaustVFX = Instantiate(exhaustPrefab, exhaustPoint.position, exhaustPoint.rotation, exhaustPoint);
+            if (exhaustPrefab != null && vfxPoints[i] != null)
+            {
+                exhaustVFX[i] = Instantiate(exhaustPrefab, vfxPoints[i].position, vfxPoints[i].rotation, vfxPoints[i]);
+            }
         }
 
         int count = Mathf.Min(tireSmokePoints.Length, tireSmokePrefabs.Length, wheelMeshes.Length);
         tireSmokeVFX = new ParticleSystem[count];
-
         for (int i = 0; i < count; i++)
         {
             if (tireSmokePrefabs[i] != null && wheelMeshes[i] != null)
@@ -43,15 +57,20 @@ public class CarController : MonoBehaviour
                     tireSmokePrefabs[i],
                     wheelMeshes[i].position,
                     wheelMeshes[i].rotation,
-                    wheelMeshes[i]  
+                    wheelMeshes[i]
                 );
-
                 tireSmokeVFX[i].transform.localPosition = Vector3.zero;
                 tireSmokeVFX[i].transform.localRotation = Quaternion.identity;
             }
         }
-    }
 
+        nitroEnergy = maxNitroEnergy;
+        if (nitroBar != null)
+        {
+            nitroBar.maxValue = maxNitroEnergy;
+            nitroBar.value = nitroEnergy;
+        }
+    }
 
     void Update()
     {
@@ -61,12 +80,19 @@ public class CarController : MonoBehaviour
         ApplyDrive(motor, steering);
         UpdateWheelMeshes();
         HandleVFX();
+        UpdateNitroUI();
     }
 
     void ApplyDrive(float motor, float steering)
     {
         wheelColliders[0].steerAngle = steering;
         wheelColliders[1].steerAngle = steering;
+
+        if (isUsingNitro && nitroEnergy > 0)
+        {
+            motor *= nitroBoostMultiplier;
+            nitroEnergy -= Time.deltaTime;
+        }
 
         wheelColliders[2].motorTorque = motor;
         wheelColliders[3].motorTorque = motor;
@@ -97,22 +123,31 @@ public class CarController : MonoBehaviour
 
     void HandleVFX()
     {
-        if (Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift) && nitroEnergy > 0)
         {
-            if (nitroVFX != null && !nitroVFX.isPlaying) nitroVFX.Play();
+            isUsingNitro = true;
+            foreach (var vfx in nitroVFX)
+                if (vfx != null && !vfx.isPlaying) vfx.Play();
+
+            foreach (var vfx in exhaustVFX)
+                if (vfx != null && vfx.isPlaying) vfx.Stop();
         }
         else
         {
-            if (nitroVFX != null && nitroVFX.isPlaying) nitroVFX.Stop();
+            isUsingNitro = false;
+            foreach (var vfx in nitroVFX)
+                if (vfx != null && vfx.isPlaying) vfx.Stop();
         }
 
-        if (Input.GetAxis("Vertical") > 0.8f)
+        if (!isUsingNitro && Input.GetAxis("Vertical") > 0.8f)
         {
-            if (exhaustVFX != null && !exhaustVFX.isPlaying) exhaustVFX.Play();
+            foreach (var vfx in exhaustVFX)
+                if (vfx != null && !vfx.isPlaying) vfx.Play();
         }
-        else
+        else if (!isUsingNitro)
         {
-            if (exhaustVFX != null && exhaustVFX.isPlaying) exhaustVFX.Stop();
+            foreach (var vfx in exhaustVFX)
+                if (vfx != null && vfx.isPlaying) vfx.Stop();
         }
 
         if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.7f)
@@ -131,6 +166,15 @@ public class CarController : MonoBehaviour
                     tireSmokeVFX[i].Stop();
             }
         }
+    }
 
+    void UpdateNitroUI()
+    {
+        if (nitroBar != null)
+            nitroBar.value = nitroEnergy;
+    }
+    public void AddNitroEnergy(float amount)
+    {
+        nitroEnergy = Mathf.Min(nitroEnergy + amount, maxNitroEnergy);
     }
 }
