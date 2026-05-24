@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 
 public class CarController : MonoBehaviour
@@ -26,6 +27,12 @@ public class CarController : MonoBehaviour
 
     private float nitroEnergy;
     private bool isUsingNitro;
+    [Header("AI Control")]
+    public bool isAI = false;
+
+    private float aiMotor;
+    private float aiSteering;
+    private bool aiBrake;
 
     void Start()
     {
@@ -74,10 +81,30 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
-        float motor = maxMotorTorque * Input.GetAxis("Vertical");
-        float steering = maxSteerAngle * Input.GetAxis("Horizontal");
+        float motor;
+        float steering;
+
+        // PLAYER
+        if (!isAI)
+        {
+            motor = maxMotorTorque * Input.GetAxis("Vertical");
+            steering = maxSteerAngle * Input.GetAxis("Horizontal");
+
+            isUsingNitro =
+                Input.GetKey(KeyCode.LeftShift) &&
+                nitroEnergy > 0;
+        }
+        // AI
+        else
+        {
+            motor = aiMotor;
+            steering = aiSteering;
+
+            isUsingNitro = false;
+        }
 
         ApplyDrive(motor, steering);
+
         UpdateWheelMeshes();
         HandleVFX();
         UpdateNitroUI();
@@ -97,7 +124,7 @@ public class CarController : MonoBehaviour
         wheelColliders[2].motorTorque = motor;
         wheelColliders[3].motorTorque = motor;
 
-        if (Input.GetKey(KeyCode.Space))
+        if ((!isAI && Input.GetKey(KeyCode.Space)) || (isAI && aiBrake))
         {
             wheelColliders[2].brakeTorque = brakeForce;
             wheelColliders[3].brakeTorque = brakeForce;
@@ -176,5 +203,14 @@ public class CarController : MonoBehaviour
     public void AddNitroEnergy(float amount)
     {
         nitroEnergy = Mathf.Min(nitroEnergy + amount, maxNitroEnergy);
+    }
+
+    public void SetInput(float steer, float throttle, bool brake)
+    {
+        aiSteering = steer * maxSteerAngle;
+
+        aiMotor = throttle * maxMotorTorque;
+
+        aiBrake = brake;
     }
 }
