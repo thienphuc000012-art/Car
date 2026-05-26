@@ -1374,6 +1374,9 @@ MonoBehaviour:
   - {fileID: 2074325447732721807}
   - {fileID: 1181967694387905642}
   - {fileID: 5012022561666865885}
+  nitroBoostMultiplier: 2
+  maxNitroEnergy: 10
+  nitroBar: {fileID: 0}
 --- !u!1 &2761971228400337133
 GameObject:
   m_ObjectHideFlags: 0
