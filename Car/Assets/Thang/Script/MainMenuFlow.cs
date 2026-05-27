@@ -61,7 +61,8 @@ public class MainMenuFlow : MonoBehaviour
             fullscreenDropdown.ClearOptions();
             fullscreenDropdown.AddOptions(new System.Collections.Generic.List<string> { "Windowed", "Fullscreen" });
             fullscreenDropdown.SetValueWithoutNotify(Screen.fullScreen ? 1 : 0);
-            fullscreenDropdown.onValueChanged.AddListener(SetFullscreenMode);
+            if (fullscreenDropdown.onValueChanged.GetPersistentEventCount() == 0)
+                fullscreenDropdown.onValueChanged.AddListener(SetFullscreenMode);
         }
 
         StartCoroutine(FirstLoading());
@@ -194,6 +195,9 @@ public class MainMenuFlow : MonoBehaviour
     {
         Button button = FindComponentIn(root, buttonName, typeof(Button)) as Button;
         if (button == null)
+            return;
+
+        if (button.onClick.GetPersistentEventCount() > 0)
             return;
 
         button.onClick.AddListener(action);
@@ -419,5 +423,6 @@ public class MainMenuFlow : MonoBehaviour
         return null;
     }
 }
+
 
 

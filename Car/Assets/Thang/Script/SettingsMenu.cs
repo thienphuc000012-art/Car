@@ -22,13 +22,15 @@ public class SettingsMenu : MonoBehaviour
         if (musicSlider != null)
         {
             musicSlider.SetValueWithoutNotify(musicVolume);
-            musicSlider.onValueChanged.AddListener(SetMusicVolume);
+            if (musicSlider.onValueChanged.GetPersistentEventCount() == 0)
+                musicSlider.onValueChanged.AddListener(SetMusicVolume);
         }
 
         if (sfxSlider != null)
         {
             sfxSlider.SetValueWithoutNotify(sfxVolume);
-            sfxSlider.onValueChanged.AddListener(SetSFXVolume);
+            if (sfxSlider.onValueChanged.GetPersistentEventCount() == 0)
+                sfxSlider.onValueChanged.AddListener(SetSFXVolume);
         }
     }
 
@@ -44,3 +46,4 @@ public class SettingsMenu : MonoBehaviour
             AudioManager.Instance.SetSFXVolume(value);
     }
 }
+
