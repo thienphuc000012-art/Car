@@ -199,6 +199,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 2565814646344888688, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
   m_PrefabInstance: {fileID: 307341699}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &118115495 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8140104866179199840, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+  m_PrefabInstance: {fileID: 307341699}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &118115496 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6520295510665144342, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+  m_PrefabInstance: {fileID: 307341699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!65 &118115497
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -231,11 +241,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3554f4777f76e124ba8f04005972e57a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarController
---- !u!4 &118115500 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 6520295510665144342, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
-  m_PrefabInstance: {fileID: 307341699}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &121623758
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44212cba9a865b644a9f24400efe1750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedometerUI
-  carRigidbody: {fileID: 654499293}
+  carRigidbody: {fileID: 118115495}
   needle: {fileID: 833848344}
   carController: {fileID: 118115498}
   maxSpeed: 220
@@ -786,7 +791,10 @@ PrefabInstance:
       propertyPath: m_Convex
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 8576324053108857645, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+    - {fileID: 6227747155179198031, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+    - {fileID: 6031723261389008700, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents:
@@ -1179,11 +1187,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2f8b2911e8705f4fbefa3203a090d5b, type: 3}
---- !u!54 &654499293 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 5384358490929896823, guid: 3d79c379fc0996b489153f1f546575f9, type: 3}
-  m_PrefabInstance: {fileID: 1133620437}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &684818137
 GameObject:
   m_ObjectHideFlags: 0
@@ -1562,6 +1565,7 @@ GameObject:
   - component: {fileID: 1112059733}
   - component: {fileID: 1112059732}
   - component: {fileID: 1112059731}
+  - component: {fileID: 1112059735}
   m_Layer: 0
   m_Name: CinemachineCamera
   m_TagString: Untagged
@@ -1637,7 +1641,7 @@ MonoBehaviour:
   m_StreamingVersion: 20241001
   m_LegacyPriority: 0
   Target:
-    TrackingTarget: {fileID: 118115500}
+    TrackingTarget: {fileID: 118115496}
     LookAtTarget: {fileID: 0}
     CustomLookAtTarget: 0
   Lens:
@@ -1668,13 +1672,32 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1112059730}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018224, y: 3.2176816e-24, z: -1.4468319e-24, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018224, y: -0.0000000060925625, z: 9.886864e-10, w: 0.9870875}
   m_LocalPosition: {x: -377.59, y: 2.001781, z: -490.64532}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1112059735
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1112059730}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7faaf941ce326749a64a5f257ea30ed, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarCameraController
+  carRb: {fileID: 118115495}
+  vcam: {fileID: 1112059733}
+  baseFOV: 60
+  maxFOV: 80
+  speedForMaxFOV: 300
+  baseDistance: 6
+  minDistance: 2.5
 --- !u!1001 &1115526419
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2693,7 +2716,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1574386845}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.16018225, y: 3.0635693e-24, z: -4.971489e-25, w: 0.9870875}
+  m_LocalRotation: {x: 0.16018225, y: -0.0000000060925625, z: 9.886868e-10, w: 0.9870875}
   m_LocalPosition: {x: -377.59, y: 2.001781, z: -490.64532}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
