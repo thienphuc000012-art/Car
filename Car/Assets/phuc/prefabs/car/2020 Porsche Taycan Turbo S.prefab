@@ -226,7 +226,7 @@ MeshCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 5
-  m_Convex: 1
+  m_Convex: 0
   m_CookingOptions: -1
   m_Mesh: {fileID: -5587832022843509982, guid: 7ad0256af5216014ca3416361d51158f, type: 3}
 --- !u!1 &668671864712320137
@@ -1377,6 +1377,8 @@ MonoBehaviour:
   nitroBoostMultiplier: 2
   maxNitroEnergy: 10
   nitroBar: {fileID: 0}
+  isUsingNitro: 0
+  isAI: 0
 --- !u!1 &2761971228400337133
 GameObject:
   m_ObjectHideFlags: 0
@@ -5766,6 +5768,10 @@ PrefabInstance:
     - target: {fileID: 2186452652821633448, guid: f8f1def80f84a1f4183a1a26504f0fa6, type: 3}
       propertyPath: m_Layer
       value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2186452652821633455, guid: f8f1def80f84a1f4183a1a26504f0fa6, type: 3}
+      propertyPath: m_Enabled
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3363512449123176273, guid: f8f1def80f84a1f4183a1a26504f0fa6, type: 3}
       propertyPath: m_RootOrder

@@ -1,0 +1,17 @@
+﻿Audio assets used for MainMenu
+
+1. Racing Game Menu by MintoDog
+Source: https://opengameart.org/content/racing-game-menu
+License: CC0
+File used: racing_game_menu_bpm165.ogg
+
+2. Interface Sounds by Kenney
+Source: https://opengameart.org/content/interface-sounds
+License: CC0
+File used: click_001.ogg as ui_click_kenney_click_001.ogg, select_001.ogg as ui_hover_kenney_select_001.ogg
+Credit Kenney.nl is appreciated but not mandatory per source page.
+
+3. Engine sounds(2) by pauliuw
+Source: https://opengameart.org/content/engine-sounds2
+License: CC0
+File used: engine_sound.mp3 as startup_engine_sound.mp3
