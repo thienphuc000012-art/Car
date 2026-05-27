@@ -1,367 +1,244 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-
-public enum RoomPrivacy
-{
-    Public,
-    Private
-}
-
-public enum JoinRule
-{
-    Instant,
-    HostApproval
-}
-
-[System.Serializable]
-public class RoomInfo
-{
-    public string code;
-    public string roomName;
-    public RoomPrivacy privacy;
-    public JoinRule joinRule;
-    public string password;
-    public int players;
-    public int maxPlayers = 4;
-}
+using UnityEngine.SceneManagement;
 
 public class LobbyRoomController : MonoBehaviour
 {
     public MainMenuFlow menuFlow;
 
-    [Header("Create Room")]
-    public TMP_InputField createRoomNameInput;
-    public TMP_InputField createPasswordInput;
-    public TMP_Dropdown privacyDropdown;
-    public TMP_Dropdown joinRuleDropdown;
+    [Header("Maps")]
+    public string[] mapSceneNames = { "complete_track_demo", "phuc", "s1" };
+    public string[] mapDisplayNames = { "complete_track_demo", "phuc", "s1" };
+    public int selectedMapIndex;
 
-    [Header("Join Room")]
-    public TMP_InputField roomCodeInput;
-    public TMP_InputField joinPasswordInput;
+    [Header("Cars")]
+    public string[] carIds =
+    {
+        "1993 Toyota Supra MK4",
+        "2005 BMW M3 GTR E46",
+        "2008 Subaru Impreza WRX STi Police",
+        "2012 Lexus LFA",
+        "2019 VW Golf MK7 GTI",
+        "2020 Porsche Taycan Turbo S"
+    };
+
+    public string[] carDisplayNames =
+    {
+        "1993 Toyota Supra MK4",
+        "2005 BMW M3 GTR E46",
+        "2008 Subaru Impreza WRX STi - Police",
+        "2012 Lexus LFA",
+        "2019 VW Golf MK7 GTI",
+        "2020 Porsche Taycan Turbo S"
+    };
+
+    public int selectedCarIndex;
 
     [Header("Texts")]
     public TMP_Text statusText;
-    public TMP_Text currentRoomText;
-    public TMP_Text searchStatusText;
-
-    [Header("Quick Join")]
-    public GameObject stopQuickJoinButton;
-
-    readonly Dictionary<string, RoomInfo> rooms = new Dictionary<string, RoomInfo>();
-    string currentRoomCode = "";
-    Coroutine quickJoinCoroutine;
-    bool quickJoinActive;
+    public TMP_Text selectedMapText;
+    public TMP_Text selectedCarText;
+    public TMP_Text currentSelectionText;
 
     void Start()
     {
         BindSceneObjects();
-        UpdateCurrentRoomText();
+        ClampSelection();
+        ApplySelectionState();
+        UpdateTexts("San sang chon xe va map.");
     }
 
     public void BindSceneObjects()
     {
         menuFlow = menuFlow != null ? menuFlow : GetComponent<MainMenuFlow>();
 
-        GameObject createPanel = MainMenuFlow.FindSceneObject("CreateRoomPanel");
-        GameObject joinPanel = MainMenuFlow.FindSceneObject("JoinRoomPanel");
         GameObject lobbyPanel = MainMenuFlow.FindSceneObject("LobbyPanel");
-
-        createRoomNameInput = createRoomNameInput != null ? createRoomNameInput : MainMenuFlow.FindComponentIn(createPanel, "RoomNameInput", typeof(TMP_InputField)) as TMP_InputField;
-        createPasswordInput = createPasswordInput != null ? createPasswordInput : MainMenuFlow.FindComponentIn(createPanel, "PasswordInput", typeof(TMP_InputField)) as TMP_InputField;
-        privacyDropdown = privacyDropdown != null ? privacyDropdown : MainMenuFlow.FindComponentIn(createPanel, "PrivacyDropdown", typeof(TMP_Dropdown)) as TMP_Dropdown;
-        joinRuleDropdown = joinRuleDropdown != null ? joinRuleDropdown : MainMenuFlow.FindComponentIn(createPanel, "JoinRuleDropdown", typeof(TMP_Dropdown)) as TMP_Dropdown;
-
-        roomCodeInput = roomCodeInput != null ? roomCodeInput : MainMenuFlow.FindComponentIn(joinPanel, "RoomCodeInput", typeof(TMP_InputField)) as TMP_InputField;
-        joinPasswordInput = joinPasswordInput != null ? joinPasswordInput : MainMenuFlow.FindComponentIn(joinPanel, "PasswordInput", typeof(TMP_InputField)) as TMP_InputField;
-        searchStatusText = searchStatusText != null ? searchStatusText : MainMenuFlow.FindComponentIn(joinPanel, "SearchStatusText", typeof(TMP_Text)) as TMP_Text;
-
         statusText = statusText != null ? statusText : MainMenuFlow.FindComponentIn(lobbyPanel, "StatusText", typeof(TMP_Text)) as TMP_Text;
-        currentRoomText = currentRoomText != null ? currentRoomText : MainMenuFlow.FindComponentIn(lobbyPanel, "CurrentRoomText", typeof(TMP_Text)) as TMP_Text;
-        stopQuickJoinButton = stopQuickJoinButton != null ? stopQuickJoinButton : MainMenuFlow.FindChild(lobbyPanel, "StopQuickJoinButton");
-
-        SetupDropdowns();
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
+        selectedMapText = selectedMapText != null ? selectedMapText : FindFirstText(lobbyPanel, "SelectedMapText", "MapText", "MapNameText");
+        selectedCarText = selectedCarText != null ? selectedCarText : FindFirstText(lobbyPanel, "SelectedCarText", "CarText", "CarNameText");
+        currentSelectionText = currentSelectionText != null ? currentSelectionText : FindFirstText(lobbyPanel, "CurrentSelectionText", "CurrentRoomText");
     }
 
-    void SetupDropdowns()
+    TMP_Text FindFirstText(GameObject root, params string[] names)
     {
-        if (privacyDropdown != null)
+        foreach (string textName in names)
         {
-            privacyDropdown.ClearOptions();
-            privacyDropdown.AddOptions(new List<string> { "Public", "Private" });
+            TMP_Text found = MainMenuFlow.FindComponentIn(root, textName, typeof(TMP_Text)) as TMP_Text;
+            if (found != null)
+                return found;
         }
 
-        if (joinRuleDropdown != null)
-        {
-            joinRuleDropdown.ClearOptions();
-            joinRuleDropdown.AddOptions(new List<string> { "Vao ngay", "Chu phong duyet" });
-        }
+        return null;
     }
 
-    public void CreateRoom()
+    public void SelectNextMap()
     {
-        BindSceneObjects();
-
-        if (!string.IsNullOrEmpty(currentRoomCode))
+        if (mapSceneNames == null || mapSceneNames.Length == 0)
         {
-            SetStatus("Ban dang o trong phong roi.");
+            UpdateTexts("Chua co map de chon.");
             return;
         }
 
-        string code = GenerateRoomCode();
-        string roomName = createRoomNameInput != null ? createRoomNameInput.text : "";
-        string password = createPasswordInput != null ? createPasswordInput.text : "";
+        selectedMapIndex = (selectedMapIndex + 1) % mapSceneNames.Length;
+        ApplySelectionState();
+        UpdateTexts("Da chon map tiep theo.");
+    }
 
-        RoomInfo room = new RoomInfo
+    public void SelectPreviousMap()
+    {
+        if (mapSceneNames == null || mapSceneNames.Length == 0)
         {
-            code = code,
-            roomName = string.IsNullOrWhiteSpace(roomName) ? "Room " + code : roomName,
-            privacy = privacyDropdown != null && privacyDropdown.value == 1 ? RoomPrivacy.Private : RoomPrivacy.Public,
-            joinRule = joinRuleDropdown != null && joinRuleDropdown.value == 1 ? JoinRule.HostApproval : JoinRule.Instant,
-            password = password,
-            players = 1,
-            maxPlayers = 4
-        };
-
-        if (room.privacy == RoomPrivacy.Private && string.IsNullOrWhiteSpace(room.password))
-        {
-            SetStatus("Phong private can mat khau.");
+            UpdateTexts("Chua co map de chon.");
             return;
         }
 
-        rooms.Add(code, room);
-        currentRoomCode = code;
-        SetStatus("Da tao phong #" + code);
-        SetSearchStatus("Da tao phong #" + code);
-        UpdateCurrentRoomText();
-
-        if (menuFlow != null)
-            menuFlow.ShowLobby();
+        selectedMapIndex = (selectedMapIndex - 1 + mapSceneNames.Length) % mapSceneNames.Length;
+        ApplySelectionState();
+        UpdateTexts("Da chon map truoc.");
     }
 
-    public void JoinByCode()
+    public void SelectNextCar()
     {
-        BindSceneObjects();
-        string code = NormalizeCode(roomCodeInput != null ? roomCodeInput.text : "");
-
-        if (string.IsNullOrEmpty(code))
+        if (carIds == null || carIds.Length == 0)
         {
-            SetSearchStatus("Nhap ma phong 4 so.");
+            UpdateTexts("Chua co xe de chon.");
             return;
         }
 
-        if (!rooms.TryGetValue(code, out RoomInfo room))
+        selectedCarIndex = (selectedCarIndex + 1) % carIds.Length;
+        ApplySelectionState();
+        UpdateTexts("Da chon xe tiep theo.");
+    }
+
+    public void SelectPreviousCar()
+    {
+        if (carIds == null || carIds.Length == 0)
         {
-            SetSearchStatus("Khong tim thay phong #" + code);
+            UpdateTexts("Chua co xe de chon.");
             return;
         }
 
-        SetSearchStatus("Tim thay phong #" + code);
-        TryJoinRoom(room);
+        selectedCarIndex = (selectedCarIndex - 1 + carIds.Length) % carIds.Length;
+        ApplySelectionState();
+        UpdateTexts("Da chon xe truoc.");
     }
 
-    public void StartQuickJoin()
+    public void RandomizeSelection()
     {
-        BindSceneObjects();
+        if (mapSceneNames != null && mapSceneNames.Length > 0)
+            selectedMapIndex = mapSceneNames.Length == 1 ? 0 : Random.Range(0, mapSceneNames.Length);
 
-        if (!string.IsNullOrEmpty(currentRoomCode))
+        if (carIds != null && carIds.Length > 0)
+            selectedCarIndex = carIds.Length == 1 ? 0 : Random.Range(0, carIds.Length);
+
+        ApplySelectionState();
+        UpdateTexts("Da random xe va map.");
+    }
+
+    public void StartSelectedMap()
+    {
+        ClampSelection();
+        ApplySelectionState();
+
+        string sceneName = GetSelectedMapSceneName();
+        if (string.IsNullOrWhiteSpace(sceneName))
         {
-            SetStatus("Ban dang o trong phong roi.");
+            UpdateTexts("Chua co map. Hay gan Map Scene Names trong Inspector.");
             return;
         }
 
-        if (quickJoinCoroutine != null)
-            StopCoroutine(quickJoinCoroutine);
-
-        quickJoinCoroutine = StartCoroutine(QuickJoinRoutine());
+        UpdateTexts("Dang vao map " + GetSelectedMapDisplayName() + "...");
+        SceneManager.LoadScene(sceneName);
     }
 
-    IEnumerator QuickJoinRoutine()
+    void ClampSelection()
     {
-        quickJoinActive = true;
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(true);
-
-        SetStatus("Dang tham gia nhanh...");
-        yield return new WaitForSeconds(0.5f);
-
-        foreach (RoomInfo room in rooms.Values)
-        {
-            if (!quickJoinActive)
-                yield break;
-
-            if (room.privacy != RoomPrivacy.Public || room.players >= room.maxPlayers)
-                continue;
-
-            if (room.joinRule == JoinRule.Instant)
-            {
-                JoinRoom(room);
-                FinishQuickJoin();
-                yield break;
-            }
-
-            SetStatus("Dang cho chu phong #" + room.code + " chap nhan...");
-            yield return new WaitForSeconds(2f);
-
-            if (!string.IsNullOrEmpty(currentRoomCode))
-            {
-                SetStatus("Khong the vao: ban da o phong khac.");
-                FinishQuickJoin();
-                yield break;
-            }
-
-            JoinRoom(room);
-            FinishQuickJoin();
-            yield break;
-        }
-
-        SetStatus("Khong co phong public phu hop.");
-        FinishQuickJoin();
+        selectedMapIndex = ClampIndex(selectedMapIndex, mapSceneNames);
+        selectedCarIndex = ClampIndex(selectedCarIndex, carIds);
     }
 
-    public void StopQuickJoin()
+    int ClampIndex(int index, string[] values)
     {
-        quickJoinActive = false;
+        if (values == null || values.Length == 0)
+            return 0;
 
-        if (quickJoinCoroutine != null)
-        {
-            StopCoroutine(quickJoinCoroutine);
-            quickJoinCoroutine = null;
-        }
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
-
-        SetStatus("Da dung tham gia nhanh.");
+        return Mathf.Clamp(index, 0, values.Length - 1);
     }
 
-    void FinishQuickJoin()
+    void ApplySelectionState()
     {
-        quickJoinActive = false;
-        quickJoinCoroutine = null;
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
+        ClampSelection();
+        CarSelectionState.SelectedCarIndex = selectedCarIndex;
+        CarSelectionState.SelectedCarId = GetSelectedCarId();
+        CarSelectionState.SelectedMapIndex = selectedMapIndex;
+        CarSelectionState.SelectedMapSceneName = GetSelectedMapSceneName();
+        CarSelectionState.SelectedMapDisplayName = GetSelectedMapDisplayName();
     }
 
-    public void LeaveCurrentRoom()
-    {
-        if (string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Ban chua o trong phong nao.");
-            return;
-        }
-
-        if (rooms.TryGetValue(currentRoomCode, out RoomInfo room))
-            room.players = Mathf.Max(0, room.players - 1);
-
-        currentRoomCode = "";
-        SetStatus("Da roi phong.");
-        UpdateCurrentRoomText();
-    }
-
-    void TryJoinRoom(RoomInfo room)
-    {
-        if (!string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Ban dang o trong phong khac.");
-            return;
-        }
-
-        if (room.players >= room.maxPlayers)
-        {
-            SetStatus("Phong da day.");
-            return;
-        }
-
-        string password = joinPasswordInput != null ? joinPasswordInput.text : "";
-        if (room.privacy == RoomPrivacy.Private && password != room.password)
-        {
-            SetStatus("Sai mat khau phong.");
-            SetSearchStatus("Sai mat khau phong.");
-            return;
-        }
-
-        if (room.joinRule == JoinRule.HostApproval)
-        {
-            SetStatus("Da gui yeu cau vao phong, cho chu phong chap nhan.");
-            StartCoroutine(HostApprovalRoutine(room));
-            return;
-        }
-
-        JoinRoom(room);
-    }
-
-    IEnumerator HostApprovalRoutine(RoomInfo room)
-    {
-        yield return new WaitForSeconds(2f);
-
-        if (!string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Chu phong da chap nhan nhung ban da vao phong khac.");
-            yield break;
-        }
-
-        JoinRoom(room);
-    }
-
-    void JoinRoom(RoomInfo room)
-    {
-        room.players++;
-        currentRoomCode = room.code;
-        SetStatus("Da vao phong #" + room.code);
-        SetSearchStatus("Da vao phong #" + room.code);
-        UpdateCurrentRoomText();
-
-        if (menuFlow != null)
-            menuFlow.ShowLobby();
-    }
-
-    string GenerateRoomCode()
-    {
-        for (int i = 0; i < 1000; i++)
-        {
-            string code = Random.Range(1000, 10000).ToString();
-            if (!rooms.ContainsKey(code))
-                return code;
-        }
-
-        return Random.Range(1000, 10000).ToString();
-    }
-
-    string NormalizeCode(string raw)
-    {
-        if (string.IsNullOrWhiteSpace(raw))
-            return "";
-
-        raw = raw.Replace("#", "").Trim();
-        return raw.Length > 4 ? raw.Substring(0, 4) : raw;
-    }
-
-    void SetStatus(string message)
+    void UpdateTexts(string status)
     {
         if (statusText != null)
-            statusText.text = message;
+            statusText.text = status;
+
+        string mapName = GetSelectedMapDisplayName();
+        string carName = GetSelectedCarDisplayName();
+
+        if (selectedMapText != null)
+            selectedMapText.text = string.IsNullOrEmpty(mapName) ? "Map: Chua co" : "Map: " + mapName;
+
+        if (selectedCarText != null)
+            selectedCarText.text = string.IsNullOrEmpty(carName) ? "Xe: Chua co" : "Xe: " + carName;
+
+        if (currentSelectionText != null)
+            currentSelectionText.text = "Map: " + (string.IsNullOrEmpty(mapName) ? "Chua co" : mapName) + "\nXe: " + (string.IsNullOrEmpty(carName) ? "Chua co" : carName);
     }
 
-    void SetSearchStatus(string message)
+    string GetSelectedMapSceneName()
     {
-        if (searchStatusText != null)
-            searchStatusText.text = message;
+        if (mapSceneNames == null || mapSceneNames.Length == 0)
+            return "";
+
+        return mapSceneNames[Mathf.Clamp(selectedMapIndex, 0, mapSceneNames.Length - 1)];
     }
 
-    void UpdateCurrentRoomText()
+    string GetSelectedMapDisplayName()
     {
-        if (currentRoomText == null)
-            return;
+        if (mapSceneNames == null || mapSceneNames.Length == 0)
+            return "";
 
-        currentRoomText.text = string.IsNullOrEmpty(currentRoomCode)
-            ? "Chua vao phong"
-            : "Dang o phong #" + currentRoomCode;
+        if (mapDisplayNames != null && selectedMapIndex >= 0 && selectedMapIndex < mapDisplayNames.Length && !string.IsNullOrWhiteSpace(mapDisplayNames[selectedMapIndex]))
+            return mapDisplayNames[selectedMapIndex];
+
+        return GetSelectedMapSceneName();
+    }
+
+    string GetSelectedCarId()
+    {
+        if (carIds == null || carIds.Length == 0)
+            return "";
+
+        return carIds[Mathf.Clamp(selectedCarIndex, 0, carIds.Length - 1)];
+    }
+
+    string GetSelectedCarDisplayName()
+    {
+        if (carIds == null || carIds.Length == 0)
+            return "";
+
+        if (carDisplayNames != null && selectedCarIndex >= 0 && selectedCarIndex < carDisplayNames.Length && !string.IsNullOrWhiteSpace(carDisplayNames[selectedCarIndex]))
+            return carDisplayNames[selectedCarIndex];
+
+        return GetSelectedCarId();
+    }
+
+    // Compatibility for old online button bindings. These intentionally no longer create/join/leave rooms.
+    public void CreateRoom() => StartSelectedMap();
+    public void JoinByCode() => UpdateTexts("Online da tat. Lobby hien dung de chon map va xe.");
+    public void StartQuickJoin() => RandomizeSelection();
+    public void StopQuickJoin() => UpdateTexts("Da dung random.");
+    public void LeaveCurrentRoom()
+    {
+        if (menuFlow != null)
+            menuFlow.ShowMainMenu();
     }
 }

@@ -1,5 +1,7 @@
 ﻿#if UNITY_EDITOR
 using System;
+using System.Collections.Generic;
+using System.IO;
 using TMPro;
 using UnityEditor;
 using UnityEditor.Events;
@@ -36,6 +38,7 @@ public static class MainMenuBinderEditor
         BindAudioClips(audio);
         BindHelpers();
         BindBackgroundVfxLayers();
+        DisableObsoleteOnlineObjects();
         BindOnClicks(flow, lobby);
         EnsureButtonSounds();
         EnsurePanelPopEffects();
@@ -59,11 +62,7 @@ public static class MainMenuBinderEditor
         flow.loadingPanel = Find("LoadingPanel");
         flow.pressAnyKeyPanel = Find("PressAnyKeyPanel");
         flow.mainMenuPanel = Find("MainMenuPanel");
-        flow.garagePanel = Find("GaragePanel");
         flow.lobbyPanel = Find("LobbyPanel");
-        flow.createRoomPanel = Find("CreateRoomPanel");
-        flow.joinRoomPanel = Find("JoinRoomPanel");
-        flow.lobbyGaragePanel = Find("LobbyGaragePanel");
         flow.settingsPanel = Find("SettingsPanel");
 
         flow.loadingBarFill = GetComponentIn<Image>(flow.loadingPanel, "LoadingBarFill");
@@ -97,32 +96,22 @@ public static class MainMenuBinderEditor
 
     static void BindLobby(LobbyRoomController lobby, MainMenuFlow flow)
     {
-        Undo.RecordObject(lobby, "Bind Lobby Room Controller");
-
-        GameObject createPanel = Find("CreateRoomPanel");
-        GameObject joinPanel = Find("JoinRoomPanel");
+        Undo.RecordObject(lobby, "Bind Lobby Selection Controller");
         GameObject lobbyPanel = Find("LobbyPanel");
 
         lobby.menuFlow = flow;
-        lobby.createRoomNameInput = GetComponentIn<TMP_InputField>(createPanel, "RoomNameInput");
-        lobby.createPasswordInput = GetComponentIn<TMP_InputField>(createPanel, "PasswordInput");
-        lobby.privacyDropdown = GetComponentIn<TMP_Dropdown>(createPanel, "PrivacyDropdown");
-        lobby.joinRuleDropdown = GetComponentIn<TMP_Dropdown>(createPanel, "JoinRuleDropdown");
-        lobby.roomCodeInput = GetComponentIn<TMP_InputField>(joinPanel, "RoomCodeInput");
-        lobby.joinPasswordInput = GetComponentIn<TMP_InputField>(joinPanel, "PasswordInput");
         lobby.statusText = GetComponentIn<TMP_Text>(lobbyPanel, "StatusText");
-        lobby.currentRoomText = GetComponentIn<TMP_Text>(lobbyPanel, "CurrentRoomText");
-        lobby.searchStatusText = GetComponentIn<TMP_Text>(joinPanel, "SearchStatusText");
-        lobby.stopQuickJoinButton = FindIn(lobbyPanel, "StopQuickJoinButton");
+        lobby.selectedMapText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedMapText", "MapText", "MapNameText");
+        lobby.selectedCarText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedCarText", "CarText", "CarNameText");
+        lobby.currentSelectionText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "CurrentSelectionText", "CurrentRoomText");
 
-        if (lobby.stopQuickJoinButton != null)
-            lobby.stopQuickJoinButton.SetActive(false);
+        if (lobby.mapSceneNames == null || lobby.mapSceneNames.Length == 0)
+        {
+            lobby.mapSceneNames = FindMapSceneNames();
+            lobby.mapDisplayNames = lobby.mapSceneNames;
+        }
 
-        if (lobby.privacyDropdown != null)
-            SetDropdownOptions(lobby.privacyDropdown, "Public", "Private");
-
-        if (lobby.joinRuleDropdown != null)
-            SetDropdownOptions(lobby.joinRuleDropdown, "Vao ngay", "Chu phong duyet");
+        EditorUtility.SetDirty(lobby);
     }
 
     static void BindAudio(AudioManager audio)
@@ -301,34 +290,67 @@ public static class MainMenuBinderEditor
         vfxLayer.SetAsFirstSibling();
     }
 
+    static void DisableObsoleteOnlineObjects()
+    {
+        SetObjectActive("CreateRoomPanel", false);
+        SetObjectActive("JoinRoomPanel", false);
+        SetObjectActive("GaragePanel", false);
+        SetObjectActive("LobbyGaragePanel", false);
+
+        ClearButtonAndHide("GarageButton");
+        ClearButtonAndHide("GarageButon");
+        ClearButtonAndHide("CreateRoomButton");
+        ClearButtonAndHide("JoinRoomButton");
+        ClearButtonAndHide("QuickJoinButton");
+        ClearButtonAndHide("StopQuickJoinButton");
+        ClearButtonAndHide("LobbyGarageButton");
+        ClearButtonAndHide("LeaveButton");
+    }
+
+    static void SetObjectActive(string objectName, bool active)
+    {
+        GameObject obj = Find(objectName);
+        if (obj == null)
+            return;
+
+        Undo.RecordObject(obj, "Update Main Menu Object Active");
+        obj.SetActive(active);
+        EditorUtility.SetDirty(obj);
+    }
+
+    static void ClearButtonAndHide(string buttonName)
+    {
+        GameObject obj = Find(buttonName);
+        if (obj == null)
+            return;
+
+        Button button = obj.GetComponent<Button>();
+        if (button != null)
+        {
+            Undo.RecordObject(button, "Clear Obsolete Button OnClick");
+            ClearPersistentListeners(button.onClick);
+            EditorUtility.SetDirty(button);
+        }
+
+        Undo.RecordObject(obj, "Hide Obsolete Button");
+        obj.SetActive(false);
+        EditorUtility.SetDirty(obj);
+    }
+
     static void BindOnClicks(MainMenuFlow flow, LobbyRoomController lobby)
     {
         SetButtonClick(flow.mainMenuPanel, "PlayButton", flow, nameof(MainMenuFlow.ShowLobby));
-        SetButtonClick(flow.mainMenuPanel, "GarageButton", flow, nameof(MainMenuFlow.OpenGarage));
-        SetButtonClick(flow.mainMenuPanel, "GarageButon", flow, nameof(MainMenuFlow.OpenGarage));
         SetButtonClick(flow.mainMenuPanel, "SettingButton", flow, nameof(MainMenuFlow.OpenSettings));
         SetButtonClick(flow.mainMenuPanel, "SettingsButton", flow, nameof(MainMenuFlow.OpenSettings));
         SetButtonClick(flow.mainMenuPanel, "QuitButton", flow, nameof(MainMenuFlow.QuitGame));
 
-        SetButtonClick(flow.garagePanel, "BackButton", flow, nameof(MainMenuFlow.CloseGarage));
-        SetButtonClick(flow.garagePanel, "BackButtonGarage", flow, nameof(MainMenuFlow.CloseGarage));
-
-        SetButtonClick(flow.lobbyPanel, "CreateRoomButton", flow, nameof(MainMenuFlow.OpenCreateRoom));
-        SetButtonClick(flow.lobbyPanel, "JoinRoomButton", flow, nameof(MainMenuFlow.OpenJoinRoom));
-        SetButtonClick(flow.lobbyPanel, "QuickJoinButton", lobby, nameof(LobbyRoomController.StartQuickJoin));
-        SetButtonClick(flow.lobbyPanel, "StopQuickJoinButton", lobby, nameof(LobbyRoomController.StopQuickJoin));
-        SetButtonClick(flow.lobbyPanel, "LobbyGarageButton", flow, nameof(MainMenuFlow.OpenLobbyGarage));
-        SetButtonClick(flow.lobbyPanel, "LeaveButton", lobby, nameof(LobbyRoomController.LeaveCurrentRoom));
+        SetButtonClick(flow.lobbyPanel, "StartButton", lobby, nameof(LobbyRoomController.StartSelectedMap));
+        SetButtonClick(flow.lobbyPanel, "RandomButton", lobby, nameof(LobbyRoomController.RandomizeSelection));
+        SetButtonClick(flow.lobbyPanel, "randomButton", lobby, nameof(LobbyRoomController.RandomizeSelection));
+        SetButtonClick(flow.lobbyPanel, "SettingButton", flow, nameof(MainMenuFlow.OpenSettings));
+        SetButtonClick(flow.lobbyPanel, "SettingsButton", flow, nameof(MainMenuFlow.OpenSettings));
         SetButtonClick(flow.lobbyPanel, "BackButton", flow, nameof(MainMenuFlow.ShowMainMenu));
-
-        SetButtonClick(flow.createRoomPanel, "CreateConfirmButton", lobby, nameof(LobbyRoomController.CreateRoom));
-        SetButtonClick(flow.createRoomPanel, "BackButton", flow, nameof(MainMenuFlow.ShowLobby));
-
-        SetButtonClick(flow.joinRoomPanel, "JoinConfirmButton", lobby, nameof(LobbyRoomController.JoinByCode));
-        SetButtonClick(flow.joinRoomPanel, "BackButton", flow, nameof(MainMenuFlow.ShowLobby));
-
-        SetButtonClick(flow.lobbyGaragePanel, "BackButton", flow, nameof(MainMenuFlow.ShowLobby));
-        SetButtonClick(flow.settingsPanel, "BackButton", flow, nameof(MainMenuFlow.ShowMainMenu));
+        SetButtonClick(flow.settingsPanel, "BackButton", flow, nameof(MainMenuFlow.CloseSettings));
 
         SetSliderFloatEvent(Find("MusicSlider")?.GetComponent<Slider>(), Find("MainMenuManager")?.GetComponent<SettingsMenu>(), nameof(SettingsMenu.SetMusicVolume));
         SetSliderFloatEvent(Find("SFXSlider")?.GetComponent<Slider>(), Find("MainMenuManager")?.GetComponent<SettingsMenu>(), nameof(SettingsMenu.SetSFXVolume));
@@ -350,8 +372,7 @@ public static class MainMenuBinderEditor
     {
         string[] panelNames =
         {
-            "MainMenuPanel", "GaragePanel", "LobbyPanel", "CreateRoomPanel",
-            "JoinRoomPanel", "LobbyGaragePanel", "SettingsPanel"
+            "MainMenuPanel", "LobbyPanel", "SettingsPanel"
         };
 
         foreach (string panelName in panelNames)
@@ -445,6 +466,37 @@ public static class MainMenuBinderEditor
     {
         GameObject obj = FindIn(root, objectName);
         return obj != null ? obj.GetComponent<T>() : null;
+    }
+
+    static T GetFirstComponentIn<T>(GameObject root, params string[] objectNames) where T : Component
+    {
+        foreach (string objectName in objectNames)
+        {
+            T component = GetComponentIn<T>(root, objectName);
+            if (component != null)
+                return component;
+        }
+
+        return null;
+    }
+
+    static string[] FindMapSceneNames()
+    {
+        List<string> sceneNames = new List<string>();
+        string[] guids = AssetDatabase.FindAssets("t:Scene", new[] { "Assets/Scenes" });
+
+        foreach (string guid in guids)
+        {
+            string path = AssetDatabase.GUIDToAssetPath(guid);
+            string sceneName = Path.GetFileNameWithoutExtension(path);
+            if (string.IsNullOrEmpty(sceneName) || sceneName == "MainMenu")
+                continue;
+
+            if (!sceneNames.Contains(sceneName))
+                sceneNames.Add(sceneName);
+        }
+
+        return sceneNames.ToArray();
     }
 
     static GameObject Find(string objectName)

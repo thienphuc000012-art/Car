@@ -1,4 +1,4 @@
-﻿using System.Collections;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Events;
@@ -10,11 +10,7 @@ public class MainMenuFlow : MonoBehaviour
     public GameObject loadingPanel;
     public GameObject pressAnyKeyPanel;
     public GameObject mainMenuPanel;
-    public GameObject garagePanel;
     public GameObject lobbyPanel;
-    public GameObject createRoomPanel;
-    public GameObject joinRoomPanel;
-    public GameObject lobbyGaragePanel;
     public GameObject settingsPanel;
 
     [Header("Loading")]
@@ -34,10 +30,10 @@ public class MainMenuFlow : MonoBehaviour
 
     bool canClickToStart;
     bool isSwitching;
-    bool garageOpenedFromLobby;
     GameObject currentPanel;
+    GameObject panelBeforeSettings;
     SettingsMenu settingsMenu;
-    LobbyRoomController lobbyRoomController;
+    LobbyRoomController lobbyController;
 
     void Awake()
     {
@@ -88,11 +84,7 @@ public class MainMenuFlow : MonoBehaviour
         loadingPanel = loadingPanel != null ? loadingPanel : FindSceneObject("LoadingPanel");
         pressAnyKeyPanel = pressAnyKeyPanel != null ? pressAnyKeyPanel : FindSceneObject("PressAnyKeyPanel");
         mainMenuPanel = mainMenuPanel != null ? mainMenuPanel : FindSceneObject("MainMenuPanel");
-        garagePanel = garagePanel != null ? garagePanel : FindSceneObject("GaragePanel");
         lobbyPanel = lobbyPanel != null ? lobbyPanel : FindSceneObject("LobbyPanel");
-        createRoomPanel = createRoomPanel != null ? createRoomPanel : FindSceneObject("CreateRoomPanel");
-        joinRoomPanel = joinRoomPanel != null ? joinRoomPanel : FindSceneObject("JoinRoomPanel");
-        lobbyGaragePanel = lobbyGaragePanel != null ? lobbyGaragePanel : FindSceneObject("LobbyGaragePanel");
         settingsPanel = settingsPanel != null ? settingsPanel : FindSceneObject("SettingsPanel");
 
         loadingBarFill = loadingBarFill != null ? loadingBarFill : FindComponentIn(loadingPanel, "LoadingBarFill", typeof(Image)) as Image;
@@ -120,11 +112,11 @@ public class MainMenuFlow : MonoBehaviour
         if (settingsMenu == null)
             settingsMenu = gameObject.AddComponent<SettingsMenu>();
 
-        lobbyRoomController = GetComponent<LobbyRoomController>();
-        if (lobbyRoomController == null)
-            lobbyRoomController = gameObject.AddComponent<LobbyRoomController>();
+        lobbyController = GetComponent<LobbyRoomController>();
+        if (lobbyController == null)
+            lobbyController = gameObject.AddComponent<LobbyRoomController>();
 
-        lobbyRoomController.menuFlow = this;
+        lobbyController.menuFlow = this;
     }
 
     void EnsureHelpers()
@@ -138,11 +130,7 @@ public class MainMenuFlow : MonoBehaviour
             clickText.AddComponent<BlinkText>();
 
         AddPanelPop(mainMenuPanel);
-        AddPanelPop(garagePanel);
         AddPanelPop(lobbyPanel);
-        AddPanelPop(createRoomPanel);
-        AddPanelPop(joinRoomPanel);
-        AddPanelPop(lobbyGaragePanel);
         AddPanelPop(settingsPanel);
 
         foreach (Button button in Resources.FindObjectsOfTypeAll<Button>())
@@ -164,31 +152,18 @@ public class MainMenuFlow : MonoBehaviour
     void BindButtons()
     {
         BindButton(mainMenuPanel, "PlayButton", ShowLobby);
-        BindButton(mainMenuPanel, "GarageButton", OpenGarage);
-        BindButton(mainMenuPanel, "GarageButon", OpenGarage);
         BindButton(mainMenuPanel, "SettingButton", OpenSettings);
         BindButton(mainMenuPanel, "SettingsButton", OpenSettings);
         BindButton(mainMenuPanel, "QuitButton", QuitGame);
 
-        BindButton(garagePanel, "BackButton", CloseGarage);
-        BindButton(garagePanel, "BackButtonGarage", CloseGarage);
-
-        BindButton(lobbyPanel, "CreateRoomButton", OpenCreateRoom);
-        BindButton(lobbyPanel, "JoinRoomButton", OpenJoinRoom);
-        BindButton(lobbyPanel, "QuickJoinButton", () => lobbyRoomController.StartQuickJoin());
-        BindButton(lobbyPanel, "StopQuickJoinButton", () => lobbyRoomController.StopQuickJoin());
-        BindButton(lobbyPanel, "LobbyGarageButton", OpenLobbyGarage);
-        BindButton(lobbyPanel, "LeaveButton", () => lobbyRoomController.LeaveCurrentRoom());
+        BindButton(lobbyPanel, "StartButton", () => lobbyController.StartSelectedMap());
+        BindButton(lobbyPanel, "RandomButton", () => lobbyController.RandomizeSelection());
+        BindButton(lobbyPanel, "randomButton", () => lobbyController.RandomizeSelection());
+        BindButton(lobbyPanel, "SettingButton", OpenSettings);
+        BindButton(lobbyPanel, "SettingsButton", OpenSettings);
         BindButton(lobbyPanel, "BackButton", ShowMainMenu);
 
-        BindButton(createRoomPanel, "CreateConfirmButton", () => lobbyRoomController.CreateRoom());
-        BindButton(createRoomPanel, "BackButton", ShowLobby);
-
-        BindButton(joinRoomPanel, "JoinConfirmButton", () => lobbyRoomController.JoinByCode());
-        BindButton(joinRoomPanel, "BackButton", ShowLobby);
-
-        BindButton(lobbyGaragePanel, "BackButton", ShowLobby);
-        BindButton(settingsPanel, "BackButton", ShowMainMenu);
+        BindButton(settingsPanel, "BackButton", CloseSettings);
     }
 
     void BindButton(GameObject root, string buttonName, UnityAction action)
@@ -260,19 +235,17 @@ public class MainMenuFlow : MonoBehaviour
         if (value < 0.3f)
             loadingStatusText.text = "Dang khoi tao menu...";
         else if (value < 0.65f)
-            loadingStatusText.text = "Dang tai garage...";
+            loadingStatusText.text = "Dang tai xe va map...";
         else
             loadingStatusText.text = "Dang chuan bi lobby...";
     }
 
     void HandleBack()
     {
-        if (IsActive(settingsPanel) || IsActive(lobbyPanel))
+        if (IsActive(settingsPanel))
+            CloseSettings();
+        else if (IsActive(lobbyPanel))
             ShowMainMenu();
-        else if (IsActive(garagePanel))
-            CloseGarage();
-        else if (IsActive(createRoomPanel) || IsActive(joinRoomPanel) || IsActive(lobbyGaragePanel))
-            ShowLobby();
     }
 
     bool IsActive(GameObject obj)
@@ -285,11 +258,7 @@ public class MainMenuFlow : MonoBehaviour
         SetPanelActive(loadingPanel, false);
         SetPanelActive(pressAnyKeyPanel, false);
         SetPanelActive(mainMenuPanel, false);
-        SetPanelActive(garagePanel, false);
         SetPanelActive(lobbyPanel, false);
-        SetPanelActive(createRoomPanel, false);
-        SetPanelActive(joinRoomPanel, false);
-        SetPanelActive(lobbyGaragePanel, false);
         SetPanelActive(settingsPanel, false);
     }
 
@@ -345,30 +314,18 @@ public class MainMenuFlow : MonoBehaviour
     }
 
     public void ShowMainMenu() => ShowPanel(mainMenuPanel);
-    public void OpenGarage()
-    {
-        garageOpenedFromLobby = false;
-        ShowPanel(garagePanel);
-    }
-
-    public void CloseGarage()
-    {
-        if (garageOpenedFromLobby)
-            ShowLobby();
-        else
-            ShowMainMenu();
-    }
-
     public void ShowLobby() => ShowPanel(lobbyPanel);
-    public void OpenCreateRoom() => ShowPanel(createRoomPanel);
-    public void OpenJoinRoom() => ShowPanel(joinRoomPanel);
 
-    public void OpenLobbyGarage()
+    public void OpenSettings()
     {
-        garageOpenedFromLobby = true;
-        ShowPanel(lobbyGaragePanel != null ? lobbyGaragePanel : garagePanel);
+        panelBeforeSettings = currentPanel != null && currentPanel != settingsPanel ? currentPanel : mainMenuPanel;
+        ShowPanel(settingsPanel);
     }
-    public void OpenSettings() => ShowPanel(settingsPanel);
+
+    public void CloseSettings()
+    {
+        ShowPanel(panelBeforeSettings != null ? panelBeforeSettings : mainMenuPanel);
+    }
 
     public void ToggleFullscreen()
     {
@@ -387,6 +344,19 @@ public class MainMenuFlow : MonoBehaviour
     {
         Application.Quit();
         Debug.Log("Quit Game");
+    }
+
+    // Compatibility for old scene OnClick bindings. These no longer open online panels.
+    public void OpenGarage() => ShowLobby();
+    public void CloseGarage() => ShowMainMenu();
+    public void OpenLobbyGarage() => ShowLobby();
+    public void OpenJoinRoom() => ShowLobby();
+    public void OpenCreateRoom()
+    {
+        if (lobbyController != null)
+            lobbyController.StartSelectedMap();
+        else
+            ShowLobby();
     }
 
     public static GameObject FindSceneObject(string objectName)
@@ -423,6 +393,3 @@ public class MainMenuFlow : MonoBehaviour
         return null;
     }
 }
-
-
-
