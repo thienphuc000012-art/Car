@@ -37,8 +37,6 @@ public class CarController : MonoBehaviour
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
-
-        // Hạ trọng tâm xuống để xe ổn định hơn
         rb.centerOfMass = new Vector3(0, -0.5f, 0);
         nitroVFX = new ParticleSystem[vfxPoints.Length];
         for (int i = 0; i < vfxPoints.Length; i++)
