@@ -236,6 +236,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6520295510665144342, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
   m_PrefabInstance: {fileID: 307341699}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &118115501 stripped
+Rigidbody:
+  m_CorrespondingSourceObject: {fileID: 8140104866179199840, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+  m_PrefabInstance: {fileID: 307341699}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &121623758
 GameObject:
   m_ObjectHideFlags: 0
@@ -528,7 +533,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44212cba9a865b644a9f24400efe1750, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::SpeedometerUI
-  carRigidbody: {fileID: 654499293}
+  carRigidbody: {fileID: 118115501}
   needle: {fileID: 833848344}
   carController: {fileID: 118115498}
   maxSpeed: 220
@@ -1179,11 +1184,6 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d2f8b2911e8705f4fbefa3203a090d5b, type: 3}
---- !u!54 &654499293 stripped
-Rigidbody:
-  m_CorrespondingSourceObject: {fileID: 5384358490929896823, guid: 3d79c379fc0996b489153f1f546575f9, type: 3}
-  m_PrefabInstance: {fileID: 1133620437}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &684818137
 GameObject:
   m_ObjectHideFlags: 0

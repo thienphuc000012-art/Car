@@ -34,10 +34,14 @@ public class CarController : MonoBehaviour
     private float aiSteering;
     private bool aiBrake;
 
+    [Header("Acceleration Curve")]
+    public AnimationCurve accelerationCurve = AnimationCurve.Linear(0, 2f, 150f, 1f);
+
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
-        rb.centerOfMass = new Vector3(0, -0.5f, 0);
+        rb.centerOfMass = new Vector3(0, -0.5f, 0); 
+
         nitroVFX = new ParticleSystem[vfxPoints.Length];
         for (int i = 0; i < vfxPoints.Length; i++)
         {
@@ -86,22 +90,22 @@ public class CarController : MonoBehaviour
         float motor;
         float steering;
 
-        // PLAYER
         if (!isAI)
         {
-            motor = maxMotorTorque * Input.GetAxis("Vertical");
             steering = maxSteerAngle * Input.GetAxis("Horizontal");
 
-            isUsingNitro =
-                Input.GetKey(KeyCode.LeftShift) &&
-                nitroEnergy > 0;
+            Rigidbody rb = wheelColliders[0].attachedRigidbody;
+            float speed = rb.linearVelocity.magnitude * 3.6f;
+
+            float accelFactor = accelerationCurve.Evaluate(speed);
+            motor = maxMotorTorque * Input.GetAxis("Vertical") * accelFactor;
+
+            isUsingNitro = Input.GetKey(KeyCode.LeftShift) && nitroEnergy > 0;
         }
-        // AI
         else
         {
             motor = aiMotor;
             steering = aiSteering;
-
             isUsingNitro = false;
         }
 
@@ -117,16 +121,13 @@ public class CarController : MonoBehaviour
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
 
         Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
-        localVel.x *= 0.9f; 
+        localVel.x *= 0.9f;
         rb.linearVelocity = transform.TransformDirection(localVel);
 
         float speed = rb.linearVelocity.magnitude * 3.6f;
         float maxSpeed = isUsingNitro ? 300 : 150;
 
-        if (speed > maxSpeed)
-        {
-            motor = 0;
-        }
+        if (speed > maxSpeed) motor = 0;
 
         float steerLimit = Mathf.SmoothStep(maxSteerAngle, 15f, speed / maxSpeed);
         float adjustedSteer = steering * (steerLimit / maxSteerAngle);
@@ -153,7 +154,7 @@ public class CarController : MonoBehaviour
             wheelColliders[3].brakeTorque = 0;
         }
 
-        float downforce = rb.linearVelocity.magnitude * 15f; 
+        float downforce = rb.linearVelocity.magnitude * 15f;
         rb.AddForce(-transform.up * downforce);
     }
 
@@ -221,6 +222,7 @@ public class CarController : MonoBehaviour
         if (nitroBar != null)
             nitroBar.value = nitroEnergy;
     }
+
     public void AddNitroEnergy(float amount)
     {
         nitroEnergy = Mathf.Min(nitroEnergy + amount, maxNitroEnergy);
@@ -229,9 +231,7 @@ public class CarController : MonoBehaviour
     public void SetInput(float steer, float throttle, bool brake)
     {
         aiSteering = steer * maxSteerAngle;
-
         aiMotor = throttle * maxMotorTorque;
-
         aiBrake = brake;
     }
 }
