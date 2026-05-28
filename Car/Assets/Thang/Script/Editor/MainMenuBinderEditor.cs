@@ -92,6 +92,9 @@ public static class MainMenuBinderEditor
         Undo.RecordObject(settings, "Bind Settings Menu");
         settings.musicSlider = GetComponent<Slider>("MusicSlider");
         settings.sfxSlider = GetComponent<Slider>("SFXSlider");
+        settings.musicWheelHandle = GetSliderWheelVisual(settings.musicSlider);
+        settings.sfxWheelHandle = GetSliderWheelVisual(settings.sfxSlider);
+        EditorUtility.SetDirty(settings);
     }
 
     static void BindLobby(LobbyRoomController lobby, MainMenuFlow flow)
@@ -100,18 +103,130 @@ public static class MainMenuBinderEditor
         GameObject lobbyPanel = Find("LobbyPanel");
 
         lobby.menuFlow = flow;
+        EnsureDefaultLobbyData(lobby);
+
+        lobby.mapCardsParent = GetFirstTransformIn(lobbyPanel, "MapCardsParent", "MapList", "MapContent", "SelectMapContent");
+        lobby.carCardsParent = GetFirstTransformIn(lobbyPanel, "CarCardsParent", "CarList", "CarContent", "SelectCarContent");
+        lobby.mapCardPrefab = GetFirstComponentIn<LobbySelectionCard>(lobbyPanel, "MapCardPrefab", "MapCardTemplate", "MapCard");
+        lobby.carCardPrefab = GetFirstComponentIn<LobbySelectionCard>(lobbyPanel, "CarCardPrefab", "CarCardTemplate", "CarCard");
+        lobby.mapCards = FindSelectionCards(lobbyPanel, "MapCard");
+        lobby.carCards = FindSelectionCards(lobbyPanel, "CarCard");
+
         lobby.statusText = GetComponentIn<TMP_Text>(lobbyPanel, "StatusText");
         lobby.selectedMapText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedMapText", "MapText", "MapNameText");
         lobby.selectedCarText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedCarText", "CarText", "CarNameText");
         lobby.currentSelectionText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "CurrentSelectionText", "CurrentRoomText");
+        lobby.selectedMapNameText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedMapNameText", "SelectedTrackNameText", "TrackNameText");
+        lobby.selectedMapDistanceText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedMapDistanceText", "SelectedTrackDistanceText", "TrackDistanceText");
+        lobby.selectedCarNameText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedCarNameText", "SelectedVehicleNameText", "VehicleNameText");
+        lobby.selectedCarClassText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedCarClassText", "SelectedVehicleClassText", "VehicleClassText");
+        lobby.selectedCarDescriptionText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "SelectedCarDescriptionText", "CarDescriptionText");
 
-        if (lobby.mapSceneNames == null || lobby.mapSceneNames.Length == 0)
-        {
-            lobby.mapSceneNames = FindMapSceneNames();
-            lobby.mapDisplayNames = lobby.mapSceneNames;
-        }
+        lobby.raceInfoText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "RaceInfoText");
+        lobby.lapsText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "LapsText", "LapText");
+        lobby.timeOfDayText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "TimeOfDayText", "TimeText");
+        lobby.weatherText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "WeatherText");
+        lobby.trafficText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "TrafficText");
+        lobby.trackInfoText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "TrackInfoText", "TrackDescriptionText");
+        lobby.trackPreviewImage = GetFirstComponentIn<Image>(lobbyPanel, "TrackPreviewImage", "MiniMapImage", "TrackImage");
+
+        lobby.topSpeedFill = GetFirstComponentIn<Image>(lobbyPanel, "TopSpeedFill", "SpeedFill");
+        lobby.accelerationFill = GetFirstComponentIn<Image>(lobbyPanel, "AccelerationFill", "AccelFill");
+        lobby.handlingFill = GetFirstComponentIn<Image>(lobbyPanel, "HandlingFill");
+        lobby.brakingFill = GetFirstComponentIn<Image>(lobbyPanel, "BrakingFill", "BrakeFill");
+        lobby.nitroFill = GetFirstComponentIn<Image>(lobbyPanel, "NitroFill", "BoostFill");
+
+        lobby.topSpeedValueText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "TopSpeedValueText", "SpeedValueText");
+        lobby.accelerationValueText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "AccelerationValueText", "AccelValueText");
+        lobby.handlingValueText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "HandlingValueText");
+        lobby.brakingValueText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "BrakingValueText", "BrakeValueText");
+        lobby.nitroValueText = GetFirstComponentIn<TMP_Text>(lobbyPanel, "NitroValueText", "BoostValueText");
 
         EditorUtility.SetDirty(lobby);
+    }
+
+    static void EnsureDefaultLobbyData(LobbyRoomController lobby)
+    {
+        if (lobby.maps == null || lobby.maps.Length == 0 || lobby.maps[0] == null)
+        {
+            lobby.maps = new[] { CreateMapOption("complete_track_demo", 0) };
+        }
+        else
+        {
+            LobbyMapOption currentMap = lobby.maps[0];
+            lobby.maps = new[] { currentMap };
+            currentMap.id = "complete_track_demo";
+            currentMap.sceneName = "complete_track_demo";
+            currentMap.sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/complete_track_demo.unity");
+
+            if (string.IsNullOrWhiteSpace(currentMap.displayName))
+                currentMap.displayName = "TRACK RACE";
+
+            if (string.IsNullOrWhiteSpace(currentMap.distanceText))
+                currentMap.distanceText = "-- KM";
+
+            if (string.IsNullOrWhiteSpace(currentMap.laps))
+                currentMap.laps = "---";
+
+            if (string.IsNullOrWhiteSpace(currentMap.timeOfDay))
+                currentMap.timeOfDay = "NOON";
+
+            if (string.IsNullOrWhiteSpace(currentMap.weather))
+                currentMap.weather = "CLEAR";
+
+            if (string.IsNullOrWhiteSpace(currentMap.traffic))
+                currentMap.traffic = "MEDIUM";
+        }
+
+        if (lobby.cars == null || lobby.cars.Length == 0)
+            lobby.cars = CreateDefaultCarOptions();
+    }
+
+    static LobbyMapOption CreateMapOption(string sceneName, int index)
+    {
+        string displayName = SceneNameToDisplayName(sceneName, index);
+        string distance = index == 0 ? "-- KM" : index == 1 ? "3.6 KM" : "2.5 KM";
+
+        return new LobbyMapOption
+        {
+            id = sceneName,
+            displayName = displayName,
+            distanceText = distance,
+            sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/" + sceneName + ".unity"),
+            sceneName = sceneName,
+            laps = index == 0 ? "---" : index == 1 ? "2" : "3",
+            timeOfDay = index == 2 ? "NIGHT" : index == 1 ? "SUNSET" : "NOON",
+            weather = index == 1 ? "LIGHT FOG" : "CLEAR",
+            traffic = index == 1 ? "LOW" : "MEDIUM",
+            trackInfo = "Tu dien thong tin duong dua tai day."
+        };
+    }
+
+    static string SceneNameToDisplayName(string sceneName, int index)
+    {
+        if (sceneName == "complete_track_demo")
+            return "TRACK RACE";
+
+        if (sceneName == "phuc")
+            return "MOUNTAIN PASS";
+
+        if (sceneName == "s1")
+            return "COASTAL DRIVE";
+
+        return string.IsNullOrWhiteSpace(sceneName) ? "MAP " + (index + 1) : sceneName.Replace("_", " ").ToUpperInvariant();
+    }
+
+    static LobbyCarOption[] CreateDefaultCarOptions()
+    {
+        return new[]
+        {
+            new LobbyCarOption { id = "supra_mk4", displayName = "1993 TOYOTA SUPRA MK4", classLabel = "CLASS A", topSpeed = 86, acceleration = 82, handling = 78, braking = 74, nitro = 80 },
+            new LobbyCarOption { id = "bmw_m3_gtr_e46", displayName = "2005 BMW M3 GTR E46", classLabel = "CLASS S", topSpeed = 90, acceleration = 86, handling = 84, braking = 80, nitro = 82 },
+            new LobbyCarOption { id = "subaru_wrx_sti_police", displayName = "2008 SUBARU WRX STI POLICE", classLabel = "CLASS A", topSpeed = 78, acceleration = 80, handling = 88, braking = 82, nitro = 72 },
+            new LobbyCarOption { id = "lexus_lfa", displayName = "2012 LEXUS LFA", classLabel = "CLASS S", topSpeed = 92, acceleration = 88, handling = 82, braking = 78, nitro = 85 },
+            new LobbyCarOption { id = "golf_mk7_gti", displayName = "2019 VW GOLF MK7 GTI", classLabel = "CLASS B", topSpeed = 74, acceleration = 76, handling = 84, braking = 76, nitro = 68 },
+            new LobbyCarOption { id = "taycan_turbo_s", displayName = "2020 PORSCHE TAYCAN TURBO S", classLabel = "CLASS S", topSpeed = 94, acceleration = 96, handling = 80, braking = 84, nitro = 88 }
+        };
     }
 
     static void BindAudio(AudioManager audio)
@@ -304,7 +419,6 @@ public static class MainMenuBinderEditor
         ClearButtonAndHide("QuickJoinButton");
         ClearButtonAndHide("StopQuickJoinButton");
         ClearButtonAndHide("LobbyGarageButton");
-        ClearButtonAndHide("LeaveButton");
     }
 
     static void SetObjectActive(string objectName, bool active)
@@ -350,6 +464,7 @@ public static class MainMenuBinderEditor
         SetButtonClick(flow.lobbyPanel, "SettingButton", flow, nameof(MainMenuFlow.OpenSettings));
         SetButtonClick(flow.lobbyPanel, "SettingsButton", flow, nameof(MainMenuFlow.OpenSettings));
         SetButtonClick(flow.lobbyPanel, "BackButton", flow, nameof(MainMenuFlow.ShowMainMenu));
+        SetButtonClick(flow.lobbyPanel, "LeaveButton", flow, nameof(MainMenuFlow.ShowMainMenu));
         SetButtonClick(flow.settingsPanel, "BackButton", flow, nameof(MainMenuFlow.CloseSettings));
 
         SetSliderFloatEvent(Find("MusicSlider")?.GetComponent<Slider>(), Find("MainMenuManager")?.GetComponent<SettingsMenu>(), nameof(SettingsMenu.SetMusicVolume));
@@ -478,6 +593,49 @@ public static class MainMenuBinderEditor
         }
 
         return null;
+    }
+
+    static Transform GetFirstTransformIn(GameObject root, params string[] objectNames)
+    {
+        foreach (string objectName in objectNames)
+        {
+            GameObject obj = FindIn(root, objectName);
+            if (obj != null)
+                return obj.transform;
+        }
+
+        return null;
+    }
+
+    static LobbySelectionCard[] FindSelectionCards(GameObject root, string namePart)
+    {
+        List<LobbySelectionCard> cards = new List<LobbySelectionCard>();
+        if (root == null)
+            return cards.ToArray();
+
+        foreach (LobbySelectionCard card in root.GetComponentsInChildren<LobbySelectionCard>(true))
+        {
+            if (card.name.IndexOf(namePart, StringComparison.OrdinalIgnoreCase) >= 0)
+                cards.Add(card);
+        }
+
+        return cards.ToArray();
+    }
+
+    static RectTransform GetSliderWheelVisual(Slider slider)
+    {
+        if (slider == null || slider.handleRect == null)
+            return null;
+
+        Image[] images = slider.handleRect.GetComponentsInChildren<Image>(true);
+        foreach (Image image in images)
+        {
+            RectTransform imageRect = image.rectTransform;
+            if (imageRect != slider.handleRect)
+                return imageRect;
+        }
+
+        return slider.handleRect;
     }
 
     static string[] FindMapSceneNames()

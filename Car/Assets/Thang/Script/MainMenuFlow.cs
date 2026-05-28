@@ -162,6 +162,7 @@ public class MainMenuFlow : MonoBehaviour
         BindButton(lobbyPanel, "SettingButton", OpenSettings);
         BindButton(lobbyPanel, "SettingsButton", OpenSettings);
         BindButton(lobbyPanel, "BackButton", ShowMainMenu);
+        BindButton(lobbyPanel, "LeaveButton", ShowMainMenu);
 
         BindButton(settingsPanel, "BackButton", CloseSettings);
     }
@@ -342,7 +343,11 @@ public class MainMenuFlow : MonoBehaviour
 
     public void QuitGame()
     {
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
         Application.Quit();
+#endif
         Debug.Log("Quit Game");
     }
 
