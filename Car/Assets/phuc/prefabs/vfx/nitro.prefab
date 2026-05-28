@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8000301652817695204}
   - component: {fileID: 3856049911563427442}
   - component: {fileID: 543320542471816771}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Billboard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4854,7 +4854,7 @@ GameObject:
   - component: {fileID: 3992666208802999194}
   - component: {fileID: 495156588837189810}
   - component: {fileID: 4047165548844290907}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: nitro
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9718,7 +9718,7 @@ GameObject:
   - component: {fileID: 5110274568100450025}
   - component: {fileID: 3296021097856343439}
   - component: {fileID: 2963837914763086186}
-  m_Layer: 9
+  m_Layer: 6
   m_Name: Distortion
   m_TagString: Untagged
   m_Icon: {fileID: 0}

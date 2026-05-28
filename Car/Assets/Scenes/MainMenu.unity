@@ -9003,7 +9003,7 @@ MonoBehaviour:
   - id: supra_mk4
     displayName: 1993 TOYOTA SUPRA MK4
     classLabel: CLASS A
-    carPrefab: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
+    carPrefab: {fileID: 7200086213359682922, guid: 63a180457505f9340b376aa18f896679, type: 3}
     previewImage: {fileID: 1698492369, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 86

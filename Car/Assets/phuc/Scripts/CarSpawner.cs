@@ -32,22 +32,19 @@ public class CarSpawner : MonoBehaviour
             return;
         }
 
-        // Chọn spawn point
         Transform spawnPoint = GetSpawnPoint();
 
-        // Spawn xe
         GameObject playerCar = Instantiate(
             CarSelectionState.SelectedCarPrefab,
             spawnPoint.position,
             spawnPoint.rotation
         );
 
-        // Thiết lập thông tin cơ bản
         playerCar.name = CarSelectionState.SelectedCarDisplayName;
         playerCar.tag = "Player";
 
-        // Thêm vào danh sách racers của RaceManager
         AddToRaceManager(playerCar);
+
 
         Debug.Log($"Đã spawn Player Car: {playerCar.name} tại {spawnPoint.name}");
     }
@@ -60,13 +57,11 @@ public class CarSpawner : MonoBehaviour
             return;
         }
 
-        // Thêm vào list racers nếu chưa có
         if (!RaceManager.Instance.racers.Contains(car))
         {
             RaceManager.Instance.racers.Add(car);
         }
 
-        // Đảm bảo có component RacerProgress
         if (car.GetComponent<RacerProgress>() == null)
         {
             car.AddComponent<RacerProgress>();
@@ -78,10 +73,8 @@ public class CarSpawner : MonoBehaviour
         if (spawnPoints == null || spawnPoints.Length == 0)
         {
             Debug.LogWarning("Không có spawn point nào! Spawn tại vị trí (0, 0, 0)");
-            return transform; // hoặc có thể return new GameObject().transform;
+            return transform; 
         }
-
-        // Lấy spawn point đầu tiên
         return spawnPoints[0];
     }
 }
