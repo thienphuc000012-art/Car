@@ -21,12 +21,12 @@ public class CarController : MonoBehaviour
     private ParticleSystem[] tireSmokeVFX;
 
     [Header("Nitro Settings")]
-    public float nitroBoostMultiplier = 2f;   
-    public float maxNitroEnergy = 10f;        
-    public Slider nitroBar;                   
+    public float nitroBoostMultiplier = 2f;
+    public float maxNitroEnergy = 10f;
+    public Slider nitroBar;
 
     private float nitroEnergy;
-    private bool isUsingNitro;
+    public bool isUsingNitro;
     [Header("AI Control")]
     public bool isAI = false;
 
@@ -34,8 +34,27 @@ public class CarController : MonoBehaviour
     private float aiSteering;
     private bool aiBrake;
 
+    [Header("Acceleration Curve")]
+    public AnimationCurve accelerationCurve = AnimationCurve.Linear(0, 2f, 150f, 1f);
+
     void Start()
     {
+        Rigidbody rb = wheelColliders[0].attachedRigidbody;
+        rb.centerOfMass = new Vector3(0, -0.5f, 0);
+
+        if (CompareTag("Player"))
+        {
+            GameObject nitroObj = GameObject.FindGameObjectWithTag("NitroUI");
+            if (nitroObj != null)
+            {
+                nitroBar = nitroObj.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy Slider Nitro với tag NitroUI!");
+            }
+        }
+
         nitroVFX = new ParticleSystem[vfxPoints.Length];
         for (int i = 0; i < vfxPoints.Length; i++)
         {
@@ -84,22 +103,22 @@ public class CarController : MonoBehaviour
         float motor;
         float steering;
 
-        // PLAYER
         if (!isAI)
         {
-            motor = maxMotorTorque * Input.GetAxis("Vertical");
             steering = maxSteerAngle * Input.GetAxis("Horizontal");
 
-            isUsingNitro =
-                Input.GetKey(KeyCode.LeftShift) &&
-                nitroEnergy > 0;
+            Rigidbody rb = wheelColliders[0].attachedRigidbody;
+            float speed = rb.linearVelocity.magnitude * 3.6f;
+
+            float accelFactor = accelerationCurve.Evaluate(speed);
+            motor = maxMotorTorque * Input.GetAxis("Vertical") * accelFactor;
+
+            isUsingNitro = Input.GetKey(KeyCode.LeftShift) && nitroEnergy > 0;
         }
-        // AI
         else
         {
             motor = aiMotor;
             steering = aiSteering;
-
             isUsingNitro = false;
         }
 
@@ -112,8 +131,21 @@ public class CarController : MonoBehaviour
 
     void ApplyDrive(float motor, float steering)
     {
-        wheelColliders[0].steerAngle = steering;
-        wheelColliders[1].steerAngle = steering;
+        Rigidbody rb = wheelColliders[0].attachedRigidbody;
+
+        Vector3 localVel = transform.InverseTransformDirection(rb.linearVelocity);
+        localVel.x *= 0.9f;
+        rb.linearVelocity = transform.TransformDirection(localVel);
+
+        float speed = rb.linearVelocity.magnitude * 3.6f;
+        float maxSpeed = isUsingNitro ? 300 : 150;
+
+        if (speed > maxSpeed) motor = 0;
+
+        float steerLimit = Mathf.SmoothStep(maxSteerAngle, 15f, speed / maxSpeed);
+        float adjustedSteer = steering * (steerLimit / maxSteerAngle);
+        wheelColliders[0].steerAngle = adjustedSteer;
+        wheelColliders[1].steerAngle = adjustedSteer;
 
         if (isUsingNitro && nitroEnergy > 0)
         {
@@ -134,6 +166,9 @@ public class CarController : MonoBehaviour
             wheelColliders[2].brakeTorque = 0;
             wheelColliders[3].brakeTorque = 0;
         }
+
+        float downforce = rb.linearVelocity.magnitude * 15f;
+        rb.AddForce(-transform.up * downforce);
     }
 
     void UpdateWheelMeshes()
@@ -200,6 +235,7 @@ public class CarController : MonoBehaviour
         if (nitroBar != null)
             nitroBar.value = nitroEnergy;
     }
+
     public void AddNitroEnergy(float amount)
     {
         nitroEnergy = Mathf.Min(nitroEnergy + amount, maxNitroEnergy);
@@ -208,9 +244,7 @@ public class CarController : MonoBehaviour
     public void SetInput(float steer, float throttle, bool brake)
     {
         aiSteering = steer * maxSteerAngle;
-
         aiMotor = throttle * maxMotorTorque;
-
         aiBrake = brake;
     }
 }
