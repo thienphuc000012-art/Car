@@ -361,7 +361,7 @@ public class AIDriver : MonoBehaviour
         {
             if (currentSpeed > targetSpeed)
             {
-                throttle = 0.2f;
+                throttle = 0.5f;
             }
         }
 

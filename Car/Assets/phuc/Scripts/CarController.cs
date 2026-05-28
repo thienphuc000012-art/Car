@@ -37,11 +37,15 @@ public class CarController : MonoBehaviour
     [Header("Acceleration Curve")]
     public AnimationCurve accelerationCurve = AnimationCurve.Linear(0, 2f, 150f, 1f);
 
+    [Header("Stability")]
+    public float antiFlipForce = 8f;
+    public float maxAngularVelocity = 2f;
+
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
-        rb.centerOfMass = new Vector3(0, -0.5f, 0);
-
+        rb.centerOfMass = new Vector3(0, -0.55f, 0);
+        rb.maxAngularVelocity = maxAngularVelocity;
         if (CompareTag("Player"))
         {
             GameObject nitroObj = GameObject.FindGameObjectWithTag("NitroUI");
@@ -169,6 +173,7 @@ public class CarController : MonoBehaviour
 
         float downforce = rb.linearVelocity.magnitude * 15f;
         rb.AddForce(-transform.up * downforce);
+        ApplyAntiFlip(rb);
     }
 
     void UpdateWheelMeshes()
@@ -246,5 +251,12 @@ public class CarController : MonoBehaviour
         aiSteering = steer * maxSteerAngle;
         aiMotor = throttle * maxMotorTorque;
         aiBrake = brake;
+    }
+    void ApplyAntiFlip(Rigidbody rb)
+    {
+        if (Vector3.Dot(transform.up, Vector3.up) < 0.5f)
+        {
+            rb.AddTorque(transform.right * antiFlipForce);
+        }
     }
 }

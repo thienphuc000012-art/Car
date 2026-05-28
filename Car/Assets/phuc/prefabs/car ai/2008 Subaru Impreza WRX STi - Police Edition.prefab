@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4646593994914936259}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_hood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -41,7 +41,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3305524460614593766}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: WheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -77,7 +77,7 @@ GameObject:
   - component: {fileID: 8234919182723991336}
   - component: {fileID: 5501444788552103866}
   - component: {fileID: 1553995733399214719}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_engine.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -165,7 +165,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9101781114548834175}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_strut_bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -199,7 +199,7 @@ GameObject:
   - component: {fileID: 6521740509066912192}
   - component: {fileID: 8492440614688211453}
   - component: {fileID: 6287222712807519222}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: mod_lightbar_base
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -289,7 +289,7 @@ GameObject:
   - component: {fileID: 2739737862337331049}
   - component: {fileID: 1648020442535149691}
   - component: {fileID: 7630443708048196861}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_radiator.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -379,7 +379,7 @@ GameObject:
   - component: {fileID: 1319610977646587284}
   - component: {fileID: 1555794422720033875}
   - component: {fileID: 5050958923323519291}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlightglass_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -469,7 +469,7 @@ GameObject:
   - component: {fileID: 8318743169305810187}
   - component: {fileID: 4639068445321367304}
   - component: {fileID: 8605734509785866330}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_subframe_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -557,7 +557,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8200920012205617073}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_strut_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -591,7 +591,7 @@ GameObject:
   - component: {fileID: 15153263296057668}
   - component: {fileID: 4506426671125453997}
   - component: {fileID: 4968208643789475739}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_backlight_int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -681,7 +681,7 @@ GameObject:
   - component: {fileID: 7565043954659027901}
   - component: {fileID: 4840961315685012074}
   - component: {fileID: 242300830987265927}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirrorsignal_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -769,7 +769,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4104973050430567760}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: BrakeRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -803,7 +803,7 @@ GameObject:
   - component: {fileID: 3003042017372223099}
   - component: {fileID: 2343220165011931173}
   - component: {fileID: 8098923145963470633}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_RL_int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -891,7 +891,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6704514160177403342}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 1367979127216561462}
   - component: {fileID: 785979292974999926}
   - component: {fileID: 6653759801543629848}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_tierod_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1013,7 +1013,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4293333240478315638}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_radio
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1047,7 +1047,7 @@ GameObject:
   - component: {fileID: 8958083177391042240}
   - component: {fileID: 2190593863796019192}
   - component: {fileID: 4223848270417759138}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1137,7 +1137,7 @@ GameObject:
   - component: {fileID: 8804872825961601479}
   - component: {fileID: 6683294049411356373}
   - component: {fileID: 3706092675609913452}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1228,7 +1228,7 @@ GameObject:
   - component: {fileID: 4630930606765405325}
   - component: {fileID: 3280393700780509075}
   - component: {fileID: 2928389321779817239}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumper_R_wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1338,7 +1338,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 82355472801370895}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1375,7 +1375,7 @@ GameObject:
   - component: {fileID: 2915118373261847327}
   - component: {fileID: 9036464089638038942}
   - component: {fileID: 6066096957649221314}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1465,7 +1465,7 @@ GameObject:
   - component: {fileID: 8715561527228575577}
   - component: {fileID: 8197461232304435409}
   - component: {fileID: 7833676260714793509}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_ceiling
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1555,7 +1555,7 @@ GameObject:
   - component: {fileID: 5821557492021599056}
   - component: {fileID: 216684191557206129}
   - component: {fileID: 5215262228958378906}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_swaybar_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1645,7 +1645,7 @@ GameObject:
   - component: {fileID: 7139210053844042973}
   - component: {fileID: 6114192868578414059}
   - component: {fileID: 8950344025282249295}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_seats_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1733,7 +1733,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8712319987330926649}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1768,7 +1768,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 272073527431907059}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: First Person Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1802,7 +1802,7 @@ GameObject:
   - component: {fileID: 6033153901188222887}
   - component: {fileID: 897630147994707734}
   - component: {fileID: 2149012285892988003}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumper_F_wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1912,7 +1912,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7300426007679859154}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_halfshafts_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1946,7 +1946,7 @@ GameObject:
   - component: {fileID: 8592290403301773827}
   - component: {fileID: 2468216690931636421}
   - component: {fileID: 5411656678262152889}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlightframe_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2037,7 +2037,7 @@ GameObject:
   - component: {fileID: 6246558767618535912}
   - component: {fileID: 5695125876349069405}
   - component: {fileID: 3309120939816853970}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_trunk.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2149,7 +2149,7 @@ GameObject:
   - component: {fileID: 6397827971164523293}
   - component: {fileID: 9149627808712746714}
   - component: {fileID: 8120694176329675899}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlightframe_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2239,7 +2239,7 @@ GameObject:
   - component: {fileID: 6955448890417356493}
   - component: {fileID: 6376343327543030683}
   - component: {fileID: 5318379604303446416}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_RR_int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2327,7 +2327,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6045053994124110402}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_radiator
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2359,7 +2359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6911955236834450938}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: WheelBrakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2396,7 +2396,7 @@ GameObject:
   - component: {fileID: 4849569479253528222}
   - component: {fileID: 4469038903737350719}
   - component: {fileID: 5926996921903187940}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_RL.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2486,7 +2486,7 @@ GameObject:
   - component: {fileID: 8443083114480397755}
   - component: {fileID: 584284244913162561}
   - component: {fileID: 8805347768655943148}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: led_blueD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2575,7 +2575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3910568971754621321}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: WheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2609,7 +2609,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2252818611102326658}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirror_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2645,7 +2645,7 @@ GameObject:
   - component: {fileID: 5651133968574059871}
   - component: {fileID: 3162103714040349628}
   - component: {fileID: 2519457731977128601}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_hood_scoop
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2757,7 +2757,7 @@ GameObject:
   - component: {fileID: 2990252402516259592}
   - component: {fileID: 4357963990141046972}
   - component: {fileID: 1004965964924341437}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2847,7 +2847,7 @@ GameObject:
   - component: {fileID: 3766641020511858356}
   - component: {fileID: 2053445527223707381}
   - component: {fileID: 6194488694562216225}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_trailingarm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2935,7 +2935,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6152016471809445048}
-  m_Layer: 6
+  - component: {fileID: 5180199011912676}
+  m_Layer: 5
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2951,12 +2952,51 @@ Transform:
   m_GameObject: {fileID: 1914133109281784611}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.72578263, y: 0.32494736, z: 1.3344111}
+  m_LocalPosition: {x: -0.72578263, y: 0.443, z: 1.3344111}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 3050087132594926116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &5180199011912676
+WheelCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1914133109281784611}
+  serializedVersion: 2
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35
+  m_SuspensionSpring:
+    spring: 35000
+    damper: 4500
+    targetPosition: 0.5
+  m_SuspensionDistance: 0.25
+  m_ForceAppPointDistance: 0
+  m_Mass: 20
+  m_WheelDampingRate: 0.25
+  m_ForwardFriction:
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
+  m_SidewaysFriction:
+    m_ExtremumSlip: 0.15
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1.2
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_Enabled: 1
+  m_ProvidesContacts: 0
 --- !u!1 &1938145983059408541
 GameObject:
   m_ObjectHideFlags: 0
@@ -2966,7 +3006,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3519829381164767552}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3001,7 +3041,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1652178472882421951}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_seats_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3033,7 +3073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 866126743327709529}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: FollowerPivots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3067,7 +3107,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4879871096243243726}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_swaybar_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3101,7 +3141,7 @@ GameObject:
   - component: {fileID: 1865016683808370225}
   - component: {fileID: 5429026335659138315}
   - component: {fileID: 3653686939160531496}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_chmsl
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3191,7 +3231,7 @@ GameObject:
   - component: {fileID: 3071233455515184313}
   - component: {fileID: 441447530594000949}
   - component: {fileID: 7169479907790471631}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: steering_wheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3279,7 +3319,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6243605560805450439}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_body
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3349,7 +3389,7 @@ GameObject:
   - component: {fileID: 5484469035520932971}
   - component: {fileID: 4707261432109970881}
   - component: {fileID: 4361402506371734119}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: led_blue
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3439,7 +3479,7 @@ GameObject:
   - component: {fileID: 5860663838103313285}
   - component: {fileID: 145917438072188750}
   - component: {fileID: 9072578191138129344}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_engbaycrap
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3529,7 +3569,7 @@ GameObject:
   - component: {fileID: 3547629765075062087}
   - component: {fileID: 176355629939775132}
   - component: {fileID: 4059918154821326005}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3619,7 +3659,7 @@ GameObject:
   - component: {fileID: 6688010260315149640}
   - component: {fileID: 1965795067689671554}
   - component: {fileID: 4502549600581614931}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3707,7 +3747,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4697468789071056471}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3744,7 +3784,7 @@ GameObject:
   - component: {fileID: 2028754469823238333}
   - component: {fileID: 2187532222485422726}
   - component: {fileID: 9176779218551539322}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_strut_bar.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3834,7 +3874,7 @@ GameObject:
   - component: {fileID: 46841471452906387}
   - component: {fileID: 4828502615216712185}
   - component: {fileID: 8848557506411055482}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglightgl_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3924,7 +3964,7 @@ GameObject:
   - component: {fileID: 4748245298344107721}
   - component: {fileID: 1931231173590183645}
   - component: {fileID: 6463401741113495050}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4012,7 +4052,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7816674284220001023}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4046,7 +4086,7 @@ GameObject:
   - component: {fileID: 6823108662544589806}
   - component: {fileID: 6407605232289152041}
   - component: {fileID: 6450369150609689436}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4137,7 +4177,7 @@ GameObject:
   - component: {fileID: 2660953202900447378}
   - component: {fileID: 8851352943434913502}
   - component: {fileID: 5762575366587067278}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fender_L_widebody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4250,7 +4290,7 @@ GameObject:
   - component: {fileID: 6058757711960615080}
   - component: {fileID: 6659179737067723043}
   - component: {fileID: 2256162703202073647}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_exhaust_fartcan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4360,7 +4400,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7200353149639188351}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Bumper Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4393,7 +4433,7 @@ GameObject:
   - component: {fileID: 4370609462183672705}
   - component: {fileID: 8267436366767204147}
   - component: {fileID: 2618864255508386579}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_brace
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4481,7 +4521,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6183324331034416818}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: RearWheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4514,7 +4554,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 116080229654875696}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_suspension_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4555,7 +4595,7 @@ GameObject:
   - component: {fileID: 1108804350158133123}
   - component: {fileID: 4242137857881590971}
   - component: {fileID: 9128686830078981463}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_RR.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4645,7 +4685,7 @@ GameObject:
   - component: {fileID: 1482488451891349493}
   - component: {fileID: 7295690214927498851}
   - component: {fileID: 2792329065057556159}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_subframe_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4735,7 +4775,7 @@ GameObject:
   - component: {fileID: 4782225410843315282}
   - component: {fileID: 4278963834331528501}
   - component: {fileID: 1542256490434361337}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: mod_lightbar_mini
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4826,7 +4866,7 @@ GameObject:
   - component: {fileID: 4846255533307987298}
   - component: {fileID: 6290439042985893830}
   - component: {fileID: 8590905680186818467}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4914,7 +4954,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7223966774652628278}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4951,7 +4991,7 @@ GameObject:
   - component: {fileID: 5196999488388057031}
   - component: {fileID: 6549084733490070860}
   - component: {fileID: 7253909541688548582}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillightglass_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5063,7 +5103,7 @@ GameObject:
   - component: {fileID: 947093496957511600}
   - component: {fileID: 4259447791496411302}
   - component: {fileID: 5511530923014970292}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumperbar_F.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5153,7 +5193,7 @@ GameObject:
   - component: {fileID: 7413462029106403569}
   - component: {fileID: 7366682542207558776}
   - component: {fileID: 905586555647915807}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5244,7 +5284,7 @@ GameObject:
   - component: {fileID: 2226403664689328136}
   - component: {fileID: 7968642671558915864}
   - component: {fileID: 8371732874985119500}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_roof_plain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5354,7 +5394,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3535346497587920115}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_differential_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5389,7 +5429,7 @@ GameObject:
   - component: {fileID: 2177402303265713721}
   - component: {fileID: 135978462954918444}
   - component: {fileID: 3342283563092208162}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_lowerarm_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5477,7 +5517,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8186723656877886625}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Hood Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5511,7 +5551,7 @@ GameObject:
   - component: {fileID: 364508687738333405}
   - component: {fileID: 500331780781768636}
   - component: {fileID: 9033143126564818342}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fender_R_widebody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5621,7 +5661,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6517993112858148559}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: BrakeFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5655,7 +5695,7 @@ GameObject:
   - component: {fileID: 257506163921713654}
   - component: {fileID: 458143014159017756}
   - component: {fileID: 5332857589587280966}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillight_L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5743,7 +5783,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6064523357126699247}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5775,7 +5815,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7542698171780247975}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5810,7 +5850,7 @@ GameObject:
   - component: {fileID: 3572894250472451160}
   - component: {fileID: 2374281273989862650}
   - component: {fileID: 2831389117839959355}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_sideskirt_wide
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5920,7 +5960,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 689352729149100684}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: Chassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5960,7 +6000,7 @@ GameObject:
   - component: {fileID: 4473647839448812349}
   - component: {fileID: 7588974031724563851}
   - component: {fileID: 7540275123330555340}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6048,7 +6088,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2920520744110814637}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6080,7 +6120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1785810322670627444}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6117,7 +6157,7 @@ GameObject:
   - component: {fileID: 2832232269485518445}
   - component: {fileID: 7742774811410809478}
   - component: {fileID: 6233968606695439248}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_chmsl_frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6207,7 +6247,7 @@ GameObject:
   - component: {fileID: 6243160865608210091}
   - component: {fileID: 892037654335674240}
   - component: {fileID: 5723302019888316501}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_FR.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6295,7 +6335,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6177074562339418902}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: BrakeFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6330,7 +6370,7 @@ GameObject:
   - component: {fileID: 8264125076354222861}
   - component: {fileID: 8804530890403267018}
   - component: {fileID: 4196553227517667076}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_spoiler_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6442,7 +6482,7 @@ GameObject:
   - component: {fileID: 3437497394120314536}
   - component: {fileID: 8762789897931286599}
   - component: {fileID: 3433560125328250348}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_swaybar_F.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6530,7 +6570,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6096913519851760668}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumperbar_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6564,7 +6604,7 @@ GameObject:
   - component: {fileID: 2263063727302365821}
   - component: {fileID: 4715493829609738947}
   - component: {fileID: 2412753687570715354}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirrorsignal_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6652,7 +6692,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2678470041913614514}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6689,7 +6729,7 @@ GameObject:
   - component: {fileID: 4147366474207138664}
   - component: {fileID: 4226011765315770343}
   - component: {fileID: 2503691284673090201}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_body.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6777,7 +6817,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 876527344048832232}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_windshield
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6812,7 +6852,7 @@ GameObject:
   - component: {fileID: 7262753085898646614}
   - component: {fileID: 824771963878168792}
   - component: {fileID: 40018638356579886}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6902,7 +6942,7 @@ GameObject:
   - component: {fileID: 293084651353386394}
   - component: {fileID: 417525942475833595}
   - component: {fileID: 6927386203743191535}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_FR_int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6992,7 +7032,7 @@ GameObject:
   - component: {fileID: 6656868563813891276}
   - component: {fileID: 302453788683466618}
   - component: {fileID: 1753440491756652044}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_upperarm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7080,7 +7120,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3803697319273435466}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumper_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7114,7 +7154,7 @@ GameObject:
   - component: {fileID: 7998232378706694769}
   - component: {fileID: 3342198070449782249}
   - component: {fileID: 7143446197331381495}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_strut_F.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7204,7 +7244,7 @@ GameObject:
   - component: {fileID: 8553321920403283943}
   - component: {fileID: 7339538117831779105}
   - component: {fileID: 8256105821287244050}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7292,7 +7332,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5458067639850580064}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7326,7 +7366,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3050087132594926116}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: FrontWheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7362,7 +7402,7 @@ GameObject:
   - component: {fileID: 6125290916824876541}
   - component: {fileID: 2392388136099391611}
   - component: {fileID: 5148301071920196722}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillightglass_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7472,7 +7512,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4650338279357713244}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7506,7 +7546,7 @@ GameObject:
   - component: {fileID: 8397719217615221057}
   - component: {fileID: 5388143075928497}
   - component: {fileID: 8298042237394047342}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillightframe_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7596,7 +7636,7 @@ GameObject:
   - component: {fileID: 3376067752151441315}
   - component: {fileID: 596867712317301512}
   - component: {fileID: 6749236721452194139}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: led_redD
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7687,7 +7727,7 @@ GameObject:
   - component: {fileID: 6311223678338011430}
   - component: {fileID: 4232771793428533927}
   - component: {fileID: 7077274372106120394}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_dash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7777,7 +7817,7 @@ GameObject:
   - component: {fileID: 3044257346965272584}
   - component: {fileID: 354937654577131512}
   - component: {fileID: 4785649018098927248}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fueltank.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7867,7 +7907,7 @@ GameObject:
   - component: {fileID: 4068905472129691247}
   - component: {fileID: 6434705421563273826}
   - component: {fileID: 270793412341532333}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: led_red
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7957,7 +7997,7 @@ GameObject:
   - component: {fileID: 7761336308488110933}
   - component: {fileID: 7722557140344873275}
   - component: {fileID: 7416228778630858603}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8045,7 +8085,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8565687609765944373}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8077,7 +8117,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6887887579267242675}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_bumper_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8111,7 +8151,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6132895219320376106}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: BrakeRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8145,7 +8185,7 @@ GameObject:
   - component: {fileID: 5431179907419821966}
   - component: {fileID: 5472340431765368785}
   - component: {fileID: 3883368974686686612}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_coilover_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8235,7 +8275,7 @@ GameObject:
   - component: {fileID: 5270110475026062450}
   - component: {fileID: 8940221952242772996}
   - component: {fileID: 6659578485138413930}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8323,7 +8363,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5185372806861729158}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_halfshafts_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8355,7 +8395,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3608629780103206256}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8390,7 +8430,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1091867109804116722}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8424,7 +8464,7 @@ GameObject:
   - component: {fileID: 4739886402475876289}
   - component: {fileID: 1900934474341980556}
   - component: {fileID: 5648368728305298996}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_wipers
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8515,7 +8555,7 @@ GameObject:
   - component: {fileID: 1874912878748647160}
   - component: {fileID: 7942370873883682136}
   - component: {fileID: 482847424691436796}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: mod_lightbar_b
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8630,7 +8670,7 @@ GameObject:
   - component: {fileID: 1494665981776436038}
   - component: {fileID: 6402127703861242581}
   - component: {fileID: 8068811415193412777}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_halfshaft_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8718,7 +8758,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2013131334688313056}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlight_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8752,7 +8792,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1696487767226091961}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_swaybar_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8784,7 +8824,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5296533497443072402}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_exhaust_I4
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8816,7 +8856,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6052443229301290640}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8851,7 +8891,7 @@ GameObject:
   - component: {fileID: 4977903159597214294}
   - component: {fileID: 1568152842487078635}
   - component: {fileID: 4902988609504488548}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_windshield.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8964,7 +9004,7 @@ GameObject:
   - component: {fileID: 7597767323977736703}
   - component: {fileID: 6026547429320868445}
   - component: {fileID: 1631311980074353192}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_quarterpanels_widebody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9074,7 +9114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4468431142412881030}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_sideskirt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9108,7 +9148,7 @@ GameObject:
   - component: {fileID: 4829534332778236529}
   - component: {fileID: 2973258425307030006}
   - component: {fileID: 372265800166031443}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_radio_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9196,7 +9236,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7362940260214971017}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_intake
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9231,7 +9271,7 @@ GameObject:
   - component: {fileID: 1004776854544762768}
   - component: {fileID: 306675827334432126}
   - component: {fileID: 5043788104831139302}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlightglass_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9319,7 +9359,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8592296031530447693}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fender_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9353,7 +9393,7 @@ GameObject:
   - component: {fileID: 1398755531308925655}
   - component: {fileID: 183201307206072857}
   - component: {fileID: 2185177088274114908}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: spikes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9441,7 +9481,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7448750724733434627}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_differential_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9473,7 +9513,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3122109496303662114}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9509,7 +9549,7 @@ GameObject:
   - component: {fileID: 3902758288935097660}
   - component: {fileID: 7986843227637660673}
   - component: {fileID: 668808729510115358}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglightgl_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9597,7 +9637,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5395903541080188358}
-  m_Layer: 6
+  - component: {fileID: 2888441409326012261}
+  m_Layer: 5
   m_Name: WheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9619,6 +9660,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6183324331034416818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &2888441409326012261
+WheelCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6320430299874411329}
+  serializedVersion: 2
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35
+  m_SuspensionSpring:
+    spring: 30000
+    damper: 4000
+    targetPosition: 0.5
+  m_SuspensionDistance: 0.25
+  m_ForceAppPointDistance: 0
+  m_Mass: 20
+  m_WheelDampingRate: 0.25
+  m_ForwardFriction:
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
+  m_SidewaysFriction:
+    m_ExtremumSlip: 0.15
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1.2
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_Enabled: 1
+  m_ProvidesContacts: 0
 --- !u!1 &6341455294105999069
 GameObject:
   m_ObjectHideFlags: 0
@@ -9628,7 +9708,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7903588712355596528}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9661,7 +9741,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3878479029723910658}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9698,7 +9778,7 @@ GameObject:
   - component: {fileID: 1916310911602162245}
   - component: {fileID: 4435754397298436602}
   - component: {fileID: 3733205595975828699}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirror_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9810,7 +9890,7 @@ GameObject:
   - component: {fileID: 1735547620435256342}
   - component: {fileID: 7674314519743091889}
   - component: {fileID: 896484188084291538}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_transmission_awd
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9898,7 +9978,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1936968303035266053}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_spoiler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9930,7 +10010,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5778711134863975269}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillight_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9964,7 +10044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1743107452430403540}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_suspension_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10002,7 +10082,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3430599404851428816}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_steering
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10034,7 +10114,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3613763859692788283}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillight_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10070,7 +10150,7 @@ GameObject:
   - component: {fileID: 5022582438652775558}
   - component: {fileID: 5744036772678222631}
   - component: {fileID: 3444315377533215829}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_FL_int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10158,7 +10238,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5603734744630248268}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_lightbar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10198,7 +10278,7 @@ GameObject:
   - component: {fileID: 3809551193154650200}
   - component: {fileID: 8754643074887352105}
   - component: {fileID: 5805254304144098946}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_tubs
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10288,7 +10368,7 @@ GameObject:
   - component: {fileID: 5974590348962394354}
   - component: {fileID: 2524133486638843752}
   - component: {fileID: 6790327175180786499}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10376,7 +10456,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 34556764165340352}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_coilover_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10410,7 +10490,7 @@ GameObject:
   - component: {fileID: 4485776299251198143}
   - component: {fileID: 4595127657054223107}
   - component: {fileID: 3161388780036061580}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_FL.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10500,7 +10580,7 @@ GameObject:
   - component: {fileID: 1927450449311049467}
   - component: {fileID: 3472340684466834668}
   - component: {fileID: 7746157138983677578}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10590,7 +10670,7 @@ GameObject:
   - component: {fileID: 8749889739632063855}
   - component: {fileID: 47715004494085936}
   - component: {fileID: 2520824758474718270}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillightframe_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10681,7 +10761,7 @@ GameObject:
   - component: {fileID: 1844455563342639253}
   - component: {fileID: 5334162459672904101}
   - component: {fileID: 636209894401875792}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_FR.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10792,9 +10872,12 @@ GameObject:
   m_Component:
   - component: {fileID: 567036001268456278}
   - component: {fileID: 3242867489014349969}
-  m_Layer: 6
+  - component: {fileID: 3749022128938481783}
+  - component: {fileID: 688908259633030972}
+  - component: {fileID: 1141316831313404753}
+  m_Layer: 5
   m_Name: 2008 Subaru Impreza WRX STi - Police Edition
-  m_TagString: Player
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10807,7 +10890,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7114904612708933554}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -400.53986, y: 1.093367, z: -496.74}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -10826,9 +10909,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7114904612708933554}
   serializedVersion: 5
-  m_Mass: 1539.9
-  m_LinearDamping: 0.02207459
-  m_AngularDamping: 0.25
+  m_Mass: 1800
+  m_LinearDamping: 0.05
+  m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -10844,7 +10927,121 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &3749022128938481783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114904612708933554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6b83fd28698cb40be20a610c0bda78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIDriver
+  waypointManager: {fileID: 0}
+  maxSpeed: 90
+  steerSensitivity: 60
+  cornerSkill: 1
+  slowAngle: 20
+  mediumAngle: 35
+  hardAngle: 55
+  lookAheadPoints: 3
+  waypointReachDistance: 14
+  aiMask:
+    serializedVersion: 2
+    m_Bits: 8
+  aiAvoidDistance: 15
+  aiAvoidStrength: 1.2
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleRayDistance: 6
+  obstacleAvoidStrength: 1.2
+  roadMask:
+    serializedVersion: 2
+    m_Bits: 128
+  roadCheckDistance: 6
+  stuckTime: 2
+  reverseTime: 1.5
+  extraDownforce: 25
+--- !u!114 &688908259633030972
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114904612708933554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3554f4777f76e124ba8f04005972e57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarController
+  wheelColliders:
+  - {fileID: 5180199011912676}
+  - {fileID: 2899005767190216351}
+  - {fileID: 2888441409326012261}
+  - {fileID: 1089051893248776983}
+  wheelMeshes:
+  - {fileID: 5458067639850580064}
+  - {fileID: 7223966774652628278}
+  - {fileID: 3910568971754621321}
+  - {fileID: 3305524460614593766}
+  maxMotorTorque: 1500
+  maxSteerAngle: 30
+  brakeForce: 7000
+  nitroPrefab: {fileID: 4047165548844290907, guid: 1562ba1888a1d7943a9c010de6e7c519, type: 3}
+  exhaustPrefab: {fileID: 7475132835429707441, guid: 00fcb4e437c06664db6b7eb30271ded4, type: 3}
+  tireSmokePrefabs: []
+  vfxPoints: []
+  tireSmokePoints: []
+  nitroBoostMultiplier: 2
+  maxNitroEnergy: 10
+  nitroBar: {fileID: 0}
+  isUsingNitro: 1
+  isAI: 1
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: -0.006666667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 150
+      value: 1
+      inSlope: -0.006666667
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  antiFlipForce: 8
+  maxAngularVelocity: 2
+--- !u!114 &1141316831313404753
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7114904612708933554}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdd20fad351bc94193618acf840cb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RacerProgress
+  lapCount: 0
+  distanceTravelled: 0
+  finishTime: -1
 --- !u!1 &7158557246788569015
 GameObject:
   m_ObjectHideFlags: 0
@@ -10856,7 +11053,7 @@ GameObject:
   - component: {fileID: 9191530096549547810}
   - component: {fileID: 3077010710505757230}
   - component: {fileID: 5205136722597627583}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10946,7 +11143,7 @@ GameObject:
   - component: {fileID: 6849843566150014958}
   - component: {fileID: 8844997916960607327}
   - component: {fileID: 4390582174656313837}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11037,7 +11234,7 @@ GameObject:
   - component: {fileID: 9013355601736922866}
   - component: {fileID: 1054062625905891376}
   - component: {fileID: 8583208953447202534}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirror_L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11150,7 +11347,7 @@ GameObject:
   - component: {fileID: 6438359591046570099}
   - component: {fileID: 6292692821468668712}
   - component: {fileID: 7217253780884536861}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_RR_widebody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11260,7 +11457,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4645781093994871808}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_engine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11292,7 +11489,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1161656977370834779}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: SteeringWheel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11327,7 +11524,7 @@ GameObject:
   - component: {fileID: 3152227287282959052}
   - component: {fileID: 8086492376589512252}
   - component: {fileID: 3303224157787751050}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_RL_widebody
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11439,7 +11636,7 @@ GameObject:
   - component: {fileID: 165606034611551441}
   - component: {fileID: 4069136280791096892}
   - component: {fileID: 4600345882784419115}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_diff
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11527,7 +11724,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9082875533274510712}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_mirror_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11562,7 +11759,7 @@ GameObject:
   - component: {fileID: 8935862941851386841}
   - component: {fileID: 4180987794594112932}
   - component: {fileID: 4318034312978091579}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglight_L
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11652,7 +11849,7 @@ GameObject:
   - component: {fileID: 8801181753489410039}
   - component: {fileID: 4090238768133721372}
   - component: {fileID: 5763410020874360215}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_turbo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11740,7 +11937,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6236846847855073571}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fueltank
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11774,7 +11971,7 @@ GameObject:
   - component: {fileID: 8968956308430804127}
   - component: {fileID: 3273423646448737384}
   - component: {fileID: 3469027605008907277}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_taillight_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11862,7 +12059,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3729277877373451915}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_roof
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11896,7 +12093,7 @@ GameObject:
   - component: {fileID: 6717006162555341370}
   - component: {fileID: 3110894056481294455}
   - component: {fileID: 7163918609356907785}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_hub_F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11984,7 +12181,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8019867464315811416}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_quarterpanel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12016,7 +12213,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3005579968661363731}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlight_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12050,7 +12247,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5454443902684872472}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_transmission
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12083,7 +12280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5180252251561775515}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_backlight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12117,7 +12314,7 @@ GameObject:
   - component: {fileID: 7989223664039494363}
   - component: {fileID: 526544072375926461}
   - component: {fileID: 6711376023641089866}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlight_R.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12209,7 +12406,7 @@ GameObject:
   - component: {fileID: 7642649181667902545}
   - component: {fileID: 4753636867609775244}
   - component: {fileID: 9135637033590592190}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglightframe
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12297,7 +12494,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4739574240422424834}
-  m_Layer: 6
+  - component: {fileID: 1089051893248776983}
+  m_Layer: 5
   m_Name: WheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12319,6 +12517,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 6183324331034416818}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &1089051893248776983
+WheelCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242135212489903112}
+  serializedVersion: 2
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35
+  m_SuspensionSpring:
+    spring: 30000
+    damper: 4000
+    targetPosition: 0.5
+  m_SuspensionDistance: 0.25
+  m_ForceAppPointDistance: 0
+  m_Mass: 20
+  m_WheelDampingRate: 0.25
+  m_ForwardFriction:
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
+  m_SidewaysFriction:
+    m_ExtremumSlip: 0.15
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1.2
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_Enabled: 1
+  m_ProvidesContacts: 0
 --- !u!1 &8364675260963256303
 GameObject:
   m_ObjectHideFlags: 0
@@ -12328,7 +12565,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3198579279300609985}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: WheelTransforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12363,7 +12600,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4229586468899260963}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_trunk
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12398,7 +12635,7 @@ GameObject:
   - component: {fileID: 7945794836405521215}
   - component: {fileID: 3354695098200499023}
   - component: {fileID: 4534062061010162173}
-  m_Layer: 7
+  m_Layer: 5
   m_Name: hub
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12488,7 +12725,7 @@ GameObject:
   - component: {fileID: 1248798861342857663}
   - component: {fileID: 7566862847540266059}
   - component: {fileID: 1018842390871804571}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_auto
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12576,7 +12813,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2361135217606722422}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12610,7 +12847,7 @@ GameObject:
   - component: {fileID: 6448454020697418064}
   - component: {fileID: 4390787242807859812}
   - component: {fileID: 6214914154080763264}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_halfshaft_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12700,7 +12937,7 @@ GameObject:
   - component: {fileID: 4158277394376862217}
   - component: {fileID: 4688090467699307370}
   - component: {fileID: 784581058176846311}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_hub_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12791,7 +13028,7 @@ GameObject:
   - component: {fileID: 7320956711509896297}
   - component: {fileID: 4575595775361232164}
   - component: {fileID: 6125839758458079328}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_door_FL.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12901,7 +13138,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1703686312987147846}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorpanel_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12935,7 +13172,7 @@ GameObject:
   - component: {fileID: 1348742847659212665}
   - component: {fileID: 6623311142339966007}
   - component: {fileID: 5405488013867184155}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_lowerarm_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13023,7 +13260,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3240336485944965142}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_fender_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13055,7 +13292,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4009005981428966431}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_doorglass_RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13089,7 +13326,7 @@ GameObject:
   - component: {fileID: 3862336465140381648}
   - component: {fileID: 636982990295360107}
   - component: {fileID: 6616761301092732293}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_headlight_L.001
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13181,7 +13418,7 @@ GameObject:
   - component: {fileID: 5031801333150376496}
   - component: {fileID: 6259592724954596419}
   - component: {fileID: 5249442765681880360}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_foglight_R
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13269,7 +13506,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 483796592622976530}
-  m_Layer: 6
+  - component: {fileID: 2899005767190216351}
+  m_Layer: 5
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13291,6 +13529,45 @@ Transform:
   m_Children: []
   m_Father: {fileID: 3050087132594926116}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!146 &2899005767190216351
+WheelCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9145309491499252066}
+  serializedVersion: 2
+  m_Center: {x: 0, y: 0, z: 0}
+  m_Radius: 0.35
+  m_SuspensionSpring:
+    spring: 35000
+    damper: 4500
+    targetPosition: 0.5
+  m_SuspensionDistance: 0.25
+  m_ForceAppPointDistance: 0
+  m_Mass: 20
+  m_WheelDampingRate: 0.25
+  m_ForwardFriction:
+    m_ExtremumSlip: 0.4
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.8
+    m_AsymptoteValue: 0.5
+    m_Stiffness: 1
+  m_SidewaysFriction:
+    m_ExtremumSlip: 0.15
+    m_ExtremumValue: 1
+    m_AsymptoteSlip: 0.4
+    m_AsymptoteValue: 0.75
+    m_Stiffness: 1.2
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_Enabled: 1
+  m_ProvidesContacts: 0
 --- !u!1 &9183588976420723015
 GameObject:
   m_ObjectHideFlags: 0
@@ -13302,7 +13579,7 @@ GameObject:
   - component: {fileID: 8908736802178674756}
   - component: {fileID: 2421703086260072821}
   - component: {fileID: 2715939996854856939}
-  m_Layer: 6
+  m_Layer: 5
   m_Name: sunburst_intercooler
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13395,7 +13672,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376352, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376353, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_RootOrder
@@ -13443,11 +13720,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425014153658096089, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3425014153829003747, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13473,7 +13750,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: 75035d5e338283a4f92c982e5f071087, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561585, guid: 75035d5e338283a4f92c982e5f071087, type: 3}
       propertyPath: m_RootOrder
@@ -13521,11 +13798,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4135056114940096362, guid: 75035d5e338283a4f92c982e5f071087, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4186580248306826468, guid: 75035d5e338283a4f92c982e5f071087, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13547,15 +13824,15 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 792928727667413223, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 935813046888897523, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1119072142190446717, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Name
@@ -13563,7 +13840,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561585, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_RootOrder
@@ -13611,7 +13888,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6631001333202513071, guid: 0ec064a01fad2134aaef1fe3b6f095dc, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13637,7 +13914,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376352, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376353, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_RootOrder
@@ -13685,11 +13962,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3425014153658096089, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 3425014153829003747, guid: b42d39f5fcdc10b438491243368f4d1e, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13715,7 +13992,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376352, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376353, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_RootOrder
@@ -13763,7 +14040,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257935076250, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13785,7 +14062,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1250586886018645683, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Name
@@ -13793,7 +14070,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561585, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_RootOrder
@@ -13841,15 +14118,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5070484509294314235, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6698697747452766358, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 6885332239300737816, guid: c4419a4eb0e2b75499c50ae5c4793121, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13875,7 +14152,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376352, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 102904257510376353, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_RootOrder
@@ -13923,7 +14200,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 102904257935076250, guid: 0d852a0a0a407274b87269db7900061d, type: 3}
       propertyPath: m_Layer
-      value: 7
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -13949,7 +14226,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561584, guid: 82ce54e54f0d04e43ba2e729a8c46f26, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 2440828224831561585, guid: 82ce54e54f0d04e43ba2e729a8c46f26, type: 3}
       propertyPath: m_RootOrder
@@ -13997,11 +14274,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5571251144094507095, guid: 82ce54e54f0d04e43ba2e729a8c46f26, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 5632345383646327769, guid: 82ce54e54f0d04e43ba2e729a8c46f26, type: 3}
       propertyPath: m_Layer
-      value: 6
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
