@@ -17488,6 +17488,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 7114904612708933554, guid: fb3a304dff5f0b64b9eb50404bc68a6d, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 7242422226015171393, guid: fb3a304dff5f0b64b9eb50404bc68a6d, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -24970,6 +24974,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 938628260719772309, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
       propertyPath: m_Layer
       value: 7
@@ -30326,6 +30334,30 @@ MonoBehaviour:
   nitroBar: {fileID: 0}
   isUsingNitro: 0
   isAI: 1
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: -0.006666667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 150
+      value: 1
+      inSlope: -0.006666667
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!4 &947802920 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6596968861039855826, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
@@ -32559,11 +32591,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7faaf941ce326749a64a5f257ea30ed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CarCameraController
-  carRb: {fileID: 816903131}
-  vcam: {fileID: 1025260730}
-  baseFOV: 60
-  maxFOV: 80
-  speedForMaxFOV: 200
 --- !u!114 &1025260728
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34503,6 +34530,30 @@ MonoBehaviour:
   nitroBar: {fileID: 0}
   isUsingNitro: 0
   isAI: 1
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: -0.006666667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 150
+      value: 1
+      inSlope: -0.006666667
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &1096685171
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -48501,6 +48552,10 @@ PrefabInstance:
     - target: {fileID: 1334980181564030290, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
       propertyPath: m_Name
       value: 2012 Lexus LFA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334980181564030290, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3481593513684980847, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
       propertyPath: m_Mass

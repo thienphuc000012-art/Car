@@ -17599,6 +17599,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 7114904612708933554, guid: fb3a304dff5f0b64b9eb50404bc68a6d, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7114904612708933554, guid: fb3a304dff5f0b64b9eb50404bc68a6d, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -25239,6 +25243,10 @@ PrefabInstance:
     - target: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
       propertyPath: m_Layer
       value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
       propertyPath: m_TagString
@@ -49976,6 +49984,10 @@ PrefabInstance:
     - target: {fileID: 1334980181564030290, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
       propertyPath: m_Name
       value: 2012 Lexus LFA
+      objectReference: {fileID: 0}
+    - target: {fileID: 1334980181564030290, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1334980181564030290, guid: d3baa3273ddb4484e81495e340e3e347, type: 3}
       propertyPath: m_TagString
