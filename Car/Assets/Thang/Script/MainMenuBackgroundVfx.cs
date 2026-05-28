@@ -25,13 +25,25 @@ public class MainMenuBackgroundVfx : MonoBehaviour
     [Header("Dust / Smoke")]
     [Range(0, 180)] public int dustCount = 80;
 
+    [Header("Press Any Key Tuning")]
+    public bool rebuildWhenValuesChangeInEditMode;
+    public bool rebuildWhenValuesChangeInPlayMode = true;
+    public PressSunSettings pressSun = PressSunSettings.Default();
+    public NitroFxSettings[] pressNitros = DefaultNitros();
+    public TailLightPairSettings[] pressTailLightPairs = DefaultTailLights();
+    public DustTrailSettings[] pressDustTrails = DefaultDustTrails();
+
     readonly List<Image> particles = new List<Image>();
     readonly List<ParticleState> particleStates = new List<ParticleState>();
     readonly List<PulseLight> pulseLights = new List<PulseLight>();
     readonly List<RectTransform> sunRays = new List<RectTransform>();
+    readonly List<Image> sunRayImages = new List<Image>();
+    readonly List<float> sunRayBaseAngles = new List<float>();
+    readonly List<float> sunRayBaseAlphas = new List<float>();
     Sprite softCircleSprite;
     Sprite streakSprite;
     Sprite whiteSprite;
+    Sprite sunRaySprite;
     RectTransform rectTransform;
 
     struct ParticleState
@@ -55,6 +67,70 @@ public class MainMenuBackgroundVfx : MonoBehaviour
         public float scalePulse;
     }
 
+    [System.Serializable]
+    public struct PressSunSettings
+    {
+        public Vector2 center;
+        [Range(0.2f, 4f)] public float glowScale;
+        [Range(0.2f, 4f)] public float rayLengthScale;
+        [Range(0.2f, 5f)] public float rayThicknessScale;
+        [Range(0.1f, 3f)] public float rayAlphaScale;
+        [Range(0.05f, 0.7f)] public float rayOffsetFactor;
+        [Range(0f, 12f)] public float raySwayDegrees;
+        [Range(0.05f, 3f)] public float raySwaySpeed;
+
+        public static PressSunSettings Default()
+        {
+            return new PressSunSettings
+            {
+                center = new Vector2(-135f, 322f),
+                glowScale = 1.25f,
+                rayLengthScale = 1.55f,
+                rayThicknessScale = 2.25f,
+                rayAlphaScale = 1.7f,
+                rayOffsetFactor = 0.34f,
+                raySwayDegrees = 3.5f,
+                raySwaySpeed = 0.42f
+            };
+        }
+    }
+
+    [System.Serializable]
+    public struct NitroFxSettings
+    {
+        public string name;
+        public bool enabled;
+        public Vector2 position;
+        public float rotationZ;
+        [Range(0.05f, 3f)] public float scale;
+        public float phase;
+    }
+
+    [System.Serializable]
+    public struct TailLightPairSettings
+    {
+        public string name;
+        public bool enabled;
+        public Vector2 leftPosition;
+        public Vector2 rightPosition;
+        public float rotationZ;
+        [Range(0.05f, 3f)] public float scale;
+        public float phase;
+    }
+
+    [System.Serializable]
+    public struct DustTrailSettings
+    {
+        public string name;
+        public bool enabled;
+        public Vector2 origin;
+        public Vector2 baseSize;
+        public float rotationZ;
+        public Vector2 drift;
+        [Range(0.05f, 3f)] public float scale;
+        [Range(0.05f, 3f)] public float alphaScale;
+    }
+
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -64,6 +140,22 @@ public class MainMenuBackgroundVfx : MonoBehaviour
     {
         if (rebuildOnStart)
             Rebuild();
+    }
+
+    void OnValidate()
+    {
+        if (!isActiveAndEnabled)
+            return;
+
+        if (Application.isPlaying)
+        {
+            if (rebuildWhenValuesChangeInPlayMode)
+                Rebuild();
+        }
+        else if (rebuildWhenValuesChangeInEditMode)
+        {
+            Rebuild();
+        }
     }
 
     void Update()
@@ -119,8 +211,21 @@ public class MainMenuBackgroundVfx : MonoBehaviour
         for (int i = 0; i < sunRays.Count; i++)
         {
             RectTransform ray = sunRays[i];
-            if (ray != null)
-                ray.localRotation = Quaternion.Euler(0f, 0f, ray.localEulerAngles.z + Mathf.Sin(time * 0.3f + i) * 0.01f);
+            if (ray == null)
+                continue;
+
+            float swaySpeed = pressSun.raySwaySpeed > 0f ? pressSun.raySwaySpeed : 0.42f;
+            float swayDegrees = pressSun.raySwayDegrees > 0f ? pressSun.raySwayDegrees : 3.5f;
+            float sway = Mathf.Sin(time * swaySpeed + i * 0.55f) * swayDegrees;
+            ray.localRotation = Quaternion.Euler(0f, 0f, sunRayBaseAngles[i] + sway);
+
+            Image rayImage = sunRayImages[i];
+            if (rayImage != null)
+            {
+                Color color = rayImage.color;
+                color.a = Mathf.Clamp01(sunRayBaseAlphas[i] * Mathf.Lerp(0.72f, 1.12f, Mathf.Abs(Mathf.Sin(time * 0.55f + i * 0.35f))));
+                rayImage.color = color;
+            }
         }
     }
 
@@ -133,6 +238,9 @@ public class MainMenuBackgroundVfx : MonoBehaviour
         particleStates.Clear();
         pulseLights.Clear();
         sunRays.Clear();
+        sunRayImages.Clear();
+        sunRayBaseAngles.Clear();
+        sunRayBaseAlphas.Clear();
 
         Random.InitState(seed);
 
@@ -140,6 +248,45 @@ public class MainMenuBackgroundVfx : MonoBehaviour
             BuildLoadingSnowRoad();
         else
             BuildPressAnyKeySunsetTrack();
+    }
+
+    [ContextMenu("Reset Press Any Key Tuning")]
+    public void ResetPressAnyKeyTuning()
+    {
+        pressSun = PressSunSettings.Default();
+        pressNitros = DefaultNitros();
+        pressTailLightPairs = DefaultTailLights();
+        pressDustTrails = DefaultDustTrails();
+    }
+
+    static NitroFxSettings[] DefaultNitros()
+    {
+        return new[]
+        {
+            new NitroFxSettings { name = "PlayerLeft", enabled = true, position = new Vector2(-363f, -396f), rotationZ = 3f, scale = 0.88f, phase = 0f },
+            new NitroFxSettings { name = "PlayerRight", enabled = true, position = new Vector2(-235f, -388f), rotationZ = -2f, scale = 0.88f, phase = 0.75f },
+            new NitroFxSettings { name = "RightCar", enabled = true, position = new Vector2(235f, -206f), rotationZ = -24f, scale = 0.45f, phase = 1.45f }
+        };
+    }
+
+    static TailLightPairSettings[] DefaultTailLights()
+    {
+        return new[]
+        {
+            new TailLightPairSettings { name = "PlayerCar", enabled = true, leftPosition = new Vector2(-380f, -304f), rightPosition = new Vector2(-226f, -296f), rotationZ = 0f, scale = 0.9f, phase = 0.1f },
+            new TailLightPairSettings { name = "RightCar", enabled = true, leftPosition = new Vector2(206f, -162f), rightPosition = new Vector2(286f, -157f), rotationZ = -5f, scale = 0.62f, phase = 1.2f },
+            new TailLightPairSettings { name = "FarCar", enabled = true, leftPosition = new Vector2(-70f, -90f), rightPosition = new Vector2(-14f, -88f), rotationZ = 0f, scale = 0.42f, phase = 2.1f }
+        };
+    }
+
+    static DustTrailSettings[] DefaultDustTrails()
+    {
+        return new[]
+        {
+            new DustTrailSettings { name = "PlayerCar", enabled = true, origin = new Vector2(-292f, -332f), baseSize = new Vector2(300f, 82f), rotationZ = -8f, drift = new Vector2(-18f, -22f), scale = 0.95f, alphaScale = 1f },
+            new DustTrailSettings { name = "RightCar", enabled = true, origin = new Vector2(236f, -176f), baseSize = new Vector2(190f, 56f), rotationZ = -14f, drift = new Vector2(22f, -9f), scale = 0.66f, alphaScale = 1f },
+            new DustTrailSettings { name = "FarCar", enabled = true, origin = new Vector2(-44f, -112f), baseSize = new Vector2(145f, 38f), rotationZ = -5f, drift = new Vector2(4f, -8f), scale = 0.44f, alphaScale = 1f }
+        };
     }
 
     void BuildLoadingSnowRoad()
@@ -161,21 +308,35 @@ public class MainMenuBackgroundVfx : MonoBehaviour
 
     void BuildPressAnyKeySunsetTrack()
     {
-        // Sun disk, flare, and thin rays following the light direction in the image.
-        CreateGlow("SunCore", new Vector2(-25f, 305f), new Vector2(260f, 260f), new Color(1f, 0.72f, 0.28f, 0.82f), 0.42f, 0.92f, 0.75f, 0f, 0.035f);
-        CreateGlow("SunWideBloom", new Vector2(-18f, 305f), new Vector2(720f, 450f), new Color(1f, 0.58f, 0.22f, 0.22f), 0.09f, 0.24f, 0.55f, 1.1f, 0.02f);
-        CreateSunRays(new Vector2(-25f, 300f), new Color(1f, 0.76f, 0.32f, 0.15f));
+        Vector2 sunCenter = pressSun.center;
+        float glowScale = Mathf.Max(0.05f, pressSun.glowScale);
 
-        // Nitro sputter at the rear exhausts.
-        CreateGlow("NitroFlame_Left", new Vector2(-170f, -368f), new Vector2(72f, 150f), new Color(0.35f, 0.8f, 1f, 0.92f), 0.35f, 0.95f, 9f, 0f, 0.18f);
-        CreateGlow("NitroFlame_Right", new Vector2(-45f, -358f), new Vector2(72f, 150f), new Color(0.35f, 0.8f, 1f, 0.92f), 0.35f, 0.95f, 9f, 0.7f, 0.18f);
-        CreateGlow("NitroHotCore_Left", new Vector2(-170f, -346f), new Vector2(36f, 82f), new Color(1f, 0.55f, 0.18f, 0.95f), 0.22f, 0.75f, 12f, 1.1f, 0.15f);
-        CreateGlow("NitroHotCore_Right", new Vector2(-45f, -338f), new Vector2(36f, 82f), new Color(1f, 0.55f, 0.18f, 0.95f), 0.22f, 0.75f, 12f, 1.6f, 0.15f);
+        // Layered sun glow: small hot core, warm bloom, and soft rays along the image perspective.
+        CreateGlow("SunWhiteCore", sunCenter, new Vector2(175f, 175f) * glowScale, new Color(1f, 0.98f, 0.82f, 1f), 0.78f, 1f, 0.72f, 0f, 0.03f);
+        CreateGlow("SunWhiteGlare", sunCenter + new Vector2(4f, -2f), new Vector2(285f, 220f) * glowScale, new Color(1f, 0.96f, 0.7f, 0.86f), 0.38f, 0.86f, 0.62f, 0.35f, 0.035f);
+        CreateGlow("SunGoldCore", sunCenter, new Vector2(420f, 370f) * glowScale, new Color(1f, 0.68f, 0.25f, 0.9f), 0.5f, 0.9f, 0.58f, 0.7f, 0.03f);
+        CreateGlow("SunWarmBloom", sunCenter + new Vector2(28f, -18f) * glowScale, new Vector2(1280f, 760f) * glowScale, new Color(1f, 0.58f, 0.22f, 0.38f), 0.18f, 0.38f, 0.5f, 1.1f, 0.018f);
+        CreateGlow("SunMountainBackLight", sunCenter + new Vector2(-95f, -36f) * glowScale, new Vector2(760f, 390f) * glowScale, new Color(1f, 0.78f, 0.42f, 0.26f), 0.09f, 0.26f, 0.48f, 1.6f, 0.02f);
+        CreateGlow("SunTrackHaze", sunCenter + new Vector2(185f, -212f) * glowScale, new Vector2(920f, 190f) * glowScale, new Color(1f, 0.7f, 0.36f, 0.24f), 0.09f, 0.24f, 0.55f, 1.9f, 0.02f);
+        CreateSunRays(sunCenter + new Vector2(-8f, -4f), new Color(1f, 0.8f, 0.38f, 0.16f));
 
-        // Tail lights on closest and mid cars.
-        CreateGlow("TailLight_PlayerLeft", new Vector2(-196f, -300f), new Vector2(80f, 38f), new Color(1f, 0.05f, 0.02f, 0.82f), 0.2f, 0.82f, 4.6f, 0.1f, 0.1f);
-        CreateGlow("TailLight_PlayerRight", new Vector2(-23f, -292f), new Vector2(80f, 38f), new Color(1f, 0.05f, 0.02f, 0.82f), 0.2f, 0.82f, 4.6f, 0.52f, 0.1f);
-        CreateGlow("TailLight_RightCar", new Vector2(315f, -150f), new Vector2(74f, 36f), new Color(1f, 0.08f, 0.03f, 0.55f), 0.12f, 0.55f, 3.8f, 1.2f, 0.08f);
+        if (pressNitros != null)
+        {
+            foreach (NitroFxSettings nitro in pressNitros)
+            {
+                if (nitro.enabled)
+                    CreateNitroJet("Nitro_" + nitro.name, nitro.position, nitro.rotationZ, nitro.phase, nitro.scale);
+            }
+        }
+
+        if (pressTailLightPairs != null)
+        {
+            foreach (TailLightPairSettings tailLights in pressTailLightPairs)
+            {
+                if (tailLights.enabled)
+                    CreateTailLightPair(tailLights.name, tailLights.leftPosition, tailLights.rightPosition, tailLights.rotationZ, tailLights.scale, tailLights.phase);
+            }
+        }
 
         CreateDust(dustCount);
     }
@@ -208,63 +369,118 @@ public class MainMenuBackgroundVfx : MonoBehaviour
         }
     }
 
+    void CreateTailLightPair(string name, Vector2 leftPosition, Vector2 rightPosition, float rotationZ, float scale, float phase)
+    {
+        CreateTailLight(name + "_Left", leftPosition, rotationZ, scale, phase);
+        CreateTailLight(name + "_Right", rightPosition, rotationZ, scale, phase + 0.42f);
+    }
+
+    void CreateTailLight(string name, Vector2 position, float rotationZ, float scale, float phase)
+    {
+        CreateGlow(name + "_Reflection", position + new Vector2(0f, -10f * scale), new Vector2(95f * scale, 32f * scale), new Color(1f, 0.04f, 0.015f, 0.28f), 0.03f, 0.24f, 4.6f, phase, 0.04f, rotationZ);
+        CreateGlow(name + "_Halo", position, new Vector2(62f * scale, 26f * scale), new Color(1f, 0.03f, 0.01f, 0.58f), 0.08f, 0.48f, 5.2f, phase + 0.25f, 0.06f, rotationZ);
+        CreateGlow(name + "_Core", position, new Vector2(24f * scale, 11f * scale), new Color(1f, 0.18f, 0.05f, 0.95f), 0.45f, 0.95f, 5.9f, phase + 0.5f, 0.08f, rotationZ);
+    }
+
+    void CreateNitroJet(string name, Vector2 position, float rotationZ, float phase, float scale)
+    {
+        CreateGlow(name + "_BlueOuter", position, new Vector2(46f * scale, 128f * scale), new Color(0.24f, 0.82f, 1f, 0.72f), 0.13f, 0.5f, 11f, phase, 0.16f, rotationZ);
+        CreateGlow(name + "_VioletHeat", position + new Vector2(0f, 10f * scale), new Vector2(28f * scale, 92f * scale), new Color(0.46f, 0.36f, 1f, 0.68f), 0.1f, 0.46f, 13f, phase + 0.5f, 0.18f, rotationZ);
+        CreateGlow(name + "_HotCore", position + new Vector2(0f, 24f * scale), new Vector2(16f * scale, 54f * scale), new Color(1f, 0.58f, 0.18f, 0.85f), 0.12f, 0.58f, 15f, phase + 1.1f, 0.2f, rotationZ);
+    }
+
     void CreateDust(int count)
     {
-        Vector2 bounds = referenceResolution * 0.58f;
-        Vector2[] origins =
+        if (pressDustTrails == null || pressDustTrails.Length == 0)
+            return;
+
+        int trailCount = Mathf.Max(10, count / 3);
+        foreach (DustTrailSettings dustTrail in pressDustTrails)
         {
-            new Vector2(-120f, -330f),
-            new Vector2(280f, -185f),
-            new Vector2(-15f, -135f)
-        };
+            if (!dustTrail.enabled)
+                continue;
+
+            CreateDustTrail("Dust_" + dustTrail.name, dustTrail.origin, dustTrail.baseSize, dustTrail.rotationZ, trailCount, dustTrail.drift, dustTrail.scale, dustTrail.alphaScale);
+        }
+    }
+
+    void CreateDustTrail(string name, Vector2 origin, Vector2 baseSize, float rotationZ, int count, Vector2 drift, float scale, float alphaScale)
+    {
+        Vector2 bounds = referenceResolution * 0.58f;
 
         for (int i = 0; i < count; i++)
         {
-            Image dust = CreateImage("Dust_" + i, softCircleSprite, transform);
-            Vector2 origin = origins[Random.Range(0, origins.Length)];
-            float size = Random.Range(28f, 130f);
-            dust.rectTransform.sizeDelta = new Vector2(size * Random.Range(1.2f, 2.6f), size);
-            dust.rectTransform.anchoredPosition = origin + new Vector2(Random.Range(-90f, 120f), Random.Range(-60f, 70f));
-            dust.rectTransform.localRotation = Quaternion.Euler(0f, 0f, Random.Range(-14f, 14f));
-            dust.color = new Color(0.86f, 0.68f, 0.45f, Random.Range(0.05f, 0.16f));
+            Image dust = CreateImage(name + "_" + i, softCircleSprite, transform);
+            float depth = i / Mathf.Max(1f, count - 1f);
+            float width = baseSize.x * Random.Range(0.55f, 1.15f) * Mathf.Lerp(1f, 0.45f, depth);
+            float height = baseSize.y * Random.Range(0.55f, 1.15f) * Mathf.Lerp(1f, 0.5f, depth);
+            Vector2 laneOffset = new Vector2(Random.Range(-baseSize.x * 0.22f, baseSize.x * 0.22f), Random.Range(-baseSize.y * 0.65f, baseSize.y * 0.65f));
+
+            dust.rectTransform.sizeDelta = new Vector2(width, height) * scale;
+            dust.rectTransform.anchoredPosition = origin + laneOffset + drift * Random.Range(0f, 1.2f);
+            dust.rectTransform.localRotation = Quaternion.Euler(0f, 0f, rotationZ + Random.Range(-5f, 5f));
+            dust.color = new Color(0.92f, 0.72f, 0.46f, Random.Range(0.025f, 0.095f) * scale * alphaScale);
 
             particles.Add(dust);
             particleStates.Add(new ParticleState
             {
-                velocity = new Vector2(Random.Range(-70f, 160f), Random.Range(18f, 85f)),
+                velocity = drift * Random.Range(0.4f, 1.25f) + new Vector2(Random.Range(-16f, 22f), Random.Range(10f, 38f)),
                 bounds = bounds,
                 baseAlpha = dust.color.a,
-                pulseSpeed = Random.Range(0.25f, 0.7f),
+                pulseSpeed = Random.Range(0.18f, 0.55f),
                 phase = Random.Range(0f, 6.28f),
-                spin = Random.Range(-2f, 2f)
+                spin = Random.Range(-0.8f, 0.8f)
             });
         }
     }
 
     void CreateSunRays(Vector2 center, Color color)
     {
-        float[] angles = { -28f, -17f, -7f, 8f, 19f, 31f };
-        float[] lengths = { 840f, 720f, 960f, 900f, 760f, 640f };
+        float[] angles =
+        {
+            -70f, -63f, -56f, -50f, -44f, -38f, -32f, -27f, -22f, -17f, -12f, -7f,
+            -2f, 4f, 10f, 16f, 23f, 30f, 38f, 47f, 57f, 68f
+        };
+        float[] lengths =
+        {
+            2550f, 2820f, 3100f, 2960f, 3280f, 3050f, 3400f, 3200f, 3500f, 3320f, 3600f,
+            3440f, 3360f, 3180f, 3020f, 2860f, 2680f, 2520f, 2360f, 2200f, 2050f, 1900f
+        };
+        float lengthScale = Mathf.Max(0.05f, pressSun.rayLengthScale);
+        float thicknessScale = Mathf.Max(0.05f, pressSun.rayThicknessScale);
+        float alphaScale = Mathf.Max(0.01f, pressSun.rayAlphaScale);
+        float originInset = Mathf.Max(0f, pressSun.rayOffsetFactor * 35f);
 
         for (int i = 0; i < angles.Length; i++)
         {
-            Image ray = CreateImage("SunRay_" + i, whiteSprite, transform);
-            ray.color = color;
+            Image ray = CreateImage("SunRay_" + i, sunRaySprite, transform);
+            ray.color = new Color(color.r, color.g, color.b, color.a * alphaScale * Random.Range(0.5f, 1.05f));
             ray.raycastTarget = false;
             RectTransform rt = ray.rectTransform;
-            rt.sizeDelta = new Vector2(lengths[i], Random.Range(8f, 18f));
-            Vector3 rotatedOffset = Quaternion.Euler(0f, 0f, angles[i]) * new Vector3(lengths[i] * 0.22f, 0f, 0f);
-            rt.anchoredPosition = center + new Vector2(rotatedOffset.x, rotatedOffset.y);
+            float length = lengths[i] * lengthScale;
+            rt.pivot = new Vector2(0f, 0.5f);
+            rt.sizeDelta = new Vector2(length, Random.Range(105f, 230f) * thicknessScale);
+            Vector3 originOffset = Quaternion.Euler(0f, 0f, angles[i]) * new Vector3(-originInset, 0f, 0f);
+            rt.anchoredPosition = center + new Vector2(originOffset.x, originOffset.y);
             rt.localRotation = Quaternion.Euler(0f, 0f, angles[i]);
             sunRays.Add(rt);
+            sunRayImages.Add(ray);
+            sunRayBaseAngles.Add(angles[i]);
+            sunRayBaseAlphas.Add(ray.color.a);
         }
     }
 
     Image CreateGlow(string name, Vector2 position, Vector2 size, Color color, float minAlpha, float maxAlpha, float speed, float phase, float scalePulse)
     {
+        return CreateGlow(name, position, size, color, minAlpha, maxAlpha, speed, phase, scalePulse, 0f);
+    }
+
+    Image CreateGlow(string name, Vector2 position, Vector2 size, Color color, float minAlpha, float maxAlpha, float speed, float phase, float scalePulse, float rotationZ)
+    {
         Image glow = CreateImage(name, softCircleSprite, transform);
         glow.rectTransform.anchoredPosition = position;
         glow.rectTransform.sizeDelta = size;
+        glow.rectTransform.localRotation = Quaternion.Euler(0f, 0f, rotationZ);
         glow.color = new Color(color.r, color.g, color.b, maxAlpha);
         glow.raycastTarget = false;
 
@@ -285,6 +501,9 @@ public class MainMenuBackgroundVfx : MonoBehaviour
     Image CreateImage(string name, Sprite sprite, Transform parent)
     {
         GameObject obj = new GameObject(name, typeof(RectTransform), typeof(CanvasRenderer), typeof(Image));
+        if (!Application.isPlaying)
+            obj.hideFlags = HideFlags.DontSaveInEditor;
+
         obj.transform.SetParent(parent, false);
         Image image = obj.GetComponent<Image>();
         image.sprite = sprite;
@@ -314,6 +533,9 @@ public class MainMenuBackgroundVfx : MonoBehaviour
 
         if (whiteSprite == null)
             whiteSprite = Sprite.Create(Texture2D.whiteTexture, new Rect(0f, 0f, 1f, 1f), new Vector2(0.5f, 0.5f), 1f);
+
+        if (sunRaySprite == null)
+            sunRaySprite = CreateSunRaySprite(512, 80);
     }
 
     Sprite CreateSoftCircleSprite(int size)
@@ -360,5 +582,30 @@ public class MainMenuBackgroundVfx : MonoBehaviour
 
         texture.Apply();
         return Sprite.Create(texture, new Rect(0f, 0f, width, height), new Vector2(0.5f, 0.5f), 100f);
+    }
+
+    Sprite CreateSunRaySprite(int width, int height)
+    {
+        Texture2D texture = new Texture2D(width, height, TextureFormat.RGBA32, false);
+        texture.wrapMode = TextureWrapMode.Clamp;
+        texture.name = "RuntimeSunRay";
+
+        float centerY = (height - 1) * 0.5f;
+        for (int y = 0; y < height; y++)
+        {
+            for (int x = 0; x < width; x++)
+            {
+                float horizontal = x / (float)(width - 1);
+                float vertical = Mathf.Abs(y - centerY) / centerY;
+                float startFade = Mathf.SmoothStep(0f, 1f, Mathf.Clamp01(horizontal * 7f));
+                float endFade = Mathf.Pow(1f - horizontal, 1.35f);
+                float edgeFade = Mathf.Pow(Mathf.Clamp01(1f - vertical), 2.4f);
+                float alpha = startFade * endFade * edgeFade;
+                texture.SetPixel(x, y, new Color(1f, 1f, 1f, alpha));
+            }
+        }
+
+        texture.Apply();
+        return Sprite.Create(texture, new Rect(0f, 0f, width, height), new Vector2(0f, 0.5f), 100f);
     }
 }

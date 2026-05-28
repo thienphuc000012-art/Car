@@ -1,367 +1,851 @@
-﻿using System.Collections;
-using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
-public enum RoomPrivacy
+[System.Serializable]
+public class LobbyMapOption
 {
-    Public,
-    Private
-}
+    public string id = "coastal_drive";
+    public string displayName = "TRACK RACE";
+    public string distanceText = "-- KM";
 
-public enum JoinRule
-{
-    Instant,
-    HostApproval
+#if UNITY_EDITOR
+    public UnityEditor.SceneAsset sceneAsset;
+#endif
+
+    public string sceneName = "complete_track_demo";
+    public Sprite previewImage;
+    public Sprite miniMapImage;
+    public bool locked;
+
+    [Header("Race Info")]
+    public string laps = "3";
+    public string timeOfDay = "NOON";
+    public string weather = "CLEAR";
+    public string traffic = "MEDIUM";
+
+    [TextArea(2, 5)]
+    public string trackInfo = "Road course beside the coast. Fill this text with your real track info later.";
+
+#if UNITY_EDITOR
+    public void SyncSceneNameFromAsset()
+    {
+        if (sceneAsset != null)
+            sceneName = sceneAsset.name;
+    }
+#endif
 }
 
 [System.Serializable]
-public class RoomInfo
+public class LobbyCarOption
 {
-    public string code;
-    public string roomName;
-    public RoomPrivacy privacy;
-    public JoinRule joinRule;
-    public string password;
-    public int players;
-    public int maxPlayers = 4;
+    public string id = "car_id";
+    public string displayName = "CAR NAME";
+    public string classLabel = "CLASS A";
+    public GameObject carPrefab;
+    public Sprite previewImage;
+    public bool locked;
+
+    [Range(0, 100)] public int topSpeed = 80;
+    [Range(0, 100)] public int acceleration = 80;
+    [Range(0, 100)] public int handling = 80;
+    [Range(0, 100)] public int braking = 80;
+    [Range(0, 100)] public int nitro = 80;
+
+    [TextArea(2, 4)]
+    public string description = "Balanced street race build.";
 }
 
 public class LobbyRoomController : MonoBehaviour
 {
     public MainMenuFlow menuFlow;
 
-    [Header("Create Room")]
-    public TMP_InputField createRoomNameInput;
-    public TMP_InputField createPasswordInput;
-    public TMP_Dropdown privacyDropdown;
-    public TMP_Dropdown joinRuleDropdown;
+    [Header("Maps")]
+    public LobbyMapOption[] maps;
+    public int selectedMapIndex;
 
-    [Header("Join Room")]
-    public TMP_InputField roomCodeInput;
-    public TMP_InputField joinPasswordInput;
+    [Header("Cars")]
+    public LobbyCarOption[] cars;
+    public int selectedCarIndex;
 
-    [Header("Texts")]
+    [Header("Card Build")]
+    public bool autoBuildCards = true;
+    public Transform mapCardsParent;
+    public Transform carCardsParent;
+    public LobbySelectionCard mapCardPrefab;
+    public LobbySelectionCard carCardPrefab;
+    public LobbySelectionCard[] mapCards;
+    public LobbySelectionCard[] carCards;
+
+    [Header("Summary Texts")]
     public TMP_Text statusText;
-    public TMP_Text currentRoomText;
-    public TMP_Text searchStatusText;
+    public TMP_Text selectedMapText;
+    public TMP_Text selectedCarText;
+    public TMP_Text currentSelectionText;
+    public TMP_Text selectedMapNameText;
+    public TMP_Text selectedMapDistanceText;
+    public TMP_Text selectedCarNameText;
+    public TMP_Text selectedCarClassText;
+    public TMP_Text selectedCarDescriptionText;
 
-    [Header("Quick Join")]
-    public GameObject stopQuickJoinButton;
+    [Header("Race Info Texts")]
+    public TMP_Text raceInfoText;
+    public TMP_Text lapsText;
+    public TMP_Text timeOfDayText;
+    public TMP_Text weatherText;
+    public TMP_Text trafficText;
 
-    readonly Dictionary<string, RoomInfo> rooms = new Dictionary<string, RoomInfo>();
-    string currentRoomCode = "";
-    Coroutine quickJoinCoroutine;
-    bool quickJoinActive;
+    [Header("Track Info Texts")]
+    public TMP_Text trackInfoText;
+    public Image trackPreviewImage;
+
+    [Header("Car Stat Bars")]
+    public Image topSpeedFill;
+    public Image accelerationFill;
+    public Image handlingFill;
+    public Image brakingFill;
+    public Image nitroFill;
+
+    [Header("Car Stat Values")]
+    public TMP_Text topSpeedValueText;
+    public TMP_Text accelerationValueText;
+    public TMP_Text handlingValueText;
+    public TMP_Text brakingValueText;
+    public TMP_Text nitroValueText;
+
+    void Awake()
+    {
+        EnsureDefaultData();
+        BindSceneObjects();
+    }
 
     void Start()
     {
-        BindSceneObjects();
-        UpdateCurrentRoomText();
+        EnsureDefaultData();
+        ClampSelection();
+        BuildCards();
+        ApplySelectionState();
+        RefreshAll("San sang chon map va xe.");
+    }
+
+    void OnValidate()
+    {
+        EnsureDefaultData();
+
+#if UNITY_EDITOR
+        if (maps != null)
+        {
+            foreach (LobbyMapOption map in maps)
+            {
+                if (map != null)
+                    map.SyncSceneNameFromAsset();
+            }
+        }
+#endif
+
+        ClampSelection();
     }
 
     public void BindSceneObjects()
     {
         menuFlow = menuFlow != null ? menuFlow : GetComponent<MainMenuFlow>();
 
-        GameObject createPanel = MainMenuFlow.FindSceneObject("CreateRoomPanel");
-        GameObject joinPanel = MainMenuFlow.FindSceneObject("JoinRoomPanel");
         GameObject lobbyPanel = MainMenuFlow.FindSceneObject("LobbyPanel");
 
-        createRoomNameInput = createRoomNameInput != null ? createRoomNameInput : MainMenuFlow.FindComponentIn(createPanel, "RoomNameInput", typeof(TMP_InputField)) as TMP_InputField;
-        createPasswordInput = createPasswordInput != null ? createPasswordInput : MainMenuFlow.FindComponentIn(createPanel, "PasswordInput", typeof(TMP_InputField)) as TMP_InputField;
-        privacyDropdown = privacyDropdown != null ? privacyDropdown : MainMenuFlow.FindComponentIn(createPanel, "PrivacyDropdown", typeof(TMP_Dropdown)) as TMP_Dropdown;
-        joinRuleDropdown = joinRuleDropdown != null ? joinRuleDropdown : MainMenuFlow.FindComponentIn(createPanel, "JoinRuleDropdown", typeof(TMP_Dropdown)) as TMP_Dropdown;
+        mapCardsParent = mapCardsParent != null ? mapCardsParent : FindTransform(lobbyPanel, "MapCardsParent", "MapList", "MapContent", "SelectMapContent");
+        carCardsParent = carCardsParent != null ? carCardsParent : FindTransform(lobbyPanel, "CarCardsParent", "CarList", "CarContent", "SelectCarContent");
 
-        roomCodeInput = roomCodeInput != null ? roomCodeInput : MainMenuFlow.FindComponentIn(joinPanel, "RoomCodeInput", typeof(TMP_InputField)) as TMP_InputField;
-        joinPasswordInput = joinPasswordInput != null ? joinPasswordInput : MainMenuFlow.FindComponentIn(joinPanel, "PasswordInput", typeof(TMP_InputField)) as TMP_InputField;
-        searchStatusText = searchStatusText != null ? searchStatusText : MainMenuFlow.FindComponentIn(joinPanel, "SearchStatusText", typeof(TMP_Text)) as TMP_Text;
+        statusText = statusText != null ? statusText : FindFirstText(lobbyPanel, "StatusText", "SearchStatusText");
+        selectedMapText = selectedMapText != null ? selectedMapText : FindFirstText(lobbyPanel, "SelectedMapText", "MapText", "MapNameText");
+        selectedCarText = selectedCarText != null ? selectedCarText : FindFirstText(lobbyPanel, "SelectedCarText", "CarText", "CarNameText");
+        currentSelectionText = currentSelectionText != null ? currentSelectionText : FindFirstText(lobbyPanel, "CurrentSelectionText", "CurrentRoomText");
+        selectedMapNameText = selectedMapNameText != null ? selectedMapNameText : FindFirstText(lobbyPanel, "SelectedMapNameText", "SelectedTrackNameText", "TrackNameText");
+        selectedMapDistanceText = selectedMapDistanceText != null ? selectedMapDistanceText : FindFirstText(lobbyPanel, "SelectedMapDistanceText", "SelectedTrackDistanceText", "TrackDistanceText");
+        selectedCarNameText = selectedCarNameText != null ? selectedCarNameText : FindFirstText(lobbyPanel, "SelectedCarNameText", "SelectedVehicleNameText", "VehicleNameText");
+        selectedCarClassText = selectedCarClassText != null ? selectedCarClassText : FindFirstText(lobbyPanel, "SelectedCarClassText", "SelectedVehicleClassText", "VehicleClassText");
+        selectedCarDescriptionText = selectedCarDescriptionText != null ? selectedCarDescriptionText : FindFirstText(lobbyPanel, "SelectedCarDescriptionText", "CarDescriptionText");
 
-        statusText = statusText != null ? statusText : MainMenuFlow.FindComponentIn(lobbyPanel, "StatusText", typeof(TMP_Text)) as TMP_Text;
-        currentRoomText = currentRoomText != null ? currentRoomText : MainMenuFlow.FindComponentIn(lobbyPanel, "CurrentRoomText", typeof(TMP_Text)) as TMP_Text;
-        stopQuickJoinButton = stopQuickJoinButton != null ? stopQuickJoinButton : MainMenuFlow.FindChild(lobbyPanel, "StopQuickJoinButton");
+        raceInfoText = raceInfoText != null ? raceInfoText : FindFirstText(lobbyPanel, "RaceInfoText");
+        lapsText = lapsText != null ? lapsText : FindFirstText(lobbyPanel, "LapsText", "LapText");
+        timeOfDayText = timeOfDayText != null ? timeOfDayText : FindFirstText(lobbyPanel, "TimeOfDayText", "TimeText");
+        weatherText = weatherText != null ? weatherText : FindFirstText(lobbyPanel, "WeatherText");
+        trafficText = trafficText != null ? trafficText : FindFirstText(lobbyPanel, "TrafficText");
+        trackInfoText = trackInfoText != null ? trackInfoText : FindFirstText(lobbyPanel, "TrackInfoText", "TrackDescriptionText");
+        trackPreviewImage = trackPreviewImage != null ? trackPreviewImage : FindFirstImage(lobbyPanel, "TrackPreviewImage", "MiniMapImage", "TrackImage");
 
-        SetupDropdowns();
+        topSpeedFill = topSpeedFill != null ? topSpeedFill : FindFirstImage(lobbyPanel, "TopSpeedFill", "SpeedFill");
+        accelerationFill = accelerationFill != null ? accelerationFill : FindFirstImage(lobbyPanel, "AccelerationFill", "AccelFill");
+        handlingFill = handlingFill != null ? handlingFill : FindFirstImage(lobbyPanel, "HandlingFill");
+        brakingFill = brakingFill != null ? brakingFill : FindFirstImage(lobbyPanel, "BrakingFill", "BrakeFill");
+        nitroFill = nitroFill != null ? nitroFill : FindFirstImage(lobbyPanel, "NitroFill", "BoostFill");
 
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
+        topSpeedValueText = topSpeedValueText != null ? topSpeedValueText : FindFirstText(lobbyPanel, "TopSpeedValueText", "SpeedValueText");
+        accelerationValueText = accelerationValueText != null ? accelerationValueText : FindFirstText(lobbyPanel, "AccelerationValueText", "AccelValueText");
+        handlingValueText = handlingValueText != null ? handlingValueText : FindFirstText(lobbyPanel, "HandlingValueText");
+        brakingValueText = brakingValueText != null ? brakingValueText : FindFirstText(lobbyPanel, "BrakingValueText", "BrakeValueText");
+        nitroValueText = nitroValueText != null ? nitroValueText : FindFirstText(lobbyPanel, "NitroValueText", "BoostValueText");
     }
 
-    void SetupDropdowns()
+    public void SelectMap(int index)
     {
-        if (privacyDropdown != null)
+        if (!HasMaps())
         {
-            privacyDropdown.ClearOptions();
-            privacyDropdown.AddOptions(new List<string> { "Public", "Private" });
-        }
-
-        if (joinRuleDropdown != null)
-        {
-            joinRuleDropdown.ClearOptions();
-            joinRuleDropdown.AddOptions(new List<string> { "Vao ngay", "Chu phong duyet" });
-        }
-    }
-
-    public void CreateRoom()
-    {
-        BindSceneObjects();
-
-        if (!string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Ban dang o trong phong roi.");
+            RefreshAll("Chua co map de chon.");
             return;
         }
 
-        string code = GenerateRoomCode();
-        string roomName = createRoomNameInput != null ? createRoomNameInput.text : "";
-        string password = createPasswordInput != null ? createPasswordInput.text : "";
-
-        RoomInfo room = new RoomInfo
+        index = Mathf.Clamp(index, 0, maps.Length - 1);
+        if (maps[index].locked)
         {
-            code = code,
-            roomName = string.IsNullOrWhiteSpace(roomName) ? "Room " + code : roomName,
-            privacy = privacyDropdown != null && privacyDropdown.value == 1 ? RoomPrivacy.Private : RoomPrivacy.Public,
-            joinRule = joinRuleDropdown != null && joinRuleDropdown.value == 1 ? JoinRule.HostApproval : JoinRule.Instant,
-            password = password,
-            players = 1,
-            maxPlayers = 4
-        };
-
-        if (room.privacy == RoomPrivacy.Private && string.IsNullOrWhiteSpace(room.password))
-        {
-            SetStatus("Phong private can mat khau.");
+            RefreshAll("Map nay dang khoa.");
             return;
         }
 
-        rooms.Add(code, room);
-        currentRoomCode = code;
-        SetStatus("Da tao phong #" + code);
-        SetSearchStatus("Da tao phong #" + code);
-        UpdateCurrentRoomText();
-
-        if (menuFlow != null)
-            menuFlow.ShowLobby();
+        selectedMapIndex = index;
+        ApplySelectionState();
+        RefreshAll("Da chon map " + GetSelectedMap().displayName + ".");
     }
 
-    public void JoinByCode()
+    public void SelectCar(int index)
     {
-        BindSceneObjects();
-        string code = NormalizeCode(roomCodeInput != null ? roomCodeInput.text : "");
-
-        if (string.IsNullOrEmpty(code))
+        if (!HasCars())
         {
-            SetSearchStatus("Nhap ma phong 4 so.");
+            RefreshAll("Chua co xe de chon.");
             return;
         }
 
-        if (!rooms.TryGetValue(code, out RoomInfo room))
+        index = Mathf.Clamp(index, 0, cars.Length - 1);
+        if (cars[index].locked)
         {
-            SetSearchStatus("Khong tim thay phong #" + code);
+            RefreshAll("Xe nay dang khoa.");
             return;
         }
 
-        SetSearchStatus("Tim thay phong #" + code);
-        TryJoinRoom(room);
+        selectedCarIndex = index;
+        ApplySelectionState();
+        RefreshAll("Da chon xe " + GetSelectedCar().displayName + ".");
     }
 
-    public void StartQuickJoin()
+    public void SelectNextMap()
     {
-        BindSceneObjects();
+        SelectNextAvailableMap(1);
+    }
 
-        if (!string.IsNullOrEmpty(currentRoomCode))
+    public void SelectPreviousMap()
+    {
+        SelectNextAvailableMap(-1);
+    }
+
+    public void SelectNextCar()
+    {
+        SelectNextAvailableCar(1);
+    }
+
+    public void SelectPreviousCar()
+    {
+        SelectNextAvailableCar(-1);
+    }
+
+    public void RandomizeSelection()
+    {
+        if (HasMaps())
+            selectedMapIndex = GetRandomUnlockedMapIndex();
+
+        if (HasCars())
+            selectedCarIndex = GetRandomUnlockedCarIndex();
+
+        ApplySelectionState();
+        RefreshAll("Da random map va xe.");
+    }
+
+    public void StartSelectedMap()
+    {
+        ClampSelection();
+
+        LobbyMapOption map = GetSelectedMap();
+        if (map == null)
         {
-            SetStatus("Ban dang o trong phong roi.");
+            RefreshAll("Chua co map. Hay them Maps trong Inspector.");
             return;
         }
 
-        if (quickJoinCoroutine != null)
-            StopCoroutine(quickJoinCoroutine);
+        if (map.locked)
+        {
+            RefreshAll("Map nay dang khoa.");
+            return;
+        }
 
-        quickJoinCoroutine = StartCoroutine(QuickJoinRoutine());
+        if (string.IsNullOrWhiteSpace(map.sceneName))
+        {
+            RefreshAll("Map chua co Scene Name. Keo scene vao Scene Asset hoac dien Scene Name.");
+            return;
+        }
+
+        ApplySelectionState();
+        RefreshAll("Dang vao map " + map.displayName + "...");
+        SceneManager.LoadScene(map.sceneName);
     }
 
-    IEnumerator QuickJoinRoutine()
+    void SelectNextAvailableMap(int step)
     {
-        quickJoinActive = true;
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(true);
-
-        SetStatus("Dang tham gia nhanh...");
-        yield return new WaitForSeconds(0.5f);
-
-        foreach (RoomInfo room in rooms.Values)
+        if (!HasMaps())
         {
-            if (!quickJoinActive)
-                yield break;
+            RefreshAll("Chua co map de chon.");
+            return;
+        }
 
-            if (room.privacy != RoomPrivacy.Public || room.players >= room.maxPlayers)
+        selectedMapIndex = FindNextUnlockedIndex(maps, selectedMapIndex, step);
+        ApplySelectionState();
+        RefreshAll("Da doi map.");
+    }
+
+    void SelectNextAvailableCar(int step)
+    {
+        if (!HasCars())
+        {
+            RefreshAll("Chua co xe de chon.");
+            return;
+        }
+
+        selectedCarIndex = FindNextUnlockedIndex(cars, selectedCarIndex, step);
+        ApplySelectionState();
+        RefreshAll("Da doi xe.");
+    }
+
+    int FindNextUnlockedIndex(LobbyMapOption[] values, int current, int step)
+    {
+        for (int i = 1; i <= values.Length; i++)
+        {
+            int index = (current + step * i + values.Length) % values.Length;
+            if (!values[index].locked)
+                return index;
+        }
+
+        return Mathf.Clamp(current, 0, values.Length - 1);
+    }
+
+    int FindNextUnlockedIndex(LobbyCarOption[] values, int current, int step)
+    {
+        for (int i = 1; i <= values.Length; i++)
+        {
+            int index = (current + step * i + values.Length) % values.Length;
+            if (!values[index].locked)
+                return index;
+        }
+
+        return Mathf.Clamp(current, 0, values.Length - 1);
+    }
+
+    int GetRandomUnlockedMapIndex()
+    {
+        int unlockedCount = 0;
+        foreach (LobbyMapOption map in maps)
+        {
+            if (!map.locked)
+                unlockedCount++;
+        }
+
+        if (unlockedCount == 0)
+            return Mathf.Clamp(selectedMapIndex, 0, maps.Length - 1);
+
+        int target = Random.Range(0, unlockedCount);
+        for (int i = 0; i < maps.Length; i++)
+        {
+            if (maps[i].locked)
                 continue;
 
-            if (room.joinRule == JoinRule.Instant)
-            {
-                JoinRoom(room);
-                FinishQuickJoin();
-                yield break;
-            }
+            if (target == 0)
+                return i;
 
-            SetStatus("Dang cho chu phong #" + room.code + " chap nhan...");
-            yield return new WaitForSeconds(2f);
-
-            if (!string.IsNullOrEmpty(currentRoomCode))
-            {
-                SetStatus("Khong the vao: ban da o phong khac.");
-                FinishQuickJoin();
-                yield break;
-            }
-
-            JoinRoom(room);
-            FinishQuickJoin();
-            yield break;
+            target--;
         }
 
-        SetStatus("Khong co phong public phu hop.");
-        FinishQuickJoin();
+        return 0;
     }
 
-    public void StopQuickJoin()
+    int GetRandomUnlockedCarIndex()
     {
-        quickJoinActive = false;
-
-        if (quickJoinCoroutine != null)
+        int unlockedCount = 0;
+        foreach (LobbyCarOption car in cars)
         {
-            StopCoroutine(quickJoinCoroutine);
-            quickJoinCoroutine = null;
+            if (!car.locked)
+                unlockedCount++;
         }
 
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
+        if (unlockedCount == 0)
+            return Mathf.Clamp(selectedCarIndex, 0, cars.Length - 1);
 
-        SetStatus("Da dung tham gia nhanh.");
+        int target = Random.Range(0, unlockedCount);
+        for (int i = 0; i < cars.Length; i++)
+        {
+            if (cars[i].locked)
+                continue;
+
+            if (target == 0)
+                return i;
+
+            target--;
+        }
+
+        return 0;
     }
 
-    void FinishQuickJoin()
+    void BuildCards()
     {
-        quickJoinActive = false;
-        quickJoinCoroutine = null;
-
-        if (stopQuickJoinButton != null)
-            stopQuickJoinButton.SetActive(false);
+        BuildMapCards();
+        BuildCarCards();
     }
 
+    void BuildMapCards()
+    {
+        if (autoBuildCards && mapCardPrefab != null && mapCardsParent != null && HasMaps())
+        {
+            ClearGeneratedCards(mapCardsParent, mapCardPrefab);
+            mapCards = new LobbySelectionCard[maps.Length];
+
+            for (int i = 0; i < maps.Length; i++)
+            {
+                LobbySelectionCard card = Instantiate(mapCardPrefab, mapCardsParent);
+                card.name = "Generated_MapCard_" + i;
+                card.gameObject.SetActive(true);
+                mapCards[i] = card;
+            }
+
+            if (mapCardPrefab.gameObject.scene.IsValid())
+                mapCardPrefab.gameObject.SetActive(false);
+        }
+
+        if (mapCards == null)
+            return;
+
+        for (int i = 0; i < mapCards.Length; i++)
+        {
+            if (mapCards[i] == null)
+                continue;
+
+            if (maps == null || i >= maps.Length)
+            {
+                mapCards[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            mapCards[i].gameObject.SetActive(true);
+            mapCards[i].SetupMap(this, i, maps[i]);
+        }
+    }
+
+    void BuildCarCards()
+    {
+        if (autoBuildCards && carCardPrefab != null && carCardsParent != null && HasCars())
+        {
+            ClearGeneratedCards(carCardsParent, carCardPrefab);
+            carCards = new LobbySelectionCard[cars.Length];
+
+            for (int i = 0; i < cars.Length; i++)
+            {
+                LobbySelectionCard card = Instantiate(carCardPrefab, carCardsParent);
+                card.name = "Generated_CarCard_" + i;
+                card.gameObject.SetActive(true);
+                carCards[i] = card;
+            }
+
+            if (carCardPrefab.gameObject.scene.IsValid())
+                carCardPrefab.gameObject.SetActive(false);
+        }
+
+        if (carCards == null)
+            return;
+
+        for (int i = 0; i < carCards.Length; i++)
+        {
+            if (carCards[i] == null)
+                continue;
+
+            if (cars == null || i >= cars.Length)
+            {
+                carCards[i].gameObject.SetActive(false);
+                continue;
+            }
+
+            carCards[i].gameObject.SetActive(true);
+            carCards[i].SetupCar(this, i, cars[i]);
+        }
+    }
+
+    void ClearGeneratedCards(Transform parent, LobbySelectionCard prefab)
+    {
+        for (int i = parent.childCount - 1; i >= 0; i--)
+        {
+            Transform child = parent.GetChild(i);
+            LobbySelectionCard card = child.GetComponent<LobbySelectionCard>();
+            if (card == null || card == prefab)
+                continue;
+
+            if (Application.isPlaying)
+                Destroy(child.gameObject);
+            else
+                DestroyImmediate(child.gameObject);
+        }
+    }
+
+    void RefreshAll(string status)
+    {
+        ClampSelection();
+        RefreshCards();
+        RefreshTexts(status);
+        RefreshStats();
+    }
+
+    void RefreshCards()
+    {
+        if (mapCards != null)
+        {
+            for (int i = 0; i < mapCards.Length; i++)
+            {
+                if (mapCards[i] != null)
+                    mapCards[i].SetSelected(i == selectedMapIndex);
+            }
+        }
+
+        if (carCards != null)
+        {
+            for (int i = 0; i < carCards.Length; i++)
+            {
+                if (carCards[i] != null)
+                    carCards[i].SetSelected(i == selectedCarIndex);
+            }
+        }
+    }
+
+    void RefreshTexts(string status)
+    {
+        LobbyMapOption map = GetSelectedMap();
+        LobbyCarOption car = GetSelectedCar();
+
+        string mapName = map != null ? map.displayName : "Chua co";
+        string carName = car != null ? car.displayName : "Chua co";
+
+        if (statusText != null)
+            statusText.text = status;
+
+        if (selectedMapText != null)
+            selectedMapText.text = "Map: " + mapName;
+
+        if (selectedCarText != null)
+            selectedCarText.text = "Xe: " + carName;
+
+        if (currentSelectionText != null)
+            currentSelectionText.text = "Map: " + mapName + "\nXe: " + carName;
+
+        if (selectedMapNameText != null)
+            selectedMapNameText.text = mapName;
+
+        if (selectedMapDistanceText != null)
+            selectedMapDistanceText.text = map != null ? map.distanceText : "";
+
+        if (selectedCarNameText != null)
+            selectedCarNameText.text = carName;
+
+        if (selectedCarClassText != null)
+            selectedCarClassText.text = car != null ? car.classLabel : "";
+
+        if (selectedCarDescriptionText != null)
+            selectedCarDescriptionText.text = car != null ? car.description : "";
+
+        RefreshRaceInfo(map);
+        RefreshTrackInfo(map);
+    }
+
+    void RefreshRaceInfo(LobbyMapOption map)
+    {
+        if (map == null)
+            return;
+
+        if (raceInfoText != null)
+            raceInfoText.text = "LAPS\n" + map.laps + "\n\nTIME OF DAY\n" + map.timeOfDay + "\n\nWEATHER\n" + map.weather + "\n\nTRAFFIC\n" + map.traffic;
+
+        if (lapsText != null)
+            lapsText.text = map.laps;
+
+        if (timeOfDayText != null)
+            timeOfDayText.text = map.timeOfDay;
+
+        if (weatherText != null)
+            weatherText.text = map.weather;
+
+        if (trafficText != null)
+            trafficText.text = map.traffic;
+    }
+
+    void RefreshTrackInfo(LobbyMapOption map)
+    {
+        if (trackInfoText != null)
+            trackInfoText.text = map != null ? map.trackInfo : "";
+
+        if (trackPreviewImage != null && map != null)
+        {
+            Sprite sprite = map.miniMapImage != null ? map.miniMapImage : map.previewImage;
+            if (sprite != null)
+                trackPreviewImage.sprite = sprite;
+        }
+    }
+
+    void RefreshStats()
+    {
+        LobbyCarOption car = GetSelectedCar();
+        if (car == null)
+            return;
+
+        SetStat(topSpeedFill, topSpeedValueText, car.topSpeed);
+        SetStat(accelerationFill, accelerationValueText, car.acceleration);
+        SetStat(handlingFill, handlingValueText, car.handling);
+        SetStat(brakingFill, brakingValueText, car.braking);
+        SetStat(nitroFill, nitroValueText, car.nitro);
+    }
+
+    void SetStat(Image fill, TMP_Text valueText, int value)
+    {
+        if (fill != null)
+        {
+            fill.type = Image.Type.Filled;
+            fill.fillMethod = Image.FillMethod.Horizontal;
+            fill.fillOrigin = 0;
+            fill.fillAmount = Mathf.Clamp01(value / 100f);
+        }
+
+        if (valueText != null)
+            valueText.text = value.ToString();
+    }
+
+    void ApplySelectionState()
+    {
+        ClampSelection();
+
+        LobbyMapOption map = GetSelectedMap();
+        LobbyCarOption car = GetSelectedCar();
+
+        CarSelectionState.SelectedMapIndex = selectedMapIndex;
+        CarSelectionState.SelectedMapSceneName = map != null ? map.sceneName : "";
+        CarSelectionState.SelectedMapDisplayName = map != null ? map.displayName : "";
+
+        CarSelectionState.SelectedCarIndex = selectedCarIndex;
+        CarSelectionState.SelectedCarId = car != null ? car.id : "";
+        CarSelectionState.SelectedCarDisplayName = car != null ? car.displayName : "";
+        CarSelectionState.SelectedCarClass = car != null ? car.classLabel : "";
+        CarSelectionState.SelectedCarPrefab = car != null ? car.carPrefab : null;
+
+        if (car != null)
+        {
+            CarSelectionState.SelectedTopSpeed = car.topSpeed;
+            CarSelectionState.SelectedAcceleration = car.acceleration;
+            CarSelectionState.SelectedHandling = car.handling;
+            CarSelectionState.SelectedBraking = car.braking;
+            CarSelectionState.SelectedNitro = car.nitro;
+        }
+    }
+
+    void ClampSelection()
+    {
+        selectedMapIndex = HasMaps() ? Mathf.Clamp(selectedMapIndex, 0, maps.Length - 1) : 0;
+        selectedCarIndex = HasCars() ? Mathf.Clamp(selectedCarIndex, 0, cars.Length - 1) : 0;
+
+        if (HasMaps() && maps[selectedMapIndex].locked)
+            selectedMapIndex = GetRandomUnlockedMapIndex();
+
+        if (HasCars() && cars[selectedCarIndex].locked)
+            selectedCarIndex = GetRandomUnlockedCarIndex();
+    }
+
+    bool HasMaps()
+    {
+        return maps != null && maps.Length > 0;
+    }
+
+    bool HasCars()
+    {
+        return cars != null && cars.Length > 0;
+    }
+
+    LobbyMapOption GetSelectedMap()
+    {
+        if (!HasMaps())
+            return null;
+
+        return maps[Mathf.Clamp(selectedMapIndex, 0, maps.Length - 1)];
+    }
+
+    LobbyCarOption GetSelectedCar()
+    {
+        if (!HasCars())
+            return null;
+
+        return cars[Mathf.Clamp(selectedCarIndex, 0, cars.Length - 1)];
+    }
+
+    void EnsureDefaultData()
+    {
+        if (maps == null || maps.Length == 0)
+            maps = CreateDefaultMaps();
+
+        if (cars == null || cars.Length == 0)
+            cars = CreateDefaultCars();
+
+        for (int i = 0; i < maps.Length; i++)
+        {
+            if (maps[i] == null)
+                maps[i] = new LobbyMapOption { id = "map_" + i, displayName = "MAP " + (i + 1), sceneName = "" };
+        }
+
+        for (int i = 0; i < cars.Length; i++)
+        {
+            if (cars[i] == null)
+                cars[i] = new LobbyCarOption { id = "car_" + i, displayName = "CAR " + (i + 1) };
+        }
+    }
+
+    LobbyMapOption[] CreateDefaultMaps()
+    {
+        return new[]
+        {
+            new LobbyMapOption
+            {
+                id = "complete_track_demo",
+                displayName = "TRACK RACE",
+                distanceText = "-- KM",
+                sceneName = "complete_track_demo",
+                laps = "---",
+                timeOfDay = "NOON",
+                weather = "CLEAR",
+                traffic = "MEDIUM",
+                trackInfo = "Tu dien thong tin duong dua tai day."
+            }
+        };
+    }
+
+    LobbyCarOption[] CreateDefaultCars()
+    {
+        return new[]
+        {
+            new LobbyCarOption
+            {
+                id = "supra_mk4",
+                displayName = "1993 TOYOTA SUPRA MK4",
+                classLabel = "CLASS A",
+                topSpeed = 86,
+                acceleration = 82,
+                handling = 78,
+                braking = 74,
+                nitro = 80,
+                description = "Strong straight-line build with stable corner exits."
+            },
+            new LobbyCarOption
+            {
+                id = "bmw_m3_gtr_e46",
+                displayName = "2005 BMW M3 GTR E46",
+                classLabel = "CLASS S",
+                topSpeed = 90,
+                acceleration = 86,
+                handling = 84,
+                braking = 80,
+                nitro = 82,
+                description = "Race-tuned grip car with balanced power and control."
+            },
+            new LobbyCarOption
+            {
+                id = "subaru_wrx_sti_police",
+                displayName = "2008 SUBARU WRX STI POLICE",
+                classLabel = "CLASS A",
+                topSpeed = 78,
+                acceleration = 80,
+                handling = 88,
+                braking = 82,
+                nitro = 72,
+                description = "All-wheel-drive control, quick recovery, and reliable braking."
+            },
+            new LobbyCarOption
+            {
+                id = "lexus_lfa",
+                displayName = "2012 LEXUS LFA",
+                classLabel = "CLASS S",
+                topSpeed = 92,
+                acceleration = 88,
+                handling = 82,
+                braking = 78,
+                nitro = 85,
+                description = "High-rev supercar with sharp response and strong nitro pull."
+            },
+            new LobbyCarOption
+            {
+                id = "golf_mk7_gti",
+                displayName = "2019 VW GOLF MK7 GTI",
+                classLabel = "CLASS B",
+                topSpeed = 74,
+                acceleration = 76,
+                handling = 84,
+                braking = 76,
+                nitro = 68,
+                description = "Compact hatch with easy handling and forgiving corner speed."
+            },
+            new LobbyCarOption
+            {
+                id = "taycan_turbo_s",
+                displayName = "2020 PORSCHE TAYCAN TURBO S",
+                classLabel = "CLASS S",
+                topSpeed = 94,
+                acceleration = 96,
+                handling = 80,
+                braking = 84,
+                nitro = 88,
+                description = "Instant electric launch with heavy but very fast acceleration."
+            }
+        };
+    }
+
+    TMP_Text FindFirstText(GameObject root, params string[] names)
+    {
+        foreach (string textName in names)
+        {
+            TMP_Text found = MainMenuFlow.FindComponentIn(root, textName, typeof(TMP_Text)) as TMP_Text;
+            if (found != null)
+                return found;
+        }
+
+        return null;
+    }
+
+    Image FindFirstImage(GameObject root, params string[] names)
+    {
+        foreach (string imageName in names)
+        {
+            Image found = MainMenuFlow.FindComponentIn(root, imageName, typeof(Image)) as Image;
+            if (found != null)
+                return found;
+        }
+
+        return null;
+    }
+
+    Transform FindTransform(GameObject root, params string[] names)
+    {
+        foreach (string objectName in names)
+        {
+            GameObject found = MainMenuFlow.FindChild(root, objectName);
+            if (found != null)
+                return found.transform;
+        }
+
+        return null;
+    }
+
+    // Compatibility for old online button bindings. Lobby is offline now, so these route to the new selection flow.
+    public void CreateRoom() => StartSelectedMap();
+    public void JoinByCode() => RefreshAll("Online da tat. Lobby hien dung de chon map va xe.");
+    public void StartQuickJoin() => RandomizeSelection();
+    public void StopQuickJoin() => RefreshAll("Da dung random.");
     public void LeaveCurrentRoom()
     {
-        if (string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Ban chua o trong phong nao.");
-            return;
-        }
-
-        if (rooms.TryGetValue(currentRoomCode, out RoomInfo room))
-            room.players = Mathf.Max(0, room.players - 1);
-
-        currentRoomCode = "";
-        SetStatus("Da roi phong.");
-        UpdateCurrentRoomText();
-    }
-
-    void TryJoinRoom(RoomInfo room)
-    {
-        if (!string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Ban dang o trong phong khac.");
-            return;
-        }
-
-        if (room.players >= room.maxPlayers)
-        {
-            SetStatus("Phong da day.");
-            return;
-        }
-
-        string password = joinPasswordInput != null ? joinPasswordInput.text : "";
-        if (room.privacy == RoomPrivacy.Private && password != room.password)
-        {
-            SetStatus("Sai mat khau phong.");
-            SetSearchStatus("Sai mat khau phong.");
-            return;
-        }
-
-        if (room.joinRule == JoinRule.HostApproval)
-        {
-            SetStatus("Da gui yeu cau vao phong, cho chu phong chap nhan.");
-            StartCoroutine(HostApprovalRoutine(room));
-            return;
-        }
-
-        JoinRoom(room);
-    }
-
-    IEnumerator HostApprovalRoutine(RoomInfo room)
-    {
-        yield return new WaitForSeconds(2f);
-
-        if (!string.IsNullOrEmpty(currentRoomCode))
-        {
-            SetStatus("Chu phong da chap nhan nhung ban da vao phong khac.");
-            yield break;
-        }
-
-        JoinRoom(room);
-    }
-
-    void JoinRoom(RoomInfo room)
-    {
-        room.players++;
-        currentRoomCode = room.code;
-        SetStatus("Da vao phong #" + room.code);
-        SetSearchStatus("Da vao phong #" + room.code);
-        UpdateCurrentRoomText();
-
         if (menuFlow != null)
-            menuFlow.ShowLobby();
-    }
-
-    string GenerateRoomCode()
-    {
-        for (int i = 0; i < 1000; i++)
-        {
-            string code = Random.Range(1000, 10000).ToString();
-            if (!rooms.ContainsKey(code))
-                return code;
-        }
-
-        return Random.Range(1000, 10000).ToString();
-    }
-
-    string NormalizeCode(string raw)
-    {
-        if (string.IsNullOrWhiteSpace(raw))
-            return "";
-
-        raw = raw.Replace("#", "").Trim();
-        return raw.Length > 4 ? raw.Substring(0, 4) : raw;
-    }
-
-    void SetStatus(string message)
-    {
-        if (statusText != null)
-            statusText.text = message;
-    }
-
-    void SetSearchStatus(string message)
-    {
-        if (searchStatusText != null)
-            searchStatusText.text = message;
-    }
-
-    void UpdateCurrentRoomText()
-    {
-        if (currentRoomText == null)
-            return;
-
-        currentRoomText.text = string.IsNullOrEmpty(currentRoomCode)
-            ? "Chua vao phong"
-            : "Dang o phong #" + currentRoomCode;
+            menuFlow.ShowMainMenu();
     }
 }

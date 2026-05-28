@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9cf0f46a45f876a42b94de0c48a4c081
+guid: 775320a1dfd8e1140ab426f2e402d72a
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 110, y: 41, z: 62, w: 47}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIbutton_0
+      name: UIbuttonMainMenu-removebg-preview 1_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 42
-        width: 868
-        height: 151
+        x: 82
+        y: 636
+        width: 835
+        height: 203
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,8 +125,96 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbeca2b86d07db745824d89182385d16
-      internalID: -145621380
+      spriteID: 04ad0a5c5201d5d4790c2679309f4c28
+      internalID: -2050599491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbuttonMainMenu-removebg-preview 1_1
+      rect:
+        serializedVersion: 2
+        x: 1281
+        y: 637
+        width: 306
+        height: 199
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b109681db62c4674b8a3f1bb074f30f2
+      internalID: -1897677037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbuttonMainMenu-removebg-preview 1_2
+      rect:
+        serializedVersion: 2
+        x: 66
+        y: 357
+        width: 757
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 55f2bbb0ef2bb5347b7d56718c88da15
+      internalID: 630761868
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbuttonMainMenu-removebg-preview 1_3
+      rect:
+        serializedVersion: 2
+        x: 838
+        y: 357
+        width: 749
+        height: 200
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 61ba9399f1a7418448baa1a599c772f4
+      internalID: -1197961108
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: UIbuttonMainMenu-removebg-preview 1_4
+      rect:
+        serializedVersion: 2
+        x: 152
+        y: 79
+        width: 1448
+        height: 209
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a7d69746fb8bd7d438afb3e3754bc9a2
+      internalID: -266598539
       vertices: []
       indices: 
       edges: []
@@ -135,8 +223,8 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 5e97eb03825dee720800000000000000
-    internalID: 1537655665
+    spriteID: d0d6a152273b9b04e85e1b587368f6ae
+    internalID: 0
     vertices: []
     indices: 
     edges: []
@@ -147,7 +235,11 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      UIbutton_0: -145621380
+      UIbuttonMainMenu-removebg-preview 1_0: -2050599491
+      UIbuttonMainMenu-removebg-preview 1_1: -1897677037
+      UIbuttonMainMenu-removebg-preview 1_2: 630761868
+      UIbuttonMainMenu-removebg-preview 1_3: -1197961108
+      UIbuttonMainMenu-removebg-preview 1_4: -266598539
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: 9cf0f46a45f876a42b94de0c48a4c081
+guid: a2fe384c21e4e58429aab587b4f7a86e
 TextureImporter:
   internalIDToNameTable: []
   externalObjects: {}
@@ -49,7 +49,7 @@ TextureImporter:
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
   spritePixelsToUnits: 100
-  spriteBorder: {x: 110, y: 41, z: 62, w: 47}
+  spriteBorder: {x: 135, y: 396, z: 136, w: 404}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
   alphaIsTransparency: 1
@@ -72,7 +72,7 @@ TextureImporter:
     maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
-    textureCompression: 1
+    textureCompression: 0
     compressionQuality: 50
     crunchedCompression: 0
     allowsAlphaSplitting: 0
@@ -110,13 +110,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: UIbutton_0
+      name: ChatGPT Image May 28, 2026, 06_14_42 AM_0
       rect:
         serializedVersion: 2
-        x: 108
-        y: 42
-        width: 868
-        height: 151
+        x: 137
+        y: 395
+        width: 1438
+        height: 118
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -125,8 +125,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fbeca2b86d07db745824d89182385d16
-      internalID: -145621380
+      spriteID: c4829618545807c4bab2034d8e99c10a
+      internalID: 1325129470
       vertices: []
       indices: 
       edges: []
@@ -147,7 +147,7 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":1.0,"y":1.0},"gridSpriteSize":{"x":64.0,"y":64.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":0,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      UIbutton_0: -145621380
+      ChatGPT Image May 28, 2026, 06_14_42 AM_0: 1325129470
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
