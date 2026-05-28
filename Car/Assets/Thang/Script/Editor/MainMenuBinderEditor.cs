@@ -13,6 +13,13 @@ using UnityEngine.UI;
 
 public static class MainMenuBinderEditor
 {
+    static readonly string[] LobbyMapSceneNames = { "complete_track_demo" };
+    static readonly string[] RequiredBuildScenePaths =
+    {
+        "Assets/Scenes/MainMenu.unity",
+        "Assets/Scenes/complete_track_demo.unity"
+    };
+
     [MenuItem("Tools/Thang/Bind Main Menu")]
     public static void BindMainMenu()
     {
@@ -42,6 +49,7 @@ public static class MainMenuBinderEditor
         BindOnClicks(flow, lobby);
         EnsureButtonSounds();
         EnsurePanelPopEffects();
+        EnsureRequiredBuildScenes();
 
         EditorUtility.SetDirty(managerObject);
         EditorUtility.SetDirty(audioObject);
@@ -147,39 +155,67 @@ public static class MainMenuBinderEditor
 
     static void EnsureDefaultLobbyData(LobbyRoomController lobby)
     {
-        if (lobby.maps == null || lobby.maps.Length == 0 || lobby.maps[0] == null)
+        LobbyMapOption[] oldMaps = lobby.maps;
+        LobbyMapOption[] newMaps = new LobbyMapOption[LobbyMapSceneNames.Length];
+
+        for (int i = 0; i < LobbyMapSceneNames.Length; i++)
         {
-            lobby.maps = new[] { CreateMapOption("complete_track_demo", 0) };
+            string sceneName = LobbyMapSceneNames[i];
+            LobbyMapOption map = FindExistingMap(oldMaps, sceneName);
+
+            if (map == null && oldMaps != null && i < oldMaps.Length)
+                map = oldMaps[i];
+
+            if (map == null)
+                map = CreateMapOption(sceneName, i);
+
+            ConfigureMapScene(map, sceneName, i);
+            newMaps[i] = map;
         }
-        else
-        {
-            LobbyMapOption currentMap = lobby.maps[0];
-            lobby.maps = new[] { currentMap };
-            currentMap.id = "complete_track_demo";
-            currentMap.sceneName = "complete_track_demo";
-            currentMap.sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/complete_track_demo.unity");
 
-            if (string.IsNullOrWhiteSpace(currentMap.displayName))
-                currentMap.displayName = "TRACK RACE";
-
-            if (string.IsNullOrWhiteSpace(currentMap.distanceText))
-                currentMap.distanceText = "-- KM";
-
-            if (string.IsNullOrWhiteSpace(currentMap.laps))
-                currentMap.laps = "---";
-
-            if (string.IsNullOrWhiteSpace(currentMap.timeOfDay))
-                currentMap.timeOfDay = "NOON";
-
-            if (string.IsNullOrWhiteSpace(currentMap.weather))
-                currentMap.weather = "CLEAR";
-
-            if (string.IsNullOrWhiteSpace(currentMap.traffic))
-                currentMap.traffic = "MEDIUM";
-        }
+        lobby.maps = newMaps;
 
         if (lobby.cars == null || lobby.cars.Length == 0)
             lobby.cars = CreateDefaultCarOptions();
+    }
+
+    static LobbyMapOption FindExistingMap(LobbyMapOption[] maps, string sceneName)
+    {
+        if (maps == null)
+            return null;
+
+        foreach (LobbyMapOption map in maps)
+        {
+            if (map != null && map.sceneName == sceneName)
+                return map;
+        }
+
+        return null;
+    }
+
+    static void ConfigureMapScene(LobbyMapOption map, string sceneName, int index)
+    {
+        map.id = sceneName;
+        map.sceneName = sceneName;
+        map.sceneAsset = AssetDatabase.LoadAssetAtPath<SceneAsset>("Assets/Scenes/" + sceneName + ".unity");
+
+        if (string.IsNullOrWhiteSpace(map.displayName))
+            map.displayName = SceneNameToDisplayName(sceneName, index);
+
+        if (string.IsNullOrWhiteSpace(map.distanceText))
+            map.distanceText = "-- KM";
+
+        if (string.IsNullOrWhiteSpace(map.laps))
+            map.laps = "---";
+
+        if (string.IsNullOrWhiteSpace(map.timeOfDay))
+            map.timeOfDay = "NOON";
+
+        if (string.IsNullOrWhiteSpace(map.weather))
+            map.weather = "CLEAR";
+
+        if (string.IsNullOrWhiteSpace(map.traffic))
+            map.traffic = "MEDIUM";
     }
 
     static LobbyMapOption CreateMapOption(string sceneName, int index)
@@ -206,9 +242,6 @@ public static class MainMenuBinderEditor
     {
         if (sceneName == "complete_track_demo")
             return "TRACK RACE";
-
-        if (sceneName == "phuc")
-            return "MOUNTAIN PASS";
 
         if (sceneName == "s1")
             return "COASTAL DRIVE";
@@ -496,6 +529,30 @@ public static class MainMenuBinderEditor
             if (panel != null)
                 EnsureComponent<UIPanelPopEffect>(panel);
         }
+    }
+
+    static void EnsureRequiredBuildScenes()
+    {
+        List<EditorBuildSettingsScene> scenes = new List<EditorBuildSettingsScene>(EditorBuildSettings.scenes);
+
+        foreach (string requiredPath in RequiredBuildScenePaths)
+        {
+            bool found = false;
+            for (int i = 0; i < scenes.Count; i++)
+            {
+                if (scenes[i].path != requiredPath)
+                    continue;
+
+                scenes[i] = new EditorBuildSettingsScene(requiredPath, true);
+                found = true;
+                break;
+            }
+
+            if (!found)
+                scenes.Add(new EditorBuildSettingsScene(requiredPath, true));
+        }
+
+        EditorBuildSettings.scenes = scenes.ToArray();
     }
 
     static void SetButtonClick(GameObject root, string buttonName, UnityEngine.Object target, string methodName)
