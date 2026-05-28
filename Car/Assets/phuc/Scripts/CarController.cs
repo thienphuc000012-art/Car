@@ -40,7 +40,20 @@ public class CarController : MonoBehaviour
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
-        rb.centerOfMass = new Vector3(0, -0.5f, 0); 
+        rb.centerOfMass = new Vector3(0, -0.5f, 0);
+
+        if (CompareTag("Player"))
+        {
+            GameObject nitroObj = GameObject.FindGameObjectWithTag("NitroUI");
+            if (nitroObj != null)
+            {
+                nitroBar = nitroObj.GetComponent<Slider>();
+            }
+            else
+            {
+                Debug.LogWarning("Không tìm thấy Slider Nitro với tag NitroUI!");
+            }
+        }
 
         nitroVFX = new ParticleSystem[vfxPoints.Length];
         for (int i = 0; i < vfxPoints.Length; i++)

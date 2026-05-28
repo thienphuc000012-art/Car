@@ -21,8 +21,22 @@ public class SpeedometerUI : MonoBehaviour
 
     private float currentAngle;
     private float angleVelocity;
-    private float totalDistance; 
+    private float totalDistance;
 
+    void Start()
+    {
+        // Tự tìm Player theo tag
+        GameObject player = GameObject.FindGameObjectWithTag("Player");
+        if (player != null)
+        {
+            carRigidbody = player.GetComponent<Rigidbody>();
+            carController = player.GetComponent<CarController>();
+        }
+        else
+        {
+            Debug.LogWarning("Không tìm thấy GameObject với tag Player!");
+        }
+    }
     void Update()
     {
         float speedMS = carRigidbody.linearVelocity.magnitude; 
