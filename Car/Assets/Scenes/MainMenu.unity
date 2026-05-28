@@ -8987,8 +8987,8 @@ MonoBehaviour:
   - id: complete_track_demo
     displayName: TRACK RACE
     distanceText: 2.8 KM
-    sceneAsset: {fileID: 102900000, guid: 152964570edfa5c4b9955897bc738de6, type: 3}
-    sceneName: complete_track_demo
+    sceneAsset: {fileID: 102900000, guid: e04b4a32454266d48a840470b2c3b05e, type: 3}
+    sceneName: test
     previewImage: {fileID: 21300000, guid: 8cf2f5fb5059deb4fa76f52e1b8b1737, type: 3}
     miniMapImage: {fileID: 0}
     locked: 0
