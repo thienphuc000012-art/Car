@@ -201,7 +201,8 @@ public class LobbyRoomController : MonoBehaviour
             RefreshAll("Map nay dang khoa.");
             return;
         }
-
+        if (AudioManager.Instance != null)
+        AudioManager.Instance.StopMenuMusic();
         selectedMapIndex = index;
         ApplySelectionState();
         RefreshAll("Da chon map " + GetSelectedMap().displayName + ".");
@@ -283,7 +284,6 @@ public class LobbyRoomController : MonoBehaviour
         }
 
         ApplySelectionState();
-        CarSelectionState.HasMenuSelection = true;
         RefreshAll("Dang vao map " + map.displayName + "...");
         SceneManager.LoadScene(map.sceneName);
     }

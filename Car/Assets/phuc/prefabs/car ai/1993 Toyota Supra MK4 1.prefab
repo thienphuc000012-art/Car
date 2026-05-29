@@ -1330,12 +1330,12 @@ WheelCollider:
   m_GameObject: {fileID: 934800874025039836}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -1346,11 +1346,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -5988,12 +5988,12 @@ WheelCollider:
   m_GameObject: {fileID: 3923580903074031676}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 30000
+    damper: 40000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -6004,11 +6004,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -8581,12 +8581,12 @@ WheelCollider:
   m_GameObject: {fileID: 5492027715324585844}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -8597,11 +8597,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11464,12 +11464,12 @@ WheelCollider:
   m_GameObject: {fileID: 6848109869474939007}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 30000
+    damper: 40000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -11480,11 +11480,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -11544,6 +11544,8 @@ GameObject:
   m_Component:
   - component: {fileID: 2737589274856293648}
   - component: {fileID: 9167345912235042993}
+  - component: {fileID: 3309740941414048343}
+  - component: {fileID: 3443674231855380423}
   m_Layer: 6
   m_Name: 1993 Toyota Supra MK4 1
   m_TagString: Player
@@ -11579,9 +11581,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6971121368764900714}
   serializedVersion: 5
-  m_Mass: 1510
-  m_LinearDamping: 0.01592486
-  m_AngularDamping: 0.25
+  m_Mass: 1800
+  m_LinearDamping: 0.05
+  m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -11597,7 +11599,106 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
+--- !u!114 &3309740941414048343
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971121368764900714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3554f4777f76e124ba8f04005972e57a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarController
+  wheelColliders:
+  - {fileID: 7642769298937558558}
+  - {fileID: 6305053233438528505}
+  - {fileID: 3769628220813614170}
+  - {fileID: 8524067383619490257}
+  wheelMeshes:
+  - {fileID: 8067068989627609959}
+  - {fileID: 924672593874436539}
+  - {fileID: 2004248304772165927}
+  - {fileID: 8020257457724860699}
+  maxMotorTorque: 1500
+  maxSteerAngle: 30
+  brakeForce: 3000
+  nitroPrefab: {fileID: 4047165548844290907, guid: 1562ba1888a1d7943a9c010de6e7c519, type: 3}
+  exhaustPrefab: {fileID: 7475132835429707441, guid: 00fcb4e437c06664db6b7eb30271ded4, type: 3}
+  tireSmokePrefabs: []
+  vfxPoints: []
+  tireSmokePoints: []
+  nitroBoostMultiplier: 2
+  maxNitroEnergy: 10
+  nitroBar: {fileID: 0}
+  isUsingNitro: 1
+  isAI: 1
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: -0.006666667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 150
+      value: 1
+      inSlope: -0.006666667
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  antiFlipForce: 8
+  maxAngularVelocity: 2
+--- !u!114 &3443674231855380423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6971121368764900714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac6b83fd28698cb40be20a610c0bda78, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::AIDriver
+  waypointManager: {fileID: 0}
+  maxSpeed: 75
+  steerSensitivity: 45
+  cornerSkill: 1
+  slowAngle: 15
+  mediumAngle: 35
+  hardAngle: 55
+  lookAheadPoints: 3
+  waypointReachDistance: 12
+  aiMask:
+    serializedVersion: 2
+    m_Bits: 8
+  aiAvoidDistance: 15
+  aiAvoidStrength: 1.2
+  obstacleMask:
+    serializedVersion: 2
+    m_Bits: 256
+  obstacleRayDistance: 6
+  obstacleAvoidStrength: 1.2
+  roadMask:
+    serializedVersion: 2
+    m_Bits: 128
+  roadCheckDistance: 6
+  stuckTime: 2
+  reverseTime: 1.5
+  extraDownforce: 25
 --- !u!1 &7021427957751095321
 GameObject:
   m_ObjectHideFlags: 0

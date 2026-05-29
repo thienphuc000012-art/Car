@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7085140194019016123}
   - component: {fileID: 4192246008416439416}
   - component: {fileID: 565019339604974332}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: tiresmoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

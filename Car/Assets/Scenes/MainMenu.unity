@@ -8987,8 +8987,8 @@ MonoBehaviour:
   - id: complete_track_demo
     displayName: TRACK RACE
     distanceText: 2.8 KM
-    sceneAsset: {fileID: 102900000, guid: 152964570edfa5c4b9955897bc738de6, type: 3}
-    sceneName: complete_track_demo
+    sceneAsset: {fileID: 102900000, guid: e04b4a32454266d48a840470b2c3b05e, type: 3}
+    sceneName: test
     previewImage: {fileID: 21300000, guid: 8cf2f5fb5059deb4fa76f52e1b8b1737, type: 3}
     miniMapImage: {fileID: 0}
     locked: 0
@@ -9003,7 +9003,7 @@ MonoBehaviour:
   - id: supra_mk4
     displayName: 1993 TOYOTA SUPRA MK4
     classLabel: CLASS A
-    carPrefab: {fileID: 768635997952649567, guid: 4d5d93e050c10dc4b88f2ebb0b949a45, type: 3}
+    carPrefab: {fileID: 7200086213359682922, guid: 63a180457505f9340b376aa18f896679, type: 3}
     previewImage: {fileID: 1698492369, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 86
@@ -9015,7 +9015,7 @@ MonoBehaviour:
   - id: bmw_m3_gtr_e46
     displayName: 2005 BMW M3 GTR E46
     classLabel: CLASS S
-    carPrefab: {fileID: 8568059870334560369, guid: d2f8b2911e8705f4fbefa3203a090d5b, type: 3}
+    carPrefab: {fileID: 41286278481206111, guid: 05407e78c4cb6a8488812eb5d173d605, type: 3}
     previewImage: {fileID: -879764378, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 90
@@ -9027,7 +9027,7 @@ MonoBehaviour:
   - id: subaru_wrx_sti_police
     displayName: 2008 SUBARU WRX STI POLICE
     classLabel: CLASS A
-    carPrefab: {fileID: 1325296560467324344, guid: 9561fb78dcf42ef4bbd974e575ad6f08, type: 3}
+    carPrefab: {fileID: 3967239128874370569, guid: 85d6b0b0944029e4fb04d627e1177f17, type: 3}
     previewImage: {fileID: -1652629242, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 78
@@ -9039,7 +9039,7 @@ MonoBehaviour:
   - id: lexus_lfa
     displayName: 2012 LEXUS LFA
     classLabel: CLASS S
-    carPrefab: {fileID: 2565814646344888688, guid: 56c036f3628d55a46b6eee9f37604fa3, type: 3}
+    carPrefab: {fileID: 5884949315889758365, guid: 5ba27ed24a50a634eab16e0c065bdbc2, type: 3}
     previewImage: {fileID: -1043746111, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 92
@@ -9051,7 +9051,7 @@ MonoBehaviour:
   - id: golf_mk7_gti
     displayName: 2019 VW GOLF MK7 GTI
     classLabel: CLASS B
-    carPrefab: {fileID: 4365184752831911280, guid: 3d79c379fc0996b489153f1f546575f9, type: 3}
+    carPrefab: {fileID: 7902627018026175747, guid: 59e1d8ade193cc548b7c68d54a0be4bb, type: 3}
     previewImage: {fileID: 745840224, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 74
@@ -9063,7 +9063,7 @@ MonoBehaviour:
   - id: taycan_turbo_s
     displayName: 2020 PORSCHE TAYCAN TURBO S
     classLabel: CLASS S
-    carPrefab: {fileID: 2442320314627874660, guid: e4d7caf0fe285ae41933a794a1145d3d, type: 3}
+    carPrefab: {fileID: 4246031040961367489, guid: 841d255dabb80ca4d95d8c5fb74b94f8, type: 3}
     previewImage: {fileID: 702837249, guid: 205b3e708148ff84c8a5d8ce3ee255ff, type: 3}
     locked: 0
     topSpeed: 94
