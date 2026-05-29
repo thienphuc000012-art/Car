@@ -201,7 +201,8 @@ public class LobbyRoomController : MonoBehaviour
             RefreshAll("Map nay dang khoa.");
             return;
         }
-
+        if (AudioManager.Instance != null)
+        AudioManager.Instance.StopMenuMusic();
         selectedMapIndex = index;
         ApplySelectionState();
         RefreshAll("Da chon map " + GetSelectedMap().displayName + ".");

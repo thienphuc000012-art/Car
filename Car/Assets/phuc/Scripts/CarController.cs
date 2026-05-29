@@ -40,7 +40,7 @@ public class CarController : MonoBehaviour
     [Header("Stability")]
     public float antiFlipForce = 8f;
     public float maxAngularVelocity = 2f;
-
+    public bool raceStarted = false;
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
@@ -104,6 +104,15 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+        if (!raceStarted)
+        {
+            // Trong lúc countdown: vẫn cho input Player để ga/nitro/VFX
+            // nhưng không áp dụng motorTorque
+            UpdateWheelMeshes();
+            HandleVFX();
+            UpdateNitroUI();
+            return;
+        }
         float motor;
         float steering;
 

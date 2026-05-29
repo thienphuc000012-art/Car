@@ -13,19 +13,17 @@ public class TrafficLightController : MonoBehaviour
     public GameObject yellowLight;
     public GameObject greenLight;
 
-    [Header("Cars")]
+    [Header("Cars - Kéo tất cả xe đã đặt sẵn vào đây")]
     public List<CarController> cars;
 
     void Start()
     {
+        SetAllCarsLocked(true);           // Khóa từ đầu
         StartCoroutine(StartRaceCountdown());
     }
 
     IEnumerator StartRaceCountdown()
     {
-        // Khóa xe trong lúc đếm ngược
-        SetAllCarsLocked(true);
-
         // Đèn đỏ
         redLight.SetActive(true);
         yellowLight.SetActive(false);
@@ -44,18 +42,19 @@ public class TrafficLightController : MonoBehaviour
         redLight.SetActive(false);
         yellowLight.SetActive(true);
         countdownText.text = "GO!";
-        yield return new WaitForSeconds(1f);
 
-        // Đèn xanh
+        yield return new WaitForSeconds(0.8f);
+
+        // === THẢ XE === 
         yellowLight.SetActive(false);
         greenLight.SetActive(true);
 
-        // Mở khóa xe
-        SetAllCarsLocked(false);
+        ReleaseCarsSmoothly();   // Thả mượt mà hơn
 
         // Ẩn countdown
-        yield return new WaitForSeconds(1f);
-        countdownText.gameObject.SetActive(false);
+        yield return new WaitForSeconds(1.2f);
+        if (countdownText != null)
+            countdownText.gameObject.SetActive(false);
     }
 
     private void SetAllCarsLocked(bool locked)
@@ -64,37 +63,52 @@ public class TrafficLightController : MonoBehaviour
         {
             if (car == null) continue;
 
+            car.raceStarted = !locked;
+
             Rigidbody rb = car.GetComponent<Rigidbody>();
             if (rb != null)
             {
-                if (locked)
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            // Giữ phanh mạnh khi locked
+            foreach (var wc in car.wheelColliders)
+            {
+                if (wc != null)
                 {
-                    // Trong lúc countdown: chặn xe chạy
-                    car.raceStarted = false;
-
-                    // Giữ xe bằng phanh
-                    foreach (var wc in car.wheelColliders)
-                    {
-                        wc.brakeTorque = car.brakeForce * 10f;
-                        wc.motorTorque = 0;
-                    }
-                }
-                else
-                {
-                    // Countdown xong: mở khóa xe
-                    rb.linearVelocity = Vector3.zero;        // reset vận tốc
-                    rb.angularVelocity = Vector3.zero; // reset xoay
-
-                    foreach (var wc in car.wheelColliders)
-                    {
-                        wc.brakeTorque = 0; // bỏ phanh
-                    }
-
-                    car.raceStarted = true;
+                    wc.motorTorque = 0;
+                    wc.brakeTorque = locked ? car.brakeForce * 8f : 0;
                 }
             }
         }
     }
 
+    // Thả xe mượt mà (giảm bay)
+    private void ReleaseCarsSmoothly()
+    {
+        foreach (var car in cars)
+        {
+            if (car == null) continue;
 
+            car.raceStarted = true;
+
+            Rigidbody rb = car.GetComponent<Rigidbody>();
+            if (rb != null)
+            {
+                rb.linearVelocity = Vector3.zero;
+                rb.angularVelocity = Vector3.zero;
+            }
+
+            // Bỏ phanh dần
+            foreach (var wc in car.wheelColliders)
+            {
+                if (wc != null)
+                {
+                    wc.brakeTorque = 0;
+                    wc.motorTorque = 0; // AI sẽ set sau
+                }
+            }
+        }
+    }
 }

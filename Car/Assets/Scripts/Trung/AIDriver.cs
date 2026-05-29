@@ -91,7 +91,12 @@ public class AIDriver : MonoBehaviour
 
         if (waypointManager.waypoints.Length == 0)
             return;
-
+        if (!car.raceStarted)
+        {
+            // Giữ AI đứng yên hoàn toàn
+            car.SetInput(0, 0, true);   // steer=0, throttle=0, brake=true
+            return;
+        }
         DriveAI();
 
         ApplyDownforce();
