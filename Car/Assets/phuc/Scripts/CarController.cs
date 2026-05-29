@@ -37,6 +37,7 @@ public class CarController : MonoBehaviour
     [Header("Acceleration Curve")]
     public AnimationCurve accelerationCurve = AnimationCurve.Linear(0, 2f, 150f, 1f);
 
+    public bool raceStarted = false;
     void Start()
     {
         Rigidbody rb = wheelColliders[0].attachedRigidbody;
@@ -100,6 +101,20 @@ public class CarController : MonoBehaviour
 
     void Update()
     {
+        if (!raceStarted)
+        {
+            foreach (var wc in wheelColliders)
+            {
+                wc.motorTorque = 0;
+                wc.brakeTorque = brakeForce * 10f; 
+            }
+
+            UpdateWheelMeshes();
+            HandleVFX();
+            UpdateNitroUI();
+            return;
+        }
+
         float motor;
         float steering;
 

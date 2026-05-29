@@ -66,6 +66,15 @@ public class CarSpawner : MonoBehaviour
         {
             car.AddComponent<RacerProgress>();
         }
+        TrafficLightController tlc = Object.FindFirstObjectByType<TrafficLightController>();
+        if (tlc != null)
+        {
+            CarController cc = car.GetComponent<CarController>();
+            if (cc != null && !tlc.cars.Contains(cc))
+            {
+                tlc.cars.Add(cc);
+            }
+        }
     }
 
     private Transform GetSpawnPoint()

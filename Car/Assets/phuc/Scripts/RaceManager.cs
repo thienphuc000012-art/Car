@@ -95,11 +95,18 @@ public class RaceManager : MonoBehaviour
             int topCount = Mathf.Min(3, racers.Count);
             for (int i = 0; i < topCount; i++)
             {
-                board += (i + 1) + ". " + racers[i].name + "\n";
+                string racerName = racers[i].name;
+                if (racers[i].CompareTag("Player"))
+                {
+                    racerName = "<color=red>" + racerName + "</color>";
+                }
+
+                board += (i + 1) + ". " + racerName + "\n";
             }
             leaderboardText.text = board;
         }
     }
+
 
     void ShowResults()
     {
@@ -121,8 +128,9 @@ public class RaceManager : MonoBehaviour
             {
                 if (racers[i].CompareTag("Player"))
                 {
-                    playerRank = i + 1; 
+                    playerRank = i + 1;
                     var rp = racers[i].GetComponent<RacerProgress>();
+                    rp.FinishRace(raceTime);
 
                     int minutes = Mathf.FloorToInt(rp.finishTime / 60f);
                     int seconds = Mathf.FloorToInt(rp.finishTime % 60f);
@@ -134,6 +142,7 @@ public class RaceManager : MonoBehaviour
                     }
                     break;
                 }
+
             }
 
             Time.timeScale = 0f; // dừng game
