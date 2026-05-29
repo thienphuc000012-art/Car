@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 5049819381798212267}
   - component: {fileID: 3160749662356655318}
   - component: {fileID: 3656186737708256449}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#43"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -103,7 +103,7 @@ GameObject:
   - component: {fileID: 1617147401873246370}
   - component: {fileID: 1522089556764431578}
   - component: {fileID: 3439702272531552115}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -193,7 +193,7 @@ GameObject:
   - component: {fileID: 108193241902652960}
   - component: {fileID: 1161898911234515988}
   - component: {fileID: 6845602869765715924}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -281,7 +281,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7185032227417652886}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01-Flipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -313,7 +313,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2742837769526098325}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FollowerPivots
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -348,7 +348,7 @@ GameObject:
   - component: {fileID: 2482937552859551572}
   - component: {fileID: 8591716278569545785}
   - component: {fileID: 3476317795982261433}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#38 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -436,7 +436,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 606914319294441275}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: BrakeRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -468,7 +468,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4560978476006006081}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: FrontWheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -503,7 +503,7 @@ GameObject:
   - component: {fileID: 8473459176894662294}
   - component: {fileID: 3330220059167028584}
   - component: {fileID: 3020324445438855817}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Headlight_Low_Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -631,7 +631,7 @@ GameObject:
   - component: {fileID: 5385935378674276150}
   - component: {fileID: 465283688225948695}
   - component: {fileID: 2558390968608745254}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x968BDF60
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -742,7 +742,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7079911406467541313}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#70 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -775,7 +775,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8882982905810229703}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#21"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -811,7 +811,7 @@ GameObject:
   - component: {fileID: 8621507292482196224}
   - component: {fileID: 1284032128507936215}
   - component: {fileID: 2981700165640403455}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#3"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -925,7 +925,7 @@ GameObject:
   - component: {fileID: 3647399151748133350}
   - component: {fileID: 4410189488922972702}
   - component: {fileID: 1505923342745506614}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#51"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1037,7 +1037,7 @@ GameObject:
   - component: {fileID: 6491665192718051097}
   - component: {fileID: 2802927547687984217}
   - component: {fileID: 7589900095688269104}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1128,7 +1128,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6055651119550375998}
   - component: {fileID: 8915395298878832430}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1159,12 +1159,12 @@ WheelCollider:
   m_GameObject: {fileID: 725986366270923563}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -1175,11 +1175,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1198,7 +1198,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 198957097743290386}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1232,7 +1232,11 @@ GameObject:
   - component: {fileID: 1512134861872749974}
   - component: {fileID: 8210007469641973880}
   - component: {fileID: 8839684473109883039}
-  m_Layer: 6
+  - component: {fileID: 4374335668741337981}
+  - component: {fileID: 3086929187015286999}
+  - component: {fileID: 758111831631796466}
+  - component: {fileID: 2731720503086189409}
+  m_Layer: 11
   m_Name: 1993 Toyota Supra MK4 1
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -1252,11 +1256,13 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 661025535278558463}
   - {fileID: 922648852192439784}
   - {fileID: 1818753032533008692}
   - {fileID: 8031663821598230352}
   - {fileID: 3410122776152016837}
   - {fileID: 964001631753407646}
+  - {fileID: 5060963506871827068}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &8210007469641973880
@@ -1267,9 +1273,9 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 768635997952649567}
   serializedVersion: 5
-  m_Mass: 1510
-  m_LinearDamping: 0.01592486
-  m_AngularDamping: 0.25
+  m_Mass: 1800
+  m_LinearDamping: 0.05
+  m_AngularDamping: 4
   m_CenterOfMass: {x: 0, y: 0, z: 0}
   m_InertiaTensor: {x: 1, y: 1, z: 1}
   m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
@@ -1285,7 +1291,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 1
   m_Constraints: 0
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &8839684473109883039
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1308,7 +1314,7 @@ MonoBehaviour:
   - {fileID: 7358797816112454009}
   - {fileID: 4693132280932917073}
   - {fileID: 6162746800093242181}
-  maxMotorTorque: 1500
+  maxMotorTorque: 800
   maxSteerAngle: 30
   brakeForce: 3000
   nitroPrefab: {fileID: 4047165548844290907, guid: 1562ba1888a1d7943a9c010de6e7c519, type: 3}
@@ -1322,6 +1328,97 @@ MonoBehaviour:
   - {fileID: 7358797816112454009}
   - {fileID: 4693132280932917073}
   - {fileID: 6162746800093242181}
+  nitroBoostMultiplier: 2
+  maxNitroEnergy: 10
+  nitroBar: {fileID: 0}
+  isUsingNitro: 0
+  isAI: 0
+  accelerationCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 2
+      inSlope: 0
+      outSlope: -0.006666667
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 150
+      value: 1
+      inSlope: -0.006666667
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  antiFlipForce: 8
+  maxAngularVelocity: 2
+--- !u!114 &4374335668741337981
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768635997952649567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4509359b3ac243b4dbec36897668be9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDebug
+--- !u!114 &3086929187015286999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768635997952649567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4509359b3ac243b4dbec36897668be9d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CollisionDebug
+--- !u!65 &758111831631796466
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768635997952649567}
+  m_Material: {fileID: 13400000, guid: 8b584844183f46b42aeff8d86dddd39d, type: 2}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 0.79464495, y: 0.50898176, z: 0.83064497}
+  m_Center: {x: -0.102677554, y: 0.48670205, z: 0.08467755}
+--- !u!114 &2731720503086189409
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 768635997952649567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4bdd20fad351bc94193618acf840cb16, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RacerProgress
+  lapCount: 0
+  distanceTravelled: 0
+  finishTime: -1
 --- !u!1 &938628260719772309
 GameObject:
   m_ObjectHideFlags: 0
@@ -1333,7 +1430,7 @@ GameObject:
   - component: {fileID: 7202791399151423795}
   - component: {fileID: 2989672952962470117}
   - component: {fileID: 4283490155215744141}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1425,7 +1522,7 @@ GameObject:
   - component: {fileID: 363820907875446401}
   - component: {fileID: 193698203613121760}
   - component: {fileID: 790849723238563034}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#48"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1513,7 +1610,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9013020233420435977}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#12"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1551,7 +1648,7 @@ GameObject:
   m_Component:
   - component: {fileID: 8479601578725532362}
   - component: {fileID: 6338489429909641736}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1582,12 +1679,12 @@ WheelCollider:
   m_GameObject: {fileID: 1079495688614750347}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 30000
+    damper: 4000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -1598,11 +1695,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -1623,7 +1720,7 @@ GameObject:
   - component: {fileID: 872076630884883381}
   - component: {fileID: 6518643897440632423}
   - component: {fileID: 4150108116263738466}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1713,7 +1810,7 @@ GameObject:
   - component: {fileID: 1047317298468403208}
   - component: {fileID: 1025538019465139554}
   - component: {fileID: 7038006122089506178}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#44 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1803,7 +1900,7 @@ GameObject:
   - component: {fileID: 7613735264925745371}
   - component: {fileID: 3090109897638843313}
   - component: {fileID: 5762940240426997729}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#81"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1893,7 +1990,7 @@ GameObject:
   - component: {fileID: 8725501297321942669}
   - component: {fileID: 3218689914544811783}
   - component: {fileID: 5074831425172300797}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#52 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1986,7 +2083,7 @@ GameObject:
   - component: {fileID: 4972920437561499113}
   - component: {fileID: 5297586475849653380}
   - component: {fileID: 2653862900943877657}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2074,7 +2171,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3034093081109637178}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2108,7 +2205,7 @@ GameObject:
   - component: {fileID: 2442397652052501778}
   - component: {fileID: 1932224065241160288}
   - component: {fileID: 4852928041773831131}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#38"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2199,7 +2296,7 @@ GameObject:
   - component: {fileID: 8843085101683247523}
   - component: {fileID: 4795211501367070401}
   - component: {fileID: 7802406528031364959}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#53 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2310,7 +2407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3128753821575217003}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: LightSources
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2347,7 +2444,7 @@ GameObject:
   - component: {fileID: 4830620951538205930}
   - component: {fileID: 6149865018773628704}
   - component: {fileID: 4116115246351285023}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#82"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2435,7 +2532,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6930312277360976550}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#55"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2470,7 +2567,7 @@ GameObject:
   - component: {fileID: 2175615889671330535}
   - component: {fileID: 6781129501495821449}
   - component: {fileID: 2056371704339352447}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#15"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2558,7 +2655,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 509514623706820798}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x18A4CEB3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2593,7 +2690,7 @@ GameObject:
   - component: {fileID: 6013329318630943680}
   - component: {fileID: 3248600676978010194}
   - component: {fileID: 6267544916731463057}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#49 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2681,7 +2778,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7023467303125299239}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01-RL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2714,7 +2811,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4910894496795805956}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2750,7 +2847,7 @@ GameObject:
   - component: {fileID: 3103317394149775418}
   - component: {fileID: 2068853838065662570}
   - component: {fileID: 2034795740643530500}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2838,7 +2935,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2772372480484291212}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#13"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2881,7 +2978,7 @@ GameObject:
   - component: {fileID: 1602888901466557661}
   - component: {fileID: 6175677098765851413}
   - component: {fileID: 432279763244778017}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#94"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2993,7 +3090,7 @@ GameObject:
   - component: {fileID: 6430490418065406054}
   - component: {fileID: 1785976785202920134}
   - component: {fileID: 5157613723412615814}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#49"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3081,7 +3178,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1823745695154967853}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3115,7 +3212,7 @@ GameObject:
   - component: {fileID: 4293920591636080539}
   - component: {fileID: 1151542228022295890}
   - component: {fileID: 2784725244729538411}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3203,7 +3300,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 922648852192439784}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Chassis
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3270,7 +3367,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7600317831300093173}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3304,7 +3401,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7171588236890761333}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Bumper Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3337,7 +3434,7 @@ GameObject:
   - component: {fileID: 2178312508192944144}
   - component: {fileID: 5522086372184594165}
   - component: {fileID: 1204829361712048668}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#43 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3430,7 +3527,7 @@ GameObject:
   - component: {fileID: 6071796967500303243}
   - component: {fileID: 7896481841265779876}
   - component: {fileID: 9019746661780481521}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#93"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3545,7 +3642,7 @@ GameObject:
   - component: {fileID: 7832341620789748331}
   - component: {fileID: 2081010720500061055}
   - component: {fileID: 9036483507551392099}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3633,7 +3730,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1610789827146120184}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: BrakeFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3665,7 +3762,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9049150331470371522}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#90"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3703,7 +3800,7 @@ GameObject:
   - component: {fileID: 3192985992203279176}
   - component: {fileID: 6063510985214063594}
   - component: {fileID: 3449712155286327557}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#54 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3813,7 +3910,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3727184013038128523}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#33"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3851,7 +3948,7 @@ GameObject:
   - component: {fileID: 1435442950513970035}
   - component: {fileID: 3526051628279169688}
   - component: {fileID: 7304686406506334366}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Headlight_High_Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3976,7 +4073,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5229119333721452408}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x213C2477
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4009,7 +4106,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2281099088218757509}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01-FL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4043,7 +4140,7 @@ GameObject:
   - component: {fileID: 5648526134852603015}
   - component: {fileID: 118521705768639103}
   - component: {fileID: 6410553666183016821}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#7"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4133,7 +4230,7 @@ GameObject:
   - component: {fileID: 7025988181389937106}
   - component: {fileID: 6933875684028511595}
   - component: {fileID: 7840379825574154811}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#52"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4226,7 +4323,7 @@ GameObject:
   - component: {fileID: 6488627682900655909}
   - component: {fileID: 4242303891587286085}
   - component: {fileID: 2019155336767576486}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4305,6 +4402,134 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &2659948981257387366
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 661025535278558463}
+  - component: {fileID: 3309882154056642974}
+  - component: {fileID: 3660441433520867557}
+  m_Layer: 11
+  m_Name: Camera
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &661025535278558463
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659948981257387366}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.70701116, y: 0.01162982, z: -0.01162982, w: 0.70701116}
+  m_LocalPosition: {x: 0, y: 33.5, z: -0.8200064}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1512134861872749974}
+  m_LocalEulerAnglesHint: {x: 90, y: -180, z: -811.885}
+--- !u!20 &3309882154056642974
+Camera:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659948981257387366}
+  m_Enabled: 1
+  serializedVersion: 2
+  m_ClearFlags: 1
+  m_BackGroundColor: {r: 0.19215687, g: 0.3019608, b: 0.4745098, a: 0}
+  m_projectionMatrixMode: 1
+  m_GateFitMode: 2
+  m_FOVAxisMode: 0
+  m_Iso: 200
+  m_ShutterSpeed: 0.005
+  m_Aperture: 16
+  m_FocusDistance: 10
+  m_FocalLength: 50
+  m_BladeCount: 5
+  m_Curvature: {x: 2, y: 11}
+  m_BarrelClipping: 0.25
+  m_Anamorphism: 0
+  m_SensorSize: {x: 36, y: 24}
+  m_LensShift: {x: 0, y: 0}
+  m_NormalizedViewPortRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
+  near clip plane: 0.3
+  far clip plane: 1000
+  field of view: 60
+  orthographic: 1
+  orthographic size: 22.4
+  m_Depth: 0
+  m_CullingMask:
+    serializedVersion: 2
+    m_Bits: 1535
+  m_RenderingPath: -1
+  m_TargetTexture: {fileID: 8400000, guid: 596ec24bf2f7673468915d575a5106b1, type: 2}
+  m_TargetDisplay: 0
+  m_TargetEye: 3
+  m_HDR: 1
+  m_AllowMSAA: 1
+  m_AllowDynamicResolution: 0
+  m_ForceIntoRT: 0
+  m_OcclusionCulling: 1
+  m_StereoConvergence: 10
+  m_StereoSeparation: 0.022
+--- !u!114 &3660441433520867557
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2659948981257387366}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a79441f348de89743a2939f4d699eac1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.RenderPipelines.Universal.Runtime::UnityEngine.Rendering.Universal.UniversalAdditionalCameraData
+  m_RenderShadows: 0
+  m_RequiresDepthTextureOption: 2
+  m_RequiresOpaqueTextureOption: 2
+  m_CameraType: 0
+  m_Cameras: []
+  m_RendererIndex: -1
+  m_VolumeLayerMask:
+    serializedVersion: 2
+    m_Bits: 1
+  m_VolumeTrigger: {fileID: 0}
+  m_VolumeFrameworkUpdateModeOption: 2
+  m_RenderPostProcessing: 0
+  m_Antialiasing: 0
+  m_AntialiasingQuality: 2
+  m_StopNaN: 0
+  m_Dithering: 0
+  m_ClearDepth: 1
+  m_AllowXRRendering: 1
+  m_AllowHDROutput: 1
+  m_UseScreenCoordOverride: 0
+  m_ScreenSizeOverride: {x: 0, y: 0, z: 0, w: 0}
+  m_ScreenCoordScaleBias: {x: 0, y: 0, z: 0, w: 0}
+  m_RequiresDepthTexture: 0
+  m_RequiresColorTexture: 0
+  m_TaaSettings:
+    m_Quality: 3
+    m_FrameInfluence: 0.1
+    m_JitterScale: 1
+    m_MipBias: 0
+    m_VarianceClampScale: 0.9
+    m_ContrastAdaptiveSharpening: 0
+  m_Version: 2
 --- !u!1 &2711978323317114222
 GameObject:
   m_ObjectHideFlags: 0
@@ -4314,7 +4539,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3803821912561923798}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4346,7 +4571,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4693132280932917073}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: WheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4383,7 +4608,7 @@ GameObject:
   - component: {fileID: 5352512767137541266}
   - component: {fileID: 4820160471118638502}
   - component: {fileID: 8378323101790451486}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#32 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4496,7 +4721,7 @@ GameObject:
   - component: {fileID: 8181640540646573837}
   - component: {fileID: 5611937311534405861}
   - component: {fileID: 5355805707190556226}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#45 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4606,7 +4831,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4791845033681968630}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xAA7CC68D
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4639,7 +4864,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3410122776152016837}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4672,7 +4897,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6346671847443133015}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x213C2477 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4707,7 +4932,7 @@ GameObject:
   - component: {fileID: 8925014319981448946}
   - component: {fileID: 3921977556811612849}
   - component: {fileID: 7575490192208395449}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#57 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4801,7 +5026,7 @@ GameObject:
   - component: {fileID: 5259672082362499183}
   - component: {fileID: 3623300485083676068}
   - component: {fileID: 3454442911216048879}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: bo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4916,7 +5141,7 @@ GameObject:
   - component: {fileID: 3735559604743086812}
   - component: {fileID: 276168956383514674}
   - component: {fileID: 6204243373024782884}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#45"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5026,7 +5251,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 678643572947492415}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xAC2B4958
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5062,7 +5287,7 @@ GameObject:
   - component: {fileID: 3319361382361172162}
   - component: {fileID: 7659263216826236134}
   - component: {fileID: 2014045203079124820}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#42"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5176,7 +5401,7 @@ GameObject:
   - component: {fileID: 4744279686859417271}
   - component: {fileID: 5028271961514125636}
   - component: {fileID: 4412549085792514509}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x8751F4B
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5290,7 +5515,7 @@ GameObject:
   - component: {fileID: 4074485922187840858}
   - component: {fileID: 3038607849308885216}
   - component: {fileID: 4537352024557686777}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#57"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5381,7 +5606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2928024224843796249}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: RearCaliperPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5415,7 +5640,7 @@ GameObject:
   - component: {fileID: 4375301418347397271}
   - component: {fileID: 84540782980404271}
   - component: {fileID: 1682696519105069397}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#22"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5505,7 +5730,7 @@ GameObject:
   - component: {fileID: 115463383154276616}
   - component: {fileID: 5750499412723271632}
   - component: {fileID: 5194401990439561445}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#35"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5596,7 +5821,7 @@ GameObject:
   - component: {fileID: 3505650606557475437}
   - component: {fileID: 7124247847589237182}
   - component: {fileID: 7192904324697517202}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#58 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5709,7 +5934,7 @@ GameObject:
   - component: {fileID: 7843490370901041079}
   - component: {fileID: 4333162787081081296}
   - component: {fileID: 7239434517642011912}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5799,7 +6024,7 @@ GameObject:
   - component: {fileID: 4476934605444123364}
   - component: {fileID: 7241529617426799751}
   - component: {fileID: 7604020384937754174}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#25"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5887,7 +6112,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5179097185018347211}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01-FR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5922,7 +6147,7 @@ GameObject:
   - component: {fileID: 3497888868892694803}
   - component: {fileID: 6321384807342840595}
   - component: {fileID: 2138711673260082312}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#51 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6034,7 +6259,7 @@ GameObject:
   - component: {fileID: 8683753878872984793}
   - component: {fileID: 1297552214295518522}
   - component: {fileID: 6149521845957685310}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#47"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6124,7 +6349,7 @@ GameObject:
   - component: {fileID: 7926304003713827484}
   - component: {fileID: 3065451334846309151}
   - component: {fileID: 8301286721340931794}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#66"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6213,7 +6438,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2033549015453349644}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#12 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6252,7 +6477,7 @@ GameObject:
   - component: {fileID: 1891025472716376207}
   - component: {fileID: 4176341387340302878}
   - component: {fileID: 4455536072341775542}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6343,7 +6568,7 @@ GameObject:
   - component: {fileID: 8811109511477752969}
   - component: {fileID: 8225146872562852184}
   - component: {fileID: 4344473543410681495}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#40"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6455,7 +6680,7 @@ GameObject:
   - component: {fileID: 2184126283020409226}
   - component: {fileID: 5382324055150954507}
   - component: {fileID: 9180320910456197525}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Headlight_Low_Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6582,7 +6807,7 @@ GameObject:
   - component: {fileID: 1806902160720633435}
   - component: {fileID: 3597632613133855849}
   - component: {fileID: 8114062873393555519}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x9D709FEF
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6673,7 +6898,7 @@ GameObject:
   - component: {fileID: 2869993269757492804}
   - component: {fileID: 5658177114557814071}
   - component: {fileID: 8663360077260270411}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#83"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6786,7 +7011,7 @@ GameObject:
   - component: {fileID: 132248565259282442}
   - component: {fileID: 427697092488996890}
   - component: {fileID: 8792832743758923897}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#80"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6874,7 +7099,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1955475914696973858}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#70"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6910,7 +7135,7 @@ GameObject:
   - component: {fileID: 337485753433241153}
   - component: {fileID: 4401324360280404470}
   - component: {fileID: 5258183444671356955}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#42 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7023,7 +7248,7 @@ GameObject:
   - component: {fileID: 569044702938075931}
   - component: {fileID: 4990207074421744461}
   - component: {fileID: 3529410057020657520}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#2"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7113,7 +7338,7 @@ GameObject:
   - component: {fileID: 1632426096297883407}
   - component: {fileID: 7835449943953552349}
   - component: {fileID: 7993538815904272942}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#80 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7203,7 +7428,7 @@ GameObject:
   - component: {fileID: 4235919074588246739}
   - component: {fileID: 8316227483791354676}
   - component: {fileID: 2345555404935789614}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#81 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7293,7 +7518,7 @@ GameObject:
   - component: {fileID: 9110691090413564971}
   - component: {fileID: 9101556578921843255}
   - component: {fileID: 452332851223799131}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#11"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7381,7 +7606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3794593845057331103}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: BrakeFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7415,7 +7640,7 @@ GameObject:
   - component: {fileID: 7532210451657149503}
   - component: {fileID: 8809105198801249535}
   - component: {fileID: 2666860791779280105}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7505,7 +7730,7 @@ GameObject:
   - component: {fileID: 8545815229515377037}
   - component: {fileID: 5412278664615945037}
   - component: {fileID: 3269156962805685128}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x9442706F
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7596,7 +7821,7 @@ GameObject:
   - component: {fileID: 7740390816237383902}
   - component: {fileID: 1597120047780003895}
   - component: {fileID: 535157283747709445}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#54"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7709,7 +7934,7 @@ GameObject:
   - component: {fileID: 6157695916081597522}
   - component: {fileID: 6242949019013872260}
   - component: {fileID: 1444040378641847709}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#32"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7819,7 +8044,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6321482205986239185}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7851,7 +8076,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2015584364594304414}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7885,7 +8110,7 @@ GameObject:
   - component: {fileID: 5775997672361921070}
   - component: {fileID: 4493465676169451904}
   - component: {fileID: 971747582823915580}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#23"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7974,7 +8199,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1818753032533008692}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelBrakes
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8011,7 +8236,7 @@ GameObject:
   - component: {fileID: 4269511798670312661}
   - component: {fileID: 6671107049705192343}
   - component: {fileID: 9071124830636919677}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8099,7 +8324,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7088653387574968984}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: RearWheelColliders
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8135,7 +8360,7 @@ GameObject:
   - component: {fileID: 1033876102612158867}
   - component: {fileID: 5414916286074653334}
   - component: {fileID: 8209062794156295841}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xA2AF15C3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8245,7 +8470,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6303090166865519709}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xAC2B4958 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8281,7 +8506,7 @@ GameObject:
   - component: {fileID: 8802703721558217261}
   - component: {fileID: 3930611826457425106}
   - component: {fileID: 3461643985362172683}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xA2AF15C3
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8393,7 +8618,7 @@ GameObject:
   - component: {fileID: 3019794582438083791}
   - component: {fileID: 2751559942694628626}
   - component: {fileID: 7510521460375489077}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#34"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8484,7 +8709,7 @@ GameObject:
   - component: {fileID: 9071062332039252809}
   - component: {fileID: 1955886333680030544}
   - component: {fileID: 1628926596541314946}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#5"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8598,7 +8823,7 @@ GameObject:
   - component: {fileID: 1160621082974553837}
   - component: {fileID: 7720968501562393793}
   - component: {fileID: 1413853042366668585}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#41 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8688,7 +8913,7 @@ GameObject:
   - component: {fileID: 1000509607276901127}
   - component: {fileID: 5442747678173849542}
   - component: {fileID: 4496930965631074530}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#91"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8778,7 +9003,7 @@ GameObject:
   - component: {fileID: 2166117221217153772}
   - component: {fileID: 4926147368851235331}
   - component: {fileID: 9022459763923971138}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8869,7 +9094,7 @@ GameObject:
   - component: {fileID: 3207228010711357480}
   - component: {fileID: 1044390302075792315}
   - component: {fileID: 8992573928894082750}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#58"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8983,7 +9208,7 @@ GameObject:
   - component: {fileID: 6018038506391318191}
   - component: {fileID: 8514633351949881244}
   - component: {fileID: 4516737716937755305}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#4 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9095,7 +9320,7 @@ GameObject:
   - component: {fileID: 3221897706922451735}
   - component: {fileID: 6041068983067767739}
   - component: {fileID: 3502777868762749558}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#6"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9185,7 +9410,7 @@ GameObject:
   - component: {fileID: 1111929324271958669}
   - component: {fileID: 2772455546756158431}
   - component: {fileID: 1011938313076340310}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#56"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9275,7 +9500,7 @@ GameObject:
   - component: {fileID: 4970520487783721642}
   - component: {fileID: 8068815627998777455}
   - component: {fileID: 2460138347382929182}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#10"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9364,7 +9589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 3247412803634013637}
   - component: {fileID: 3421409886885116592}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelRL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9395,12 +9620,12 @@ WheelCollider:
   m_GameObject: {fileID: 5734460871379691637}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
-    spring: 35000
-    damper: 4500
+    spring: 30000
+    damper: 4000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -9411,11 +9636,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -9436,7 +9661,7 @@ GameObject:
   - component: {fileID: 715212499092135110}
   - component: {fileID: 6113799162357821106}
   - component: {fileID: 5361087738034496770}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9526,7 +9751,7 @@ GameObject:
   - component: {fileID: 1945968918604634199}
   - component: {fileID: 6732361080666659315}
   - component: {fileID: 2927318463274789381}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#17"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9615,7 +9840,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1507084743954830139}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9638,6 +9863,108 @@ Transform:
   - {fileID: 5003326391025757701}
   m_Father: {fileID: 3901243480365532637}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &5988157175898751301
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5060963506871827068}
+  - component: {fileID: 5944239900020990290}
+  - component: {fileID: 6004617122257548281}
+  - component: {fileID: 6614400142447641912}
+  m_Layer: 10
+  m_Name: CanvasMark
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &5060963506871827068
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988157175898751301}
+  m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 0.99999976, y: 1, z: 0.99999976}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 2082195766460743653}
+  m_Father: {fileID: 1512134861872749974}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 2, y: 2}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!223 &5944239900020990290
+Canvas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988157175898751301}
+  m_Enabled: 1
+  serializedVersion: 3
+  m_RenderMode: 2
+  m_Camera: {fileID: 3309882154056642974}
+  m_PlaneDistance: 100
+  m_PixelPerfect: 0
+  m_ReceivesEvents: 1
+  m_OverrideSorting: 0
+  m_OverridePixelPerfect: 0
+  m_SortingBucketNormalizedSize: 0
+  m_VertexColorAlwaysGammaSpace: 0
+  m_AdditionalShaderChannelsFlag: 0
+  m_UpdateRectTransformForStandalone: 0
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_TargetDisplay: 0
+--- !u!114 &6004617122257548281
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988157175898751301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.CanvasScaler
+  m_UiScaleMode: 0
+  m_ReferencePixelsPerUnit: 100
+  m_ScaleFactor: 1
+  m_ReferenceResolution: {x: 800, y: 600}
+  m_ScreenMatchMode: 0
+  m_MatchWidthOrHeight: 0
+  m_PhysicalUnit: 3
+  m_FallbackScreenDPI: 96
+  m_DefaultSpriteDPI: 96
+  m_DynamicPixelsPerUnit: 1
+  m_PresetInfoIsWorld: 1
+--- !u!114 &6614400142447641912
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5988157175898751301}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.GraphicRaycaster
+  m_IgnoreReversedGraphics: 1
+  m_BlockingObjects: 0
+  m_BlockingMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
 --- !u!1 &5995640457281645725
 GameObject:
   m_ObjectHideFlags: 0
@@ -9649,7 +9976,7 @@ GameObject:
   - component: {fileID: 802726586531459002}
   - component: {fileID: 2621169355591474417}
   - component: {fileID: 2720708693096437977}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#48 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9739,7 +10066,7 @@ GameObject:
   - component: {fileID: 4788511900599203918}
   - component: {fileID: 6906901002211094930}
   - component: {fileID: 2067862502618103405}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9827,7 +10154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 801203892326422812}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9863,7 +10190,7 @@ GameObject:
   - component: {fileID: 5003326391025757701}
   - component: {fileID: 1997671301706944414}
   - component: {fileID: 4790646257402349679}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9953,7 +10280,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6162746800093242181}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: WheelRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9987,7 +10314,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3639486153829191384}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10021,7 +10348,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4937510728684304717}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xB8A5601A#1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10058,7 +10385,7 @@ GameObject:
   - component: {fileID: 5793765542059749531}
   - component: {fileID: 4706362306412690794}
   - component: {fileID: 9095009746709010968}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#17 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10148,7 +10475,7 @@ GameObject:
   m_Component:
   - component: {fileID: 7548130136100466769}
   - component: {fileID: 5322557043741787698}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelFL
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10179,12 +10506,12 @@ WheelCollider:
   m_GameObject: {fileID: 6317651009995019618}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.31
+  m_Radius: 0.35
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.3
+  m_SuspensionDistance: 0.25
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -10195,11 +10522,11 @@ WheelCollider:
     m_AsymptoteValue: 0.5
     m_Stiffness: 1
   m_SidewaysFriction:
-    m_ExtremumSlip: 0.2
+    m_ExtremumSlip: 0.15
     m_ExtremumValue: 1
-    m_AsymptoteSlip: 0.5
+    m_AsymptoteSlip: 0.4
     m_AsymptoteValue: 0.75
-    m_Stiffness: 1
+    m_Stiffness: 1.2
   m_IncludeLayers:
     serializedVersion: 2
     m_Bits: 0
@@ -10218,7 +10545,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8274078470524152965}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10250,7 +10577,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4640807215280175404}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x746DF813
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10285,7 +10612,7 @@ GameObject:
   - component: {fileID: 974868650778509558}
   - component: {fileID: 6154330252329232305}
   - component: {fileID: 6798543088243833638}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#37"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10374,7 +10701,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7358797816112454009}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: WheelFR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10410,7 +10737,7 @@ GameObject:
   - component: {fileID: 549262201836576666}
   - component: {fileID: 304751296623746135}
   - component: {fileID: 8179467095791301657}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#19"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10500,7 +10827,7 @@ GameObject:
   - component: {fileID: 6105008689969648441}
   - component: {fileID: 7636304606918357690}
   - component: {fileID: 6513174953190505458}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#23 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10589,7 +10916,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3901243480365532637}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Caliper01-RR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10625,7 +10952,7 @@ GameObject:
   - component: {fileID: 7229478277558508855}
   - component: {fileID: 7827466741128726902}
   - component: {fileID: 4763163568024140758}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#92"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10739,7 +11066,7 @@ GameObject:
   - component: {fileID: 777545621632179958}
   - component: {fileID: 120019615740211165}
   - component: {fileID: 4285553927783832928}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#65"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10827,7 +11154,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 964001631753407646}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10858,7 +11185,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7800964054113352839}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x185C0AB5
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10891,7 +11218,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2100460159817454062}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Rim
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10925,7 +11252,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 491653677124757313}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xBD6F881
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10960,7 +11287,7 @@ GameObject:
   - component: {fileID: 1236939735386106652}
   - component: {fileID: 3083238529410831426}
   - component: {fileID: 1570960106967661450}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#39"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11048,7 +11375,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7371032493771688890}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11080,7 +11407,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 320811797718107382}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#33 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11116,7 +11443,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8629104210776284068}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: BrakeRR
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11148,7 +11475,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 68949313901787980}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x746DF813 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11184,7 +11511,7 @@ GameObject:
   - component: {fileID: 3472763978640100516}
   - component: {fileID: 4115074460968463890}
   - component: {fileID: 6026183090971481067}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#4"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11297,7 +11624,7 @@ GameObject:
   - component: {fileID: 5226490112973997833}
   - component: {fileID: 3014636648965095425}
   - component: {fileID: 6141144278336024526}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#27"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11410,7 +11737,7 @@ GameObject:
   - component: {fileID: 6387724056025036665}
   - component: {fileID: 6964776250948692365}
   - component: {fileID: 2271416339592491158}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#34 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11500,7 +11827,7 @@ GameObject:
   - component: {fileID: 6851821500333808845}
   - component: {fileID: 4273577455489695209}
   - component: {fileID: 4725291678155609845}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#41"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11588,7 +11915,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4805209844658613509}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Hood Pivot
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11621,7 +11948,7 @@ GameObject:
   - component: {fileID: 1246528212335228043}
   - component: {fileID: 7973069858630842204}
   - component: {fileID: 6944394282450307938}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#8"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11711,7 +12038,7 @@ GameObject:
   - component: {fileID: 8172742531650928892}
   - component: {fileID: 3140762750117371889}
   - component: {fileID: 438919832950717277}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#44"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11801,7 +12128,7 @@ GameObject:
   - component: {fileID: 7934498287989099731}
   - component: {fileID: 667400452882836900}
   - component: {fileID: 224627044020875839}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#56 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11891,7 +12218,7 @@ GameObject:
   - component: {fileID: 7926431218801367585}
   - component: {fileID: 6759535362848523229}
   - component: {fileID: 4148509600316934977}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xAB23E369
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11981,7 +12308,7 @@ GameObject:
   - component: {fileID: 1064815319051861478}
   - component: {fileID: 1303725180841532595}
   - component: {fileID: 4137223203702641043}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12069,7 +12396,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4167689396329729322}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#55 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12102,7 +12429,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8301760243679788557}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: RearCaliperPad
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12137,7 +12464,7 @@ GameObject:
   - component: {fileID: 5138411004891450695}
   - component: {fileID: 346502779581689417}
   - component: {fileID: 1096677555847275448}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#36"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12247,7 +12574,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2839569799206313208}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01-Flipped
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12279,7 +12606,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8031663821598230352}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: WheelTransforms
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12317,7 +12644,7 @@ GameObject:
   - component: {fileID: 5569791657092722429}
   - component: {fileID: 2276778370615110691}
   - component: {fileID: 7933029561645307555}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0xD00D888A
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12428,7 +12755,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5717051822856085529}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12460,7 +12787,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2740882456005776680}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12494,7 +12821,7 @@ GameObject:
   - component: {fileID: 6097946038566729101}
   - component: {fileID: 90973081641947075}
   - component: {fileID: 8186996683754616056}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_logo
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12582,7 +12909,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1130802093074930692}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: 0x18A4CEB3 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12617,7 +12944,7 @@ GameObject:
   - component: {fileID: 6268009824689145155}
   - component: {fileID: 3739016697634783188}
   - component: {fileID: 7062415162372429682}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#20"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12707,7 +13034,7 @@ GameObject:
   - component: {fileID: 135992561078831694}
   - component: {fileID: 8042101143542473405}
   - component: {fileID: 919661835387228477}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12786,6 +13113,81 @@ MeshRenderer:
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &8843869923250938883
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2082195766460743653}
+  - component: {fileID: 2579646320394409199}
+  - component: {fileID: 1874260579765988195}
+  m_Layer: 10
+  m_Name: Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2082195766460743653
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843869923250938883}
+  m_LocalRotation: {x: 0.26259676, y: -0.6565386, z: 0.6565386, w: 0.26259676}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5060963506871827068}
+  m_LocalEulerAnglesHint: {x: 90, y: -136.4, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 24.5}
+  m_SizeDelta: {x: 9, y: 9}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &2579646320394409199
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843869923250938883}
+  m_CullTransparentMesh: 1
+--- !u!114 &1874260579765988195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8843869923250938883}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.Image
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: -1264058363, guid: 1c88abf55e016be41b2a563b57a25724, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
 --- !u!1 &8886490910533810200
 GameObject:
   m_ObjectHideFlags: 0
@@ -12797,7 +13199,7 @@ GameObject:
   - component: {fileID: 4287778643395230767}
   - component: {fileID: 136858633872722479}
   - component: {fileID: 7070995837527430255}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: rim_edge
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12887,7 +13289,7 @@ GameObject:
   - component: {fileID: 9047321065246701437}
   - component: {fileID: 2947626943303981861}
   - component: {fileID: 9210658852204072501}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12977,7 +13379,7 @@ GameObject:
   - component: {fileID: 8463655405358225325}
   - component: {fileID: 3664081362927294948}
   - component: {fileID: 8305461795938074821}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#24"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13068,7 +13470,7 @@ GameObject:
   - component: {fileID: 8201793170051084305}
   - component: {fileID: 5009066188136899896}
   - component: {fileID: 6133117313795262777}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#27 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13182,7 +13584,7 @@ GameObject:
   - component: {fileID: 4460087022390154425}
   - component: {fileID: 8658294061274440860}
   - component: {fileID: 3250687666296474355}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#53"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13293,7 +13695,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 3813603602444721892}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: Disk01
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13327,7 +13729,7 @@ GameObject:
   - component: {fileID: 3390339949107041586}
   - component: {fileID: 1228656739425766821}
   - component: {fileID: 3484000221310196290}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: "\uAD6C\uC131 \uC694\uC18C#11 1"
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13417,7 +13819,7 @@ GameObject:
   - component: {fileID: 6377752590289596509}
   - component: {fileID: 450788534887319255}
   - component: {fileID: 8119680525805022011}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13507,7 +13909,7 @@ GameObject:
   - component: {fileID: 7967109021938632069}
   - component: {fileID: 5407808601013556185}
   - component: {fileID: 4329086712381645063}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: Headlight_High_Beam
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13634,7 +14036,7 @@ GameObject:
   - component: {fileID: 375084567320535344}
   - component: {fileID: 1477862252862318059}
   - component: {fileID: 3589212110734426317}
-  m_Layer: 7
+  m_Layer: 11
   m_Name: tire
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13724,7 +14126,7 @@ GameObject:
   - component: {fileID: 8828425569266122364}
   - component: {fileID: 2818047604851619721}
   - component: {fileID: 8320596861694612495}
-  m_Layer: 6
+  m_Layer: 11
   m_Name: mesh
   m_TagString: Untagged
   m_Icon: {fileID: 0}

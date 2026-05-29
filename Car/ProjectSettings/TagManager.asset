@@ -5,16 +5,17 @@ TagManager:
   serializedVersion: 3
   tags:
   - NitroUI
+  - Road
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - AI
   - Water
   - UI
   - vfx
-  - 
-  - 
+  - Road
+  - Wall
   - 
   - 
   - 
