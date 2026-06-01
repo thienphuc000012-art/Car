@@ -2,6 +2,13 @@ using UnityEngine;
 
 public static class CarSelectionState
 {
+    public static bool HasMenuSelection = false;
+
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetMenuSelectionFlag()
+    {
+        HasMenuSelection = false;
+    }
     public static int SelectedCarIndex = 0;
     public static string SelectedCarId = "";
     public static string SelectedCarDisplayName = "";

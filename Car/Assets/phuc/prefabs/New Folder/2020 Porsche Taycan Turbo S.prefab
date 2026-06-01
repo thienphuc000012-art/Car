@@ -91,7 +91,7 @@ Transform:
   m_GameObject: {fileID: 138944422836456673}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -132,11 +132,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 50
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -1418,7 +1418,7 @@ RectTransform:
   m_GameObject: {fileID: 2531489272027066680}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8515961982014158699}
@@ -1456,7 +1456,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1883513074, guid: 68cd425314cf3964aa95ae6b0f61ecc0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
@@ -2285,6 +2285,7 @@ GameObject:
   - component: {fileID: 8110108149370166853}
   - component: {fileID: 7609952003154527725}
   - component: {fileID: -4052148427041372485}
+  - component: {fileID: 2700205822101093150}
   m_Layer: 6
   m_Name: 2020 Porsche Taycan Turbo S
   m_TagString: Player
@@ -2408,6 +2409,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  antiFlipForce: 8
+  maxAngularVelocity: 2
+  raceStarted: 0
 --- !u!65 &8110108149370166853
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -2458,6 +2462,27 @@ MonoBehaviour:
   lapCount: 0
   distanceTravelled: 0
   finishTime: -1
+--- !u!114 &2700205822101093150
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4246031040961367489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550e641e2732ee140bd53ab59e721b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarAudioController
+  engineSource: {fileID: 0}
+  nitroSource: {fileID: 0}
+  driftSource: {fileID: 0}
+  pickupSource: {fileID: 0}
+  engineIdleClip: {fileID: 8300000, guid: 65472adc26f587342905267331829643, type: 3}
+  engineAccelClip: {fileID: 8300000, guid: aab052cdd6cf4324bad411638be60f44, type: 3}
+  nitroClip: {fileID: 8300000, guid: da82f9f101ae31d438fe62f3451d0ee7, type: 3}
+  driftClip: {fileID: 8300000, guid: d3783a4d8bb901a498ab9d68937f9716, type: 3}
+  pickupClip: {fileID: 8300000, guid: ee581787dde4e5b4ebbcaf1a8b0e948a, type: 3}
 --- !u!1 &4318088223307688885
 GameObject:
   m_ObjectHideFlags: 0

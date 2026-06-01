@@ -2,7 +2,7 @@
 
 public class Checkpoint : MonoBehaviour
 {
-    public int checkpointIndex; 
+    public int checkpointIndex;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -10,5 +10,10 @@ public class Checkpoint : MonoBehaviour
         {
             RaceManager.Instance.PlayerCrossCheckpoint(checkpointIndex);
         }
+        else if (other.CompareTag("AI"))
+        {
+            RaceManager.Instance.AICrossCheckpoint(other.gameObject, checkpointIndex);
+        }
     }
+
 }

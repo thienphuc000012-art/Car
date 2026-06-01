@@ -6,6 +6,7 @@ TagManager:
   tags:
   - NitroUI
   - Road
+  - AI
   layers:
   - Default
   - TransparentFX
@@ -16,7 +17,7 @@ TagManager:
   - vfx
   - Road
   - Wall
-  - 
+  - icon
   - 
   - 
   - 

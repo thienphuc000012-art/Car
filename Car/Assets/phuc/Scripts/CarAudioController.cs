@@ -17,24 +17,21 @@ public class CarAudioController : MonoBehaviour
 
     private CarController car;
 
-    void Start()
+  void Start()
+{
+    car = GetComponent<CarController>();
+
+    if (engineSource == null) engineSource = gameObject.AddComponent<AudioSource>();
+    if (nitroSource == null) nitroSource = gameObject.AddComponent<AudioSource>();
+    if (driftSource == null) driftSource = gameObject.AddComponent<AudioSource>();
+    if (pickupSource == null) pickupSource = gameObject.AddComponent<AudioSource>();
+
+    AudioSettingsManager asm = FindFirstObjectByType<AudioSettingsManager>();
+    if (asm != null)
     {
-        car = GetComponent<CarController>();
-
-        if (engineSource == null) engineSource = gameObject.AddComponent<AudioSource>();
-        if (nitroSource == null) nitroSource = gameObject.AddComponent<AudioSource>();
-        if (driftSource == null) driftSource = gameObject.AddComponent<AudioSource>();
-        if (pickupSource == null) pickupSource = gameObject.AddComponent<AudioSource>();
-
-        if (engineIdleClip != null)
-        {
-            engineSource.clip = engineIdleClip;
-            engineSource.loop = true;
-            engineSource.playOnAwake = false;
-            engineSource.Play();
-           // Debug.Log($"{name}: Engine idle sound started");
-        }
+        asm.RegisterCarSources(this);
     }
+}
 
 
     void Update()
@@ -44,77 +41,45 @@ public class CarAudioController : MonoBehaviour
         float speed = car.wheelColliders[0].attachedRigidbody.linearVelocity.magnitude;
         float throttle = Input.GetAxis("Vertical");
 
-        if (throttle > 0.75f && engineAccelClip != null)
+        if (!car.raceStarted)
         {
-            if (engineSource.clip != engineAccelClip)
-            {
-                engineSource.clip = engineAccelClip;
-                engineSource.loop = true;
-                engineSource.Play();
-              //  Debug.Log($"{name}: Engine accel sound started");
-            }
+            if (engineIdleClip != null && !engineSource.isPlaying)
+                engineSource.PlayOneShot(engineIdleClip);
         }
         else
         {
-            if (engineSource.clip != engineIdleClip && engineIdleClip != null)
+            if (throttle > 0.75f && engineAccelClip != null)
             {
-                engineSource.clip = engineIdleClip;
-                engineSource.loop = true;
-                engineSource.Play();
-               // Debug.Log($"{name}: Engine idle sound started");
-            }
-        }
-        engineSource.pitch = Mathf.Lerp(1f, 2f, speed / 150f);
-        if (car.isUsingNitro)
-        {
-            if (!nitroSource.isPlaying && nitroClip != null)
-            {
-                nitroSource.clip = nitroClip;
-                nitroSource.loop = true;
-                nitroSource.Play();
-              //  Debug.Log($"{name}: Nitro sound started");
-            }
-            if (driftSource.isPlaying)
-            {
-                driftSource.Stop();
-               // Debug.Log($"{name}: Drift sound stopped (nitro active)");
-            }
-        }
-        else
-        {
-            if (nitroSource.isPlaying)
-            {
-                nitroSource.Stop();
-               // Debug.Log($"{name}: Nitro sound stopped");
-            }
-            if (Mathf.Abs(Input.GetAxis("Horizontal")) > 0.7f && car.raceStarted)
-            {
-                if (!driftSource.isPlaying && driftClip != null)
-                {
-                    driftSource.clip = driftClip;
-                    driftSource.loop = true;
-                    driftSource.Play();
-                   // Debug.Log($"{name}: Drift sound started");
-                }
+                if (!engineSource.isPlaying)
+                    engineSource.PlayOneShot(engineAccelClip);
             }
             else
             {
-                if (driftSource.isPlaying)
-                {
-                    driftSource.Stop();
-                   // Debug.Log($"{name}: Drift sound stopped");
-                }
+                if (engineIdleClip != null && !engineSource.isPlaying)
+                    engineSource.PlayOneShot(engineIdleClip);
             }
         }
-    }
 
+        engineSource.pitch = Mathf.Lerp(1f, 2f, speed / 150f);
+
+        if (car.isUsingNitro && nitroClip != null)
+        {
+            if (!nitroSource.isPlaying)
+                nitroSource.PlayOneShot(nitroClip);
+        }
+
+        if (!car.isUsingNitro && Mathf.Abs(Input.GetAxis("Horizontal")) > 0.7f && car.raceStarted)
+        {
+            if (!driftSource.isPlaying && driftClip != null)
+                driftSource.PlayOneShot(driftClip);
+        }
+    }
 
     public void PlayPickupSound()
     {
         if (pickupSource != null && pickupClip != null)
         {
             pickupSource.PlayOneShot(pickupClip);
-           // Debug.Log($"{name}: Pickup sound played");
         }
     }
 }

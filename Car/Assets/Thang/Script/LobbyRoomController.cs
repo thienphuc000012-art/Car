@@ -284,6 +284,12 @@ public class LobbyRoomController : MonoBehaviour
         }
 
         ApplySelectionState();
+
+        CarSelectionState.HasMenuSelection = true;
+
+        if (AudioManager.Instance != null)
+            AudioManager.Instance.StopMenuMusic();
+
         RefreshAll("Dang vao map " + map.displayName + "...");
         SceneManager.LoadScene(map.sceneName);
     }

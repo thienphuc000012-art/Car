@@ -46,18 +46,18 @@ public class AudioManager : MonoBehaviour
         SetMusicVolume(PlayerPrefs.GetFloat(MusicVolumeKey, 0.7f));
         SetSFXVolume(PlayerPrefs.GetFloat(SFXVolumeKey, 0.8f));
         PlayMenuMusic();
+
     }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
-        if (IsRaceScene(scene.name))
+        if (scene.name == "MainMenu" || scene.name == "MainMenuScene")
         {
-            StopMenuMusic();
-            Debug.Log("Đã tắt nhạc menu khi vào race scene: " + scene.name);
+            PlayMenuMusic();
         }
         else
         {
-            PlayMenuMusic();
+            StopMenuMusic();
         }
     }
 

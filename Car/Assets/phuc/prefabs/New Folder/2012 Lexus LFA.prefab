@@ -2424,7 +2424,7 @@ Transform:
   m_GameObject: {fileID: 1136449077092695632}
   serializedVersion: 2
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
-  m_LocalPosition: {x: 0, y: 20, z: 0}
+  m_LocalPosition: {x: 0, y: 500, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2465,11 +2465,11 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 20
+  orthographic size: 50
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 55
+    m_Bits: 567
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
@@ -8668,6 +8668,7 @@ GameObject:
   - component: {fileID: 8217460957174903379}
   - component: {fileID: 3271288878524856123}
   - component: {fileID: -8596545858329164480}
+  - component: {fileID: 7009405677947574729}
   m_Layer: 6
   m_Name: 2012 Lexus LFA
   m_TagString: Player
@@ -8793,6 +8794,9 @@ MonoBehaviour:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+  antiFlipForce: 8
+  maxAngularVelocity: 2
+  raceStarted: 0
 --- !u!65 &8217460957174903379
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -8843,6 +8847,27 @@ MonoBehaviour:
   lapCount: 0
   distanceTravelled: 0
   finishTime: -1
+--- !u!114 &7009405677947574729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5884949315889758365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 550e641e2732ee140bd53ab59e721b92, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CarAudioController
+  engineSource: {fileID: 0}
+  nitroSource: {fileID: 0}
+  driftSource: {fileID: 0}
+  pickupSource: {fileID: 0}
+  engineIdleClip: {fileID: 8300000, guid: 65472adc26f587342905267331829643, type: 3}
+  engineAccelClip: {fileID: 8300000, guid: aab052cdd6cf4324bad411638be60f44, type: 3}
+  nitroClip: {fileID: 8300000, guid: da82f9f101ae31d438fe62f3451d0ee7, type: 3}
+  driftClip: {fileID: 8300000, guid: d3783a4d8bb901a498ab9d68937f9716, type: 3}
+  pickupClip: {fileID: 8300000, guid: ee581787dde4e5b4ebbcaf1a8b0e948a, type: 3}
 --- !u!1 &5894870702968669019
 GameObject:
   m_ObjectHideFlags: 0
@@ -8870,7 +8895,7 @@ RectTransform:
   m_GameObject: {fileID: 5894870702968669019}
   m_LocalRotation: {x: 0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.1, y: 0.1, z: 1}
+  m_LocalScale: {x: 0.15, y: 0.15, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 7310294556353410544}
@@ -8908,7 +8933,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
+  m_Sprite: {fileID: 1883513074, guid: 68cd425314cf3964aa95ae6b0f61ecc0, type: 3}
   m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
