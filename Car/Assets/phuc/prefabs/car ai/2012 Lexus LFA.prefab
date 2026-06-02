@@ -2288,6 +2288,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   antiFlipForce: 8
   maxAngularVelocity: 2
+  raceStarted: 0
 --- !u!114 &9146593245714180629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2301,31 +2302,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIDriver
   waypointManager: {fileID: 0}
+  currentWaypoint: 0
   maxSpeed: 80
-  steerSensitivity: 45
-  cornerSkill: 1
-  slowAngle: 15
-  mediumAngle: 35
-  hardAngle: 55
-  lookAheadPoints: 3
   waypointReachDistance: 14
-  aiMask:
-    serializedVersion: 2
-    m_Bits: 8
-  aiAvoidDistance: 15
-  aiAvoidStrength: 1.2
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  obstacleRayDistance: 6
-  obstacleAvoidStrength: 1.2
+  laneWidth: 5
+  avoidDistance: 10
+  stuckTime: 2
   roadMask:
     serializedVersion: 2
     m_Bits: 128
   roadCheckDistance: 6
-  stuckTime: 2
-  reverseTime: 1.5
-  extraDownforce: 25
 --- !u!114 &4505250403043707997
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2341,6 +2327,7 @@ MonoBehaviour:
   lapCount: 0
   distanceTravelled: 0
   finishTime: -1
+  nextCheckpointIndex: 0
 --- !u!1 &1337090208781955095
 GameObject:
   m_ObjectHideFlags: 0
@@ -6029,12 +6016,12 @@ WheelCollider:
   m_GameObject: {fileID: 4126640225597492267}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.36
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.25
+  m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -6825,12 +6812,12 @@ WheelCollider:
   m_GameObject: {fileID: 4478242897695880012}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.36
   m_SuspensionSpring:
     spring: 30000
     damper: 4000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.25
+  m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -8059,12 +8046,12 @@ WheelCollider:
   m_GameObject: {fileID: 5220014733829455542}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.36
   m_SuspensionSpring:
     spring: 30000
     damper: 4000
     targetPosition: 0.5
-  m_SuspensionDistance: 0.25
+  m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25
@@ -9020,12 +9007,12 @@ WheelCollider:
   m_GameObject: {fileID: 6239206988675428766}
   serializedVersion: 2
   m_Center: {x: 0, y: 0, z: 0}
-  m_Radius: 0.35
+  m_Radius: 0.36
   m_SuspensionSpring:
     spring: 35000
     damper: 4500
     targetPosition: 0.5
-  m_SuspensionDistance: 0.25
+  m_SuspensionDistance: 0
   m_ForceAppPointDistance: 0
   m_Mass: 20
   m_WheelDampingRate: 0.25

@@ -5,32 +5,36 @@ public class AIDriver : MonoBehaviour
 {
     [Header("Waypoint")]
     public WaypointManager waypointManager;
-
     public int currentWaypoint = 0;
 
     [Header("Speed")]
     public float maxSpeed = 120f;
 
-    [Header("Steering")]
-    public float steerSensitivity = 3f;
-
     [Header("Waypoint")]
     public float waypointReachDistance = 12f;
 
     [Header("Lane")]
-    public float laneWidth = 4f;
+    public float laneWidth = 5f;
 
-    [Header("Avoid")]
-    public float avoidDistance = 12f;
+    [Header("Avoid Cars")]
+    public float avoidDistance = 10f;
 
     [Header("Recovery")]
-    public float stuckTime = 2f;
+    public float stuckTime = 3f;
+
+    [Header("Road")]
+    public LayerMask roadMask;
+    public float roadCheckDistance = 5f;
+
+    [Header("Reset")]
+    public float maxOffRoadTime = 3f;
 
     private CarController carController;
     private Rigidbody rb;
 
     private float laneOffset;
     private float stuckTimer;
+    private float offRoadTimer;
 
     void Start()
     {
@@ -39,7 +43,8 @@ public class AIDriver : MonoBehaviour
 
         carController.isAI = true;
 
-        laneOffset = Random.Range(-laneWidth, laneWidth);
+        laneOffset =
+            Random.Range(-laneWidth, laneWidth);
     }
 
     void Update()
@@ -50,6 +55,12 @@ public class AIDriver : MonoBehaviour
         if (waypointManager.waypoints.Length == 0)
             return;
 
+        if (NeedRecovery())
+        {
+            RecoverToTrack();
+            return;
+        }
+
         DriveAI();
     }
 
@@ -58,12 +69,12 @@ public class AIDriver : MonoBehaviour
         Transform wp =
             waypointManager.waypoints[currentWaypoint];
 
-        Vector3 targetPosition =
+        Vector3 targetPos =
             wp.position +
             wp.right * laneOffset;
 
         Vector3 localTarget =
-            transform.InverseTransformPoint(targetPosition);
+            transform.InverseTransformPoint(targetPos);
 
         float steer =
             Mathf.Clamp(
@@ -78,51 +89,76 @@ public class AIDriver : MonoBehaviour
         bool brake = false;
 
         //----------------------------------
-        // Giảm tốc khi cua gắt
+        // Corner Slowdown
         //----------------------------------
 
-        float cornerAmount =
+        float corner =
             Mathf.Abs(steer);
 
-        if (cornerAmount > 0.5f)
-        {
+        if (corner > 0.5f)
             throttle = 0.6f;
-        }
 
-        if (cornerAmount > 0.8f)
-        {
+        if (corner > 0.8f)
             throttle = 0.3f;
-        }
 
         //----------------------------------
-        // Né xe phía trước
+        // Wall Detection
         //----------------------------------
 
-        RaycastHit hit;
+        RaycastHit wallHit;
 
         Vector3 rayOrigin =
             transform.position +
             transform.up * 0.5f;
 
         if (Physics.Raycast(
-                rayOrigin,
-                transform.forward,
-                out hit,
-                avoidDistance))
+            rayOrigin,
+            transform.forward,
+            out wallHit,
+            6f))
         {
-            if (hit.collider.attachedRigidbody != null &&
-                hit.collider.attachedRigidbody != rb)
+            if (wallHit.collider.attachedRigidbody == null)
             {
+                laneOffset +=
+                    Random.Range(-3f, 3f);
+
+                laneOffset =
+                    Mathf.Clamp(
+                        laneOffset,
+                        -laneWidth,
+                        laneWidth);
+
                 throttle = 0.2f;
+            }
+        }
+
+        //----------------------------------
+        // Car Avoidance
+        //----------------------------------
+
+        RaycastHit hit;
+
+        if (Physics.Raycast(
+            rayOrigin,
+            transform.forward,
+            out hit,
+            avoidDistance))
+        {
+            Rigidbody otherRb =
+                hit.collider.attachedRigidbody;
+
+            if (otherRb != null &&
+                otherRb != rb)
+            {
+                throttle = 0.3f;
 
                 if (hit.distance < 5f)
-                {
                     brake = true;
-                }
 
                 if (hit.distance < 8f)
                 {
-                    laneOffset += Random.Range(-1.5f, 1.5f);
+                    laneOffset +=
+                        Random.Range(-2f, 2f);
 
                     laneOffset =
                         Mathf.Clamp(
@@ -134,16 +170,14 @@ public class AIDriver : MonoBehaviour
         }
 
         //----------------------------------
-        // Giới hạn tốc độ
+        // Speed Limit
         //----------------------------------
 
         if (speed > maxSpeed)
-        {
             throttle = 0;
-        }
 
         //----------------------------------
-        // Điều khiển xe
+        // Control
         //----------------------------------
 
         carController.SetInput(
@@ -152,7 +186,7 @@ public class AIDriver : MonoBehaviour
             brake);
 
         //----------------------------------
-        // Đến waypoint tiếp theo
+        // Next Waypoint
         //----------------------------------
 
         float distance =
@@ -165,9 +199,7 @@ public class AIDriver : MonoBehaviour
             currentWaypoint++;
 
             if (currentWaypoint >= waypointManager.waypoints.Length)
-            {
                 currentWaypoint = 0;
-            }
 
             laneOffset =
                 Random.Range(
@@ -176,27 +208,83 @@ public class AIDriver : MonoBehaviour
         }
 
         //----------------------------------
-        // Chống kẹt
+        // Stuck Detect
         //----------------------------------
 
         if (speed < 3f)
         {
             stuckTimer += Time.deltaTime;
-
-            if (stuckTimer > stuckTime)
-            {
-                laneOffset =
-                    Random.Range(
-                        -laneWidth,
-                        laneWidth);
-
-                stuckTimer = 0;
-            }
         }
         else
         {
             stuckTimer = 0;
         }
+    }
+
+    bool NeedRecovery()
+    {
+        if (!IsOnRoad())
+        {
+            offRoadTimer += Time.deltaTime;
+
+            if (offRoadTimer > maxOffRoadTime)
+                return true;
+        }
+        else
+        {
+            offRoadTimer = 0;
+        }
+
+        if (stuckTimer > stuckTime)
+            return true;
+
+        return false;
+    }
+
+    bool IsOnRoad()
+    {
+        RaycastHit hit;
+
+        if (Physics.Raycast(
+            transform.position + Vector3.up,
+            Vector3.down,
+            out hit,
+            roadCheckDistance,
+            roadMask))
+        {
+            return true;
+        }
+
+        return false;
+    }
+
+    void RecoverToTrack()
+    {
+        Transform wp =
+            waypointManager.waypoints[currentWaypoint];
+
+        rb.linearVelocity = Vector3.zero;
+        rb.angularVelocity = Vector3.zero;
+
+        Vector3 spawnPos =
+            wp.position
+            - wp.forward * 5f
+            + Vector3.up * 6f;
+
+        transform.position = spawnPos;
+
+        transform.rotation =
+            Quaternion.LookRotation(
+                wp.forward,
+                Vector3.up);
+
+        laneOffset =
+            Random.Range(
+                -laneWidth,
+                laneWidth);
+
+        stuckTimer = 0;
+        offRoadTimer = 0;
     }
 
     void OnDrawGizmos()

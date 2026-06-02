@@ -11661,6 +11661,7 @@ MonoBehaviour:
     m_RotationOrder: 4
   antiFlipForce: 8
   maxAngularVelocity: 2
+  raceStarted: 0
 --- !u!114 &3443674231855380423
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11674,31 +11675,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AIDriver
   waypointManager: {fileID: 0}
+  currentWaypoint: 0
   maxSpeed: 75
-  steerSensitivity: 45
-  cornerSkill: 1
-  slowAngle: 15
-  mediumAngle: 35
-  hardAngle: 55
-  lookAheadPoints: 3
   waypointReachDistance: 12
-  aiMask:
-    serializedVersion: 2
-    m_Bits: 8
-  aiAvoidDistance: 15
-  aiAvoidStrength: 1.2
-  obstacleMask:
-    serializedVersion: 2
-    m_Bits: 256
-  obstacleRayDistance: 6
-  obstacleAvoidStrength: 1.2
+  laneWidth: 5
+  avoidDistance: 10
+  stuckTime: 2
   roadMask:
     serializedVersion: 2
     m_Bits: 128
   roadCheckDistance: 6
-  stuckTime: 2
-  reverseTime: 1.5
-  extraDownforce: 25
 --- !u!1 &7021427957751095321
 GameObject:
   m_ObjectHideFlags: 0
