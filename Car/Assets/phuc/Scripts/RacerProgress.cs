@@ -4,7 +4,10 @@ public class RacerProgress : MonoBehaviour
 {
     public int lapCount = 0;
     public float distanceTravelled = 0f;
-    public float finishTime = -1f; 
+    public float finishTime = -1f;
+
+    // Thêm biến này để quản lý checkpoint
+    public int nextCheckpointIndex = 0;
 
     private Rigidbody rb;
 
@@ -15,7 +18,7 @@ public class RacerProgress : MonoBehaviour
 
     void Update()
     {
-        if (rb != null && finishTime < 0f) 
+        if (rb != null && finishTime < 0f)
         {
             distanceTravelled += rb.linearVelocity.magnitude * Time.deltaTime;
         }

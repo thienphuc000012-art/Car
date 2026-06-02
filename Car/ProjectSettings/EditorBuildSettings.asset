@@ -14,7 +14,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/test.unity
     guid: e04b4a32454266d48a840470b2c3b05e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/complete_track_demo.unity
     guid: 152964570edfa5c4b9955897bc738de6
   m_configObjects:

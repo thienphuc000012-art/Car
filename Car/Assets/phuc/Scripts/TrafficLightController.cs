@@ -18,44 +18,42 @@ public class TrafficLightController : MonoBehaviour
 
     void Start()
     {
-        SetAllCarsLocked(true);           // Khóa từ đầu
+        SetAllCarsLocked(true);          
         StartCoroutine(StartRaceCountdown());
     }
 
     IEnumerator StartRaceCountdown()
     {
-        // Đèn đỏ
+
         redLight.SetActive(true);
         yellowLight.SetActive(false);
         greenLight.SetActive(false);
-
         countdownText.text = "3";
         yield return new WaitForSeconds(1f);
 
+
+        redLight.SetActive(false);
+        yellowLight.SetActive(true);
+        greenLight.SetActive(false);
         countdownText.text = "2";
         yield return new WaitForSeconds(1f);
 
-        countdownText.text = "1";
-        yield return new WaitForSeconds(1f);
-
-        // Đèn vàng + GO!
         redLight.SetActive(false);
-        yellowLight.SetActive(true);
-        countdownText.text = "GO!";
-
-        yield return new WaitForSeconds(0.8f);
-
-        // === THẢ XE === 
         yellowLight.SetActive(false);
         greenLight.SetActive(true);
+        countdownText.text = "1"; 
+        yield return new WaitForSeconds(1f);
 
-        ReleaseCarsSmoothly();   // Thả mượt mà hơn
+        ReleaseCarsSmoothly();
 
-        // Ẩn countdown
-        yield return new WaitForSeconds(1.2f);
+        countdownText.text = "GO!";
+        yield return new WaitForSeconds(1f);
+
         if (countdownText != null)
             countdownText.gameObject.SetActive(false);
+        RaceManager.Instance.StartRace();
     }
+
 
     private void SetAllCarsLocked(bool locked)
     {
@@ -72,7 +70,7 @@ public class TrafficLightController : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
 
-            // Giữ phanh mạnh khi locked
+      
             foreach (var wc in car.wheelColliders)
             {
                 if (wc != null)
@@ -84,7 +82,7 @@ public class TrafficLightController : MonoBehaviour
         }
     }
 
-    // Thả xe mượt mà (giảm bay)
+
     private void ReleaseCarsSmoothly()
     {
         foreach (var car in cars)
@@ -100,13 +98,13 @@ public class TrafficLightController : MonoBehaviour
                 rb.angularVelocity = Vector3.zero;
             }
 
-            // Bỏ phanh dần
+        
             foreach (var wc in car.wheelColliders)
             {
                 if (wc != null)
                 {
                     wc.brakeTorque = 0;
-                    wc.motorTorque = 0; // AI sẽ set sau
+                    wc.motorTorque = 0; 
                 }
             }
         }

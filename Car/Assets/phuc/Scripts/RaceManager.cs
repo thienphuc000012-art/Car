@@ -35,6 +35,8 @@ public class RaceManager : MonoBehaviour
     [Header("Win Music")]
     public AudioClip winClip;
 
+    private bool raceStarted = false;
+
     void Awake()
     {
         Instance = this;
@@ -44,15 +46,26 @@ public class RaceManager : MonoBehaviour
     {
         if (winPanel != null) winPanel.SetActive(false);
         UpdateLapUI();
+        if (timeText != null)
+            timeText.text = "00:00.00";
+
+        UpdateLeaderboard();
         if (exitButton != null) exitButton.onClick.AddListener(ExitGame);
         if (mainMenuButton != null) mainMenuButton.onClick.AddListener(ReturnToMainMenu);
     }
 
     void Update()
     {
-        raceTime += Time.deltaTime;
-        UpdateTimeUI();
-        UpdateLeaderboard();
+        if (raceStarted)
+        {
+            raceTime += Time.deltaTime;
+            UpdateTimeUI();
+            UpdateLeaderboard();
+        }
+    }
+    public void StartRace()
+    {
+        raceStarted = true;
     }
 
     public void PlayerCrossCheckpoint(int checkpointIndex)
@@ -107,16 +120,25 @@ public class RaceManager : MonoBehaviour
     {
         if (leaderboardText != null && racers.Count > 0)
         {
+      
             racers.Sort((a, b) =>
             {
                 var ra = a.GetComponent<RacerProgress>();
                 var rb = b.GetComponent<RacerProgress>();
+
+         
+                if (ra.finishTime >= 0f && rb.finishTime >= 0f)
+                    return ra.finishTime.CompareTo(rb.finishTime);
+
+                if (ra.finishTime >= 0f) return -1;
+                if (rb.finishTime >= 0f) return 1;
 
                 int lapCompare = rb.lapCount.CompareTo(ra.lapCount);
                 if (lapCompare != 0) return lapCompare;
 
                 return rb.distanceTravelled.CompareTo(ra.distanceTravelled);
             });
+
             int playerRank = -1;
             for (int i = 0; i < racers.Count; i++)
             {
@@ -211,11 +233,25 @@ public class RaceManager : MonoBehaviour
     {
         var rp = aiCar.GetComponent<RacerProgress>();
         if (rp == null) return;
-        if (rp.lapCount >= totalLaps)
+
+        if (checkpointIndex == rp.nextCheckpointIndex)
         {
-            rp.FinishRace(raceTime);
+            rp.nextCheckpointIndex++;
+
+  
+            if (rp.nextCheckpointIndex >= 3)
+            {
+                rp.nextCheckpointIndex = 0;
+                rp.lapCount++;
+
+                if (rp.lapCount >= totalLaps)
+                {
+                    rp.FinishRace(raceTime);
+                }
+            }
         }
     }
+
     public void ExitGame()
     {
 #if UNITY_EDITOR
