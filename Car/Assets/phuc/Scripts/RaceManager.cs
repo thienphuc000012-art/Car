@@ -32,6 +32,9 @@ public class RaceManager : MonoBehaviour
     public Button exitButton;
     public Button mainMenuButton;
 
+    [Header("Win Music")]
+    public AudioClip winClip;
+
     void Awake()
     {
         Instance = this;
@@ -125,7 +128,7 @@ public class RaceManager : MonoBehaviour
             }
             if (playerRank != -1)
             {
-                leaderboardText.text = "Your Rank: " + playerRank + "/" + racers.Count;
+                leaderboardText.text = "POSITION: " + playerRank + "/" + racers.Count;
             }
         }
     }
@@ -181,7 +184,25 @@ public class RaceManager : MonoBehaviour
             }
 
             AudioSettingsManager asm = FindFirstObjectByType<AudioSettingsManager>();
-            if (asm != null && asm.bgmSource != null) asm.bgmSource.Stop();
+            if (asm != null)
+            {
+                foreach (AudioSource src in asm.vfxSources)
+                {
+                    if (src != null)
+                    {
+                        src.Stop();      
+                        src.volume = 0f; 
+                    }
+                }
+                if (asm.bgmSource != null && winClip != null)
+                {
+                    asm.bgmSource.Stop();
+                    asm.bgmSource.clip = winClip;
+                    asm.bgmSource.loop = false; 
+                    asm.bgmSource.Play();
+                }
+            }
+
 
             Time.timeScale = 0f;
         }
