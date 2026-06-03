@@ -5696,6 +5696,7 @@ MonoBehaviour:
   lapCount: 0
   distanceTravelled: 0
   finishTime: -1
+  nextCheckpointIndex: 0
 --- !u!114 &8850087320770258634
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6230,7 +6231,7 @@ Camera:
   m_Depth: 0
   m_CullingMask:
     serializedVersion: 2
-    m_Bits: 567
+    m_Bits: 695
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
